@@ -93,32 +93,19 @@ const PickTicket = ({ navigation }) => {
             <Text style={styles.totalText}>275.00 ريال</Text>
             <Text style={styles.totalText}>الإجمالي</Text>
           </View>
-
           <View style={styles.btnContainer}>
-            <Button
-              title="احجز تذكرتك"
-              loading={false}
-              loadingProps={{ size: "small", color: "#3D0087" }}
-              buttonStyle={{
-                backgroundColor: "#19E578",
-                borderRadius: 15,
-              }}
-              titleStyle={{
-                fontWeight: "bold",
-                fontSize: 16,
-                color: "#3D0087",
-              }}
-              containerStyle={{
-                marginHorizontal: 50,
-                height: 50,
-                width: 350,
-                marginVertical: 10,
-              }}
-              onPress={() => {
-                navigation.navigate("PickFriends");
-              }}
-            />
-          </View>
+        <Button
+          title="احجز تذكرتك"
+          loading={false}
+          loadingProps={{ size: "small", color: "#3D0087" }}
+          buttonStyle={styles.Button}
+          titleStyle={styles.ButtonText}
+          containerStyle={styles.ButtonContainer}
+          onPress={() => {
+            navigation.navigate("PickFriends");
+          }}
+          />
+      </View>
         </View>
       </View>
     </ScrollView>
@@ -179,11 +166,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
     marginTop: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 10,
   },
   ticketPriceContainer: {
     flexDirection: "row",
@@ -220,6 +202,26 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     marginTop: 10,
     color: "#020004",
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  Button: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding:12
+  },
+  ButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+  },
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
+    width: 350,
+    marginVertical: 10,
   },
 });
 

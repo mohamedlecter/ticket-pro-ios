@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F5F6",
     alignItems: "center",
     justifyContent: "center",
+    marginTop:30
   },
   inputView: {
     backgroundColor: "#FFFFFF",
@@ -145,6 +146,7 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     margin: 8,
+    borderRadius:7
   },
   btnContainer: {
     alignItems: "center",
@@ -152,10 +154,11 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: "#19E578",
-    borderRadius: 15,
+    borderRadius: 16,
+    padding:12
   },
   loginButtonText: {
-    fontWeight: "bold",
+    fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
   },
@@ -173,11 +176,11 @@ const styles = StyleSheet.create({
   },
   signUpText: {
     color: "#3D0087",
-    fontSize: 18,
+    fontSize: 15,
   },
   signInText: {
     color: "#413F44",
-    fontSize: 18,
+    fontSize: 15,
   },
 });
 

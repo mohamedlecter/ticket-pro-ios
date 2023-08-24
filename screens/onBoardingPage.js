@@ -44,11 +44,11 @@ const OnBoarding = ({ navigation }) => {
       />
 
       <TouchableOpacity style={styles.signUp} onPress={handleLoginPress}>
-        <Text style={[styles.loginText]}>سجل دخولك</Text>
+        <Text style={[styles.loginText]}> سجل دخولك</Text>
         <Text style={[styles.loginText, { color: "#F6F5F6" }]}>عندك حساب؟</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleAdminLoginPress}>
+      <TouchableOpacity style={{marginBottom:-50}} onPress={handleAdminLoginPress}>
         <Text style={styles.adminLoginText}>سجل دخولك كمنظم</Text>
       </TouchableOpacity>
     </LinearGradient>
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  imgContainer: {},
+  imgContainer: {
+  },
   img: {
     width: 250,
     height: 250,
@@ -82,18 +83,17 @@ const styles = StyleSheet.create({
   },
   signupButton: {
     backgroundColor: "#19E578",
-    borderRadius: 15,
+    borderRadius: 16,
+    padding:12
   },
   signupButtonText: {
-    fontWeight: "bold",
+    fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
   },
   signupButtonContainer: {
-    // marginHorizontal: 50,
-    height: 50,
     width: 350,
-    marginVertical: 16,
+    marginBottom:16
   },
 
   loginText: {

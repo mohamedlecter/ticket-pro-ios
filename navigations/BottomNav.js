@@ -12,9 +12,15 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
   return (
+    <>
     <Tab.Navigator
       initialRouteName="HomeTab"
+      barStyle={{  margin:10 }} //This is where you can manipulate its look. 
       screenOptions={({ route }) => ({
+        tabBarStyle: {
+          borderTopWidth: 0, // Remove top border
+          height: 100, // Adjust the overall height of the tab bar
+        },
         tabBarShowLabel: false,
         headerShown: false,
         tabBarIcon: ({ focused }) => {
@@ -39,6 +45,7 @@ const BottomTabs = () => {
           const tintColor = focused ? "#3D0087" : "#A39EA9";
           return <Image source={iconSource} style={{ tintColor }} />;
         },
+        
       })}
     >
       <Tab.Screen name="SettingsTab" component={Settings} />
@@ -46,6 +53,7 @@ const BottomTabs = () => {
       <Tab.Screen name="TicketTab" component={TicketStack} />
       <Tab.Screen name="HomeTab" component={HomeStack} />
     </Tab.Navigator>
+  </>
   );
 };
 

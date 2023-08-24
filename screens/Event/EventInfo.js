@@ -93,26 +93,18 @@ const EventInfo = ({ navigation }) => {
           <Text style={styles.terms}>الشروط والأحكام</Text>
         </View>
         <View style={styles.btnContainer}>
-          <Button
-            title="احجز تذكرتك"
-            loading={false}
-            loadingProps={{ size: "small", color: "#3D0087" }}
-            buttonStyle={{
-              backgroundColor: "#19E578",
-              borderRadius: 15,
-            }}
-            titleStyle={{ fontWeight: "bold", fontSize: 16, color: "#3D0087" }}
-            containerStyle={{
-              marginHorizontal: 50,
-              height: 50,
-              width: 350,
-              marginVertical: 10,
-            }}
-            onPress={() => {
-              navigation.navigate("PickTicket");
-            }}
+        <Button
+          title="احجز تذكرتك"
+          loading={false}
+          loadingProps={{ size: "small", color: "#3D0087" }}
+          buttonStyle={styles.Button}
+          titleStyle={styles.ButtonText}
+          containerStyle={styles.ButtonContainer}
+          onPress={() => {
+            navigation.navigate("PickTicket");
+          }}
           />
-        </View>
+      </View>
       </View>
     </ScrollView>
   );
@@ -198,9 +190,24 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
   btnContainer: {
-    justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 20,
+  },
+  Button: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding:12
+  },
+  ButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+  },
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
+    width: 350,
+    marginVertical: 10,
   },
 });
 

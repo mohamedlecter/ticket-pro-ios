@@ -39,15 +39,15 @@ export default function Home({ navigation }) {
 
         <View style={styles.eventsContainer}>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <View style={styles.imagesContainer}>
+              <View style={styles.imagesContainer}>
               <Image source={require("../assets/event2.png")} />
               <Image source={require("../assets/event3.png")} />
-            </View>
+              </View>
             <View
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                marginVertical: 8,
+                marginVertical: 10,
               }}
             >
               <Image source={require("../assets/event4.png")} />
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    marginTop: -120,
+    marginTop: -135,
     height: 250,
   },
   headerContainer: {
@@ -84,13 +84,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     textAlign: "right",
-    marginTop: 21,
+    marginTop: 16,
     width: 350,
   },
   imagesContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 50,
+    justifyContent: "space-evenly",
+    marginHorizontal: 10,
     width: 350,
   },
 });

@@ -20,8 +20,8 @@ export default function FilterOptions() {
         <TouchableOpacity style={styles.filterButton}>
           <Text style={styles.filterButtonText}>موسم الرياض</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.filterButton1}>
-          <Text style={{ color: "white", fontSize: 16, fontWeight: "bold" }}>
+        <TouchableOpacity style={[styles.filterButton, {backgroundColor:"#250051", marginRight:0}]}>
+          <Text style={[styles.filterButtonText,{ color:"white"}]}>
             الكل
           </Text>
         </TouchableOpacity>
@@ -39,20 +39,19 @@ const styles = StyleSheet.create({
     width: 350,
   },
   headingText: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 16,
   },
   filterButtonsContainer: {
     flexDirection: "row",
     marginTop: 8,
   },
   filterButton: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal:16,
+    paddingVertical:5,
+    marginRight:5,
     borderRadius: 10,
     borderColor: "#827E87",
     borderWidth: 1,
-    marginHorizontal: 5,
   },
   filterButton1: {
     paddingHorizontal: 10,
@@ -62,7 +61,9 @@ const styles = StyleSheet.create({
   },
   filterButtonText: {
     color: "#827E87",
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 11,
+    fontWeight: "400",
+    textAlign:"center"
+
   },
 });

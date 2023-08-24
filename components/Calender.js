@@ -113,7 +113,7 @@ export default function Calender() {
           </Text>
         </View>
 
-        <View style={styles.calenderBtn}>
+        <View style={[styles.calenderBtn2, {backgroundColor:"#64339F", marginRight:0}]}>
           <Text
             style={{
               color: "#FFFFFF",
@@ -152,12 +152,14 @@ const styles = StyleSheet.create({
   },
   calender: {
     flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    // paddingHorizontal: 20,
+    // backgroundColor:"red",
+    width:350,
   },
   calenderBtn: {
-    marginHorizontal: 8,
+    // marginHorizontal: 2,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#64339F",
@@ -168,7 +170,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   calenderBtn2: {
-    marginHorizontal: 8,
+    marginLeft: 5,
+    marginRight: 5,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFFFFF",

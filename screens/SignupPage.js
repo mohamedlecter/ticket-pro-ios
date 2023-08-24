@@ -100,7 +100,7 @@ const SignupPage = ({ navigation }) => {
           style={styles.signIn}
           onPress={() => navigation.navigate("Login")}
         >
-          <Text style={styles.signInText}>سجل دخولك</Text>
+          <Text style={styles.signInText}>سجل دخولك </Text>
           <Text style={styles.haveAccountText}>عندك حساب؟</Text>
         </TouchableOpacity>
       </View>
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F5F6",
     alignItems: "center",
     justifyContent: "center",
+    marginTop:50
   },
   image: {
     marginTop: -70,
@@ -137,8 +138,10 @@ const styles = StyleSheet.create({
     textAlign: "right",
     paddingRight: 10,
     backgroundColor: "#FFFFFF",
-    borderRadius: 10,
+    borderRadius: 16,
     marginVertical: 10,
+    borderWidth:0.5,
+    borderColor:"#DAD8DD"
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -162,18 +165,17 @@ const styles = StyleSheet.create({
   },
   signupButton: {
     backgroundColor: "#19E578",
-    borderRadius: 15,
+    borderRadius: 16,
+    padding:12
   },
   signupButtonText: {
-    fontWeight: "bold",
+    fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
   },
   signupButtonContainer: {
-    marginHorizontal: 50,
-    height: 50,
     width: 350,
-    marginVertical: 10,
+    marginBottom:16
   },
   signIn: {
     justifyContent: "center",
