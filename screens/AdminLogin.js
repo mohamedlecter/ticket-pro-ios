@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAdmin } from "../redux/actions/users";
 import { MaterialIcons } from "@expo/vector-icons";
 import DatePicker from "react-native-datepicker";
+import SvgUri from 'react-native-svg-uri';
+
 
 const AdminLogin = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
@@ -44,17 +46,19 @@ const AdminLogin = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
-        <MaterialIcons
-          name="chevron-left"
-          size={40}
-          onPress={() => navigation.navigate("OnBoarding")}
+      <SvgUri
+          source={require("../assets/arrow-left.svg")}
+          fill="black" // Use fill to set the SVG color
         />
         <Image
           source={require("../assets/logo.png")}
           style={{ width: 80, height: 80 }}
           resizeMode="contain"
         />
-        <MaterialIcons name="search" size={35} />
+        <SvgUri
+        source={require("../assets/search-normal.svg")}
+        fill="black" // Use fill to set the SVG color
+      />
       </View>
       <View style={styles.form}>
         <Text
@@ -64,6 +68,8 @@ const AdminLogin = ({ navigation }) => {
             fontWeight: "400",
             textAlign: "right",
             marginVertical: 10,
+        fontFamily: "IBMPlexSans-Regular"
+
           }}
         >
           التسجيل كمنظم{" "}
@@ -85,7 +91,7 @@ const AdminLogin = ({ navigation }) => {
     mode="date"
     placeholder="تاريخ الميلاد"
     format="DD-MM-YYYY"
-    minDate="1900-01-01"
+    minDate="01-01-1930"
     maxDate={new Date()}
     confirmBtnText="تأكيد"
     cancelBtnText="إلغاء"
@@ -111,7 +117,7 @@ const AdminLogin = ({ navigation }) => {
               borderColor: "#DAD8DD",
               borderWidth: 1,
               padding: 10,
-              width: 150,
+              width: "49%",
             }}
           >
             <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -128,7 +134,7 @@ const AdminLogin = ({ navigation }) => {
               borderColor: "#3D0087",
               borderWidth: 1,
               padding: 10,
-              width: 150,
+              width: "49%",
             }}
           >
             <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -141,7 +147,7 @@ const AdminLogin = ({ navigation }) => {
           </View>
         </View>
         <View style={{ marginTop: 16, alignItems:"flex-end" }}>
-          <Text style={{ color: "#180036", fontSize: 14 }}>
+          <Text style={{ color: "#180036", fontSize: 14, fontFamily: "IBMPlexSans-Regular" }}>
             *رفع الطلب لا يعني القبول
           </Text>
         </View>
@@ -151,17 +157,9 @@ const AdminLogin = ({ navigation }) => {
           title="سجل كمنظم"
           loading={false}
           loadingProps={{ size: "small", color: "#3D0087" }}
-          buttonStyle={{
-            backgroundColor: "#19E578",
-            borderRadius: 15,
-          }}
-          titleStyle={{ fontWeight: "bold", fontSize: 16, color: "#3D0087" }}
-          containerStyle={{
-            marginHorizontal: 50,
-            height: 50,
-            width: 350,
-            marginVertical: 10,
-          }}
+          buttonStyle={styles.Button}
+          titleStyle={styles.ButtonText}
+          containerStyle={styles.ButtonContainer}
           onPress={handleLogin}
         />
       </View>
@@ -183,6 +181,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "space-between",
     width: 370,
+    paddingRight:10,
+
   },
   inputView: {
     backgroundColor: "#FFFFFF",
@@ -198,6 +198,8 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "right",
     paddingRight: 10,
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   signUp: {
     justifyContent: "center",
@@ -221,6 +223,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   checkbox: {
     margin: 8,
@@ -240,15 +244,39 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     textAlign: "left", // Align the placeholder text to the right
-    marginRight:-60
+    marginRight:-60,
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   dateText: {
     color: "#180036",
     fontSize: 16,
     fontWeight: "400",
     textAlign: "right",
-    marginRight:-40
+    marginRight:-40,
+    fontFamily: "IBMPlexSans-Regular"
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  Button: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding:12
+  },
+  ButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular"
 
+  },
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
+    width: 350,
+    marginVertical: 10,
   },
 
 });

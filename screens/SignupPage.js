@@ -128,6 +128,8 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     textAlign: "right",
     marginVertical: 10,
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+
   },
   input: {
     height: 48,
@@ -141,7 +143,9 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     marginVertical: 10,
     borderWidth:0.5,
-    borderColor:"#DAD8DD"
+    borderColor:"#DAD8DD",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -154,6 +158,8 @@ const styles = StyleSheet.create({
     color: "#180036",
     fontWeight: "400",
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   checkbox: {
     margin: 8,
@@ -172,6 +178,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   signupButtonContainer: {
     width: 350,
@@ -186,10 +194,14 @@ const styles = StyleSheet.create({
   signInText: {
     color: "#3D0087",
     fontSize: 18,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   haveAccountText: {
     color: "#413F44",
     fontSize: 18,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
 });
 

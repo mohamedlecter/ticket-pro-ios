@@ -9,6 +9,8 @@ import {
 
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import SvgUri from 'react-native-svg-uri';
+
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -17,11 +19,23 @@ const TopNav = ({ isTicketPage, navigation }) => {
     if (isTicketPage) {
       return (
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <MaterialIcons name="chevron-left" size={30} />
+         <SvgUri
+          source={require("../assets/arrow-left.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
         </TouchableOpacity>
       );
     } else {
-      return <MaterialIcons name="notifications-none" size={30} />;
+      return (
+        <View style={{paddingLeft:8}}>
+
+      <SvgUri
+          source={require("../assets/notification.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
+        </View>
+
+      )
     }
   };
 
@@ -35,7 +49,10 @@ const TopNav = ({ isTicketPage, navigation }) => {
           resizeMode="contain"
         />
 
-        <MaterialIcons name="search" size={30} />
+        <SvgUri
+        source={require("../assets/search-normal.svg")}
+        fill="black" // Use fill to set the SVG color
+      />
       </View>
     </View>
   );
@@ -54,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
-    marginHorizontal: 10,
+    paddingRight:10,
   },
 });
 

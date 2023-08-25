@@ -20,7 +20,8 @@ export default function Calender() {
           >
             اكتوبر
           </Text>
-          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700" }}>
+          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700",     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+ }}>
             29
           </Text>
           <Text
@@ -46,7 +47,8 @@ export default function Calender() {
           >
             اكتوبر
           </Text>
-          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700" }}>
+          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700" ,     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+}}>
             28
           </Text>
           <Text
@@ -72,7 +74,8 @@ export default function Calender() {
           >
             اكتوبر
           </Text>
-          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700" }}>
+          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700",     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+ }}>
             27
           </Text>
           <Text
@@ -94,11 +97,13 @@ export default function Calender() {
               fontSize: 12,
               fontWeight: "400",
               marginVertical: 5,
+          fontFamily: "IBMPlexSans-Regular", // Adjust font family name
             }}
           >
             اكتوبر
           </Text>
-          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700" }}>
+          <Text style={{ color: "#0C001B", fontSize: 16, fontWeight: "700",     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+ }}>
             26
           </Text>
           <Text
@@ -107,6 +112,8 @@ export default function Calender() {
               fontSize: 12,
               fontWeight: "400",
               marginVertical: 5,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
             }}
           >
             الخميس
@@ -120,11 +127,14 @@ export default function Calender() {
               fontSize: 12,
               fontWeight: "400",
               marginVertical: 5,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
             }}
           >
             اكتوبر
           </Text>
-          <Text style={{ color: "#FFFFFF", fontSize: 16, fontWeight: "700" }}>
+          <Text style={{ color: "#FFFFFF", fontSize: 16, fontWeight: "700",     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+ }}>
             25
           </Text>
           <Text
@@ -133,6 +143,8 @@ export default function Calender() {
               fontSize: 12,
               fontWeight: "400",
               marginVertical: 5,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
             }}
           >
             الاربعاء
@@ -149,6 +161,8 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 20,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   calender: {
     flexDirection: "row",
@@ -187,5 +201,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "400",
     fontSize: 16,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
 });

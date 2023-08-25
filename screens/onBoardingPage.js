@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imgContainer: {
+    marginTop:70
   },
   img: {
     width: 250,
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     letterSpacing: 1,
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular", // Add this line to set the font family
   },
   signupButton: {
     backgroundColor: "#19E578",
@@ -90,6 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular"
   },
   signupButtonContainer: {
     width: 350,
@@ -99,6 +102,7 @@ const styles = StyleSheet.create({
   loginText: {
     color: "#19E578",
     fontSize: 15,
+    fontFamily: "IBMPlexSans-Regular"
   },
   signUp: {
     justifyContent: "center",
@@ -109,6 +113,8 @@ const styles = StyleSheet.create({
   adminLoginText: {
     color: "#F6F5F6",
     fontSize: 15,
+    fontFamily: "IBMPlexSans-Regular"
+
   },
 });
 

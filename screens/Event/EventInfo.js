@@ -10,6 +10,8 @@ import {
 import React, { useState } from "react";
 import TopNav from "../../components/TopNav";
 import { Button } from "@rneui/themed";
+import SvgUri from 'react-native-svg-uri';
+
 
 const EventInfo = ({ navigation }) => {
   const [desClicked, setDesClicked] = useState(false);
@@ -62,10 +64,12 @@ const EventInfo = ({ navigation }) => {
         </View>
         <View style={styles.eventDescContainer}>
           <TouchableOpacity onPress={handleDesClick}>
-            <Image
-              source={require("../../assets/arrow-down.png")}
-              style={{ width: 20, height: 20 }}
-            />
+          <SvgUri
+          source={require("../../assets/arrow-left.svg")}
+          fill="black" // Use fill to set the SVG color
+          style={{ transform: [{ rotate: desClicked? "90deg" : "-90deg" }] }}
+
+          />
           </TouchableOpacity>
 
           <Text style={styles.eventDescHeading}>وصف الفعالية</Text>
@@ -86,9 +90,11 @@ const EventInfo = ({ navigation }) => {
         )}
 
         <View style={styles.termsContainer}>
-          <Image
-            source={require("../../assets/arrow-down.png")}
-            style={{ width: 20, height: 20 }}
+          <SvgUri
+          source={require("../../assets/arrow-left.svg")}
+          fill="black" // Use fill to set the SVG color
+          style={{ transform: [{ rotate: '-90deg' }] }}
+
           />
           <Text style={styles.terms}>الشروط والأحكام</Text>
         </View>
@@ -132,6 +138,8 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     lineHeight: 30,
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+
   },
   eventLocation: {
     fontSize: 14,
@@ -139,11 +147,15 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 15,
     marginLeft: 5,
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+
   },
   eventDate: {
     color: "#413F44",
     fontSize: 14,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+
   },
   price: {
     color: "#0C001B",
@@ -151,18 +163,21 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     marginVertical: 10,
     justifyContent: "center",
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+
   },
   desc: {
     color: "#0C001B",
     fontSize: 14,
     fontWeight: "400",
     lineHeight: 20,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   eventDescContainer: {
     marginTop: 35,
     justifyContent: "space-between",
     flexDirection: "row",
-    marginBottom: 10,
   },
   termsContainer: {
     justifyContent: "space-between",
@@ -172,22 +187,27 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontSize: 18,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   eventDescText: {
     color: "#0C001B",
     fontSize: 14,
     fontWeight: "400",
     justifyContent: "center",
-    textAlign:"right"
+    textAlign:"right",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   eventDesc: {
-    marginBottom: 10,
     alignItems:"flex-end"
   },
   terms: {
     color: "#0C001B",
     fontSize: 18,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   btnContainer: {
     alignItems: "center",
@@ -202,6 +222,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   ButtonContainer: {
     marginHorizontal: 50,

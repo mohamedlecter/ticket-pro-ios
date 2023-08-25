@@ -10,6 +10,8 @@ import {
 import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import AdminNfc from "./AdminNfc";
+import SvgUri from 'react-native-svg-uri';
+
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -23,26 +25,32 @@ export default function HomeAdmin() {
     <View>
       <View style={styles.topNavBackground}>
         <View style={styles.topNav}>
-          <MaterialIcons name="notifications-none" size={30} />
-          <Image
-            source={require("../../assets/logo.png")}
-            style={{ width: 80, height: 80 }}
-            resizeMode="contain"
-          />
-          <MaterialIcons name="search" size={30} />
+        <SvgUri
+          source={require("../../assets/notification.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
+        <Image
+          source={require("../../assets/logo.png")}
+          style={{ width: 80, height: 80 }}
+          resizeMode="contain"
+        />
+        <SvgUri
+        source={require("../../assets/search-normal.svg")}
+        fill="black" // Use fill to set the SVG color
+      />
         </View>
       </View>
       <View style={styles.justifyContent}>
         <View style={styles.contentContainer}>
           <View style={styles.numJustiftyContent}>
-            <Text style={styles.text}>عدد الطلبات المقبولة</Text>
+            <Text style={[styles.text, { fontFamily: "IBMPlexSans-Regular"  } ]}>عدد الطلبات المقبولة</Text>
             <Text style={styles.numtext}>150</Text>
           </View>
         </View>
       </View>
 
       <View style={styles.heading}>
-          <Text style={styles.text}>التذاكر المفعلة</Text>
+          <Text tyle={[styles.text, { fontFamily: "IBMPlexSans-Bold"  } ]}>التذاكر المفعلة</Text>
         </View>
       <View style={styles.container}>
 
@@ -66,7 +74,11 @@ export default function HomeAdmin() {
             phoneNumber="9665055*****"
           />
           <View style={styles.arrowContainer}>
-            <MaterialIcons name="keyboard-arrow-down" size={30} />
+          <SvgUri
+              source={require("../../assets/arrow-left.svg")}
+              fill="black" // Use fill to set the SVG color
+              style={{ transform: [{ rotate: '-90deg' }] }}
+              />
           </View>
         </View>
       </View>
@@ -109,7 +121,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
-    marginHorizontal: 2,
+    paddingRight:10,
+    paddingLeft:5,
+    marginHorizontal: 5,
   },
   contentContainer: {
     marginTop: -65,
@@ -122,7 +136,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#000000",
     fontSize: 16,
-    fontWeight: '400',
+    fontFamily: "IBMPlexSans-Regular"
   },
   container: {
     justifyContent: "center",
@@ -159,9 +173,13 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 11,
     fontWeight: '400',
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   boldText: {
     fontWeight: '700',
+    fontFamily: "IBMPlexSans-Bold"
+
   },
   arrowContainer: {
     justifyContent: "center",
@@ -174,15 +192,19 @@ const styles = StyleSheet.create({
   },
   heading: {
     marginTop: 24,
-    marginBottom: 8,
+    marginBottom: 16,
     alignItems:"flex-end",
     justifyContent:"flex-end",
-    marginHorizontal:16
+    marginHorizontal:16,
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   numtext: {
     color: "#3D0087",
     fontSize: 37,
     fontWeight: '700',
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   justifyContent: {
     justifyContent: "center",

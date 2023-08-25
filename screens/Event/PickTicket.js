@@ -10,22 +10,24 @@ import {
 } from "react-native";
 import { Button } from "@rneui/themed";
 import Calender from "../../components/Calender";
+import SvgUri from 'react-native-svg-uri';
+
 
 const PickTicket = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.topNav}>
         <TouchableOpacity onPress={() => navigation.navigate("EventInfo")}>
-          <Image
-            source={require("../../assets/arrow-left.png")}
-            style={{ width: 30, height: 30 }}
-          />
+        <SvgUri
+          source={require("../../assets/arrow-left.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
         </TouchableOpacity>
         <Text style={styles.bookText}>حجز الفعالية</Text>
-        <Image
-          source={require("../../assets/search-normal.png")}
-          style={{ width: 50, height: 50 }}
-        />
+        <SvgUri
+        source={require("../../assets/search-normal.svg")}
+        fill="black" // Use fill to set the SVG color
+      />
       </View>
 
       <View style={styles.container}>
@@ -118,12 +120,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 35,
-    marginHorizontal: 10,
+    paddingRight:10,
   },
   bookText: {
     color: "#020004",
     fontSize: 18,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
   },
   container: {
     marginTop: 16,
@@ -145,17 +148,23 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 12,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   unfinishedStep: {
     marginHorizontal: 10,
     color: "#B5B1BA",
     fontWeight: "400",
     fontSize: 12,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   pickTcketHeading: {
     justifyContent: "flex-end",
     fontSize: 20,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   pickTcketContainer: {
     marginTop: 25,
@@ -183,6 +192,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "400",
     color: "#020004",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   btnContainer: {
     justifyContent: "center",
@@ -202,6 +213,8 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     marginTop: 10,
     color: "#020004",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   btnContainer: {
     alignItems: "center",
@@ -216,6 +229,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   ButtonContainer: {
     marginHorizontal: 50,

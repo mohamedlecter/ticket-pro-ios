@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import SvgUri from 'react-native-svg-uri';
+
 
 const data = [
   {
@@ -18,17 +20,19 @@ const TicketInfo = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
-        <MaterialIcons
-          name="chevron-left"
-          size={30}
-          onPress={() => navigation.navigate("Ticket")}
+      <SvgUri
+          source={require("../../assets/arrow-left.svg")}
+          fill="black" // Use fill to set the SVG color
         />
         <Image
           source={require("../../assets/logo.png")}
-          style={styles.logo}
+          style={{ width: 80, height: 80 }}
           resizeMode="contain"
         />
-        <MaterialIcons name="search" size={30} />
+        <SvgUri
+        source={require("../../assets/search-normal.svg")}
+        fill="black" // Use fill to set the SVG color
+      />
       </View>
 
       <View style={styles.content}>
@@ -90,7 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
-    marginHorizontal: 5,
+    paddingRight:15,
   },
   logo: {
     width: 80,
@@ -127,11 +131,15 @@ const styles = StyleSheet.create({
     color: "#413F44",
     fontSize: 11,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular" 
+
   },
   nameText: {
     color: "#000000",
     fontSize: 16,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular" 
+
   },
   eventContainer: {
     marginVertical: 16,
@@ -141,10 +149,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular" 
+
   },
   eventDateText: {
     fontSize: 14,
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular" 
+
   },
   statusContainer: {
     flexDirection: "row",
@@ -155,11 +167,15 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 11,
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular" 
+
   },
   ticketCountText: {
     fontSize: 11,
     fontWeight: "700",
     textAlign: "right",
+    fontFamily: "IBMPlexSans-Bold" 
+
   },
   phoneNumberContainer: {
     justifyContent: "center",

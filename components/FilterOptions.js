@@ -40,6 +40,9 @@ const styles = StyleSheet.create({
   },
   headingText: {
     fontSize: 16,
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+    fontWeight:"400"
+
   },
   filterButtonsContainer: {
     flexDirection: "row",
@@ -63,7 +66,9 @@ const styles = StyleSheet.create({
     color: "#827E87",
     fontSize: 11,
     fontWeight: "400",
-    textAlign:"center"
+    textAlign:"center",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
 
   },
 });

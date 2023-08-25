@@ -55,6 +55,7 @@ const ListItem = ({ time, name, phoneNumber, navigation }) => (
           color: "#413F44",
           fontSize: 11,
           fontWeight: "400",
+          fontFamily: "IBMPlexSans-Regular" 
         }}
       >
         {time}
@@ -66,7 +67,7 @@ const ListItem = ({ time, name, phoneNumber, navigation }) => (
         justifyContent: "center",
       }}
     >
-      <Text style={{ color: "#000000", fontSize: 16, fontWeight: "400" }}>
+      <Text style={{ color: "#000000", fontSize: 16, fontWeight: "400" ,fontFamily: "IBMPlexSans-Regular" }}>
         {name}
       </Text>
       <Text
@@ -75,6 +76,8 @@ const ListItem = ({ time, name, phoneNumber, navigation }) => (
           fontSize: 11,
           fontWeight: "400",
           marginTop: 4,
+          fontFamily: "IBMPlexSans-Regular" 
+
         }}
       >
         {phoneNumber}
@@ -92,5 +95,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Bold" 
+
   },
 });

@@ -22,15 +22,15 @@ const AdminNfc = ({ onClose, visible }) => {
           <View style={styles.content}>
             <Text style={styles.title}>جاهز للمسح</Text>
             <Image source={require("../../assets/scan.png")} style={styles.image} />
-            <Text style={styles.description}>قرب جهازك من جهاز المنظم</Text>
+            <Text style={styles.description}>قرب جهازك من جهاز الزائر</Text>
             <View style={styles.btnContainer}>
               <Button
                 title="إلغاء التفعيل"
                 loading={false}
                 loadingProps={{ size: "small", color: "#3D0087" }}
-                buttonStyle={styles.button}
-                titleStyle={styles.buttonTitle}
-                containerStyle={styles.buttonContainer}
+                buttonStyle={styles.Button}
+                titleStyle={styles.ButtonText}
+                containerStyle={styles.ButtonContainer}
                 onPress={handleFinishButtonPress}
               />
             </View>
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 20,
     margin: 16,
   },
   title: {
@@ -67,6 +66,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     marginBottom: 40,
     fontSize: 22,
+    fontFamily: "IBMPlexSans-Regular"
   },
   image: {
     marginBottom: 40,
@@ -74,25 +74,31 @@ const styles = StyleSheet.create({
   description: {
     textAlign: "center",
     color: "#0C001B",
-    marginBottom: 40,
+    marginBottom: 20,
     fontSize: 16,
+    fontFamily: "IBMPlexSans-Regular"
   },
   btnContainer: {
-    justifyContent: "center",
     alignItems: "center",
+    marginTop: 20,
   },
-  button: {
+  Button: {
     backgroundColor: "#EDECEE",
-    borderRadius: 15,
-    padding: 10,
+    borderRadius: 16,
+    padding:12
   },
-  buttonTitle: {
-    fontWeight: "bold",
+  ButtonText: {
+    fontWeight: "700",
     fontSize: 16,
     color: "#212022",
+    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+
   },
-  buttonContainer: {
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
     width: 300,
+    marginVertical: 10,
   },
 });
 

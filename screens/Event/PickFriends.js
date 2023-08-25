@@ -10,6 +10,8 @@ import {
 import React, { useState } from "react";
 import Calender from "../../components/Calender";
 import { Button } from "@rneui/base";
+import SvgUri from 'react-native-svg-uri';
+
 
 const friendsData = [
   { name: "سيف العتيبي", number: "966554155440" },
@@ -27,7 +29,7 @@ const FriendItem = ({ name, number, isSelected, onPress }) => (
       <Text style={styles.friendNumber}>{number}</Text>
     </View>
     <Image
-      source={require("../../assets/profilePic.png")}
+      source={require("../../assets/Avatar.png")}
       style={{ resizeMode: "contain" }}
     />
   </TouchableOpacity>
@@ -53,15 +55,15 @@ export default function PickFriends({ navigation }) {
     <ScrollView>
       <View style={styles.topNav}>
         <TouchableOpacity onPress={() => navigation.navigate("PickTicket")}>
-          <Image
-            source={require("../../assets/arrow-left.png")}
-            style={{ width: 30, height: 30 }}
+          <SvgUri
+            source={require("../../assets/arrow-left.svg")}
+            fill="black" // Use fill to set the SVG color
           />
         </TouchableOpacity>
         <Text style={styles.bookText}>حجز الفعالية</Text>
-        <Image
-          source={require("../../assets/search-normal.png")}
-          style={{ width: 50, height: 50 }}
+          <SvgUri
+          source={require("../../assets/search-normal.svg")}
+          fill="black" // Use fill to set the SVG color
         />
       </View>
 
@@ -114,13 +116,13 @@ export default function PickFriends({ navigation }) {
 
           <View style={styles.remainingTickets}>
             <View style={styles.row}>
-              <Text style={{ fontWeight: "700", fontSize: 18 }}>4/5 تذاكر</Text>
-              <Text style={{ fontWeight: "700", fontSize: 18 }}>
+              <Text style={{ fontWeight: "700", fontSize: 18, fontFamily: "IBMPlexSans-Regular"}}>4/5 تذاكر</Text>
+              <Text style={{ fontWeight: "700", fontSize: 18, fontFamily: "IBMPlexSans-Regular" }}>
                 عدد التذاكر المتبقية:
               </Text>
             </View>
             <View style={{ alignItems: "flex-end" }}>
-              <Text>التذاكر المتبقية ستضاف في صفحة تذاكري</Text>
+              <Text style={{ fontFamily: "IBMPlexSans-Regular",}}>التذاكر المتبقية ستضاف في صفحة تذاكري</Text>
             </View>
           </View>
 
@@ -129,21 +131,9 @@ export default function PickFriends({ navigation }) {
               title="احجز تذكرتك"
               loading={false}
               loadingProps={{ size: "small", color: "#3D0087" }}
-              buttonStyle={{
-                backgroundColor: "#19E578",
-                borderRadius: 15,
-              }}
-              titleStyle={{
-                fontWeight: "bold",
-                fontSize: 16,
-                color: "#3D0087",
-              }}
-              containerStyle={{
-                marginHorizontal: 50,
-                height: 50,
-                width: 350,
-                marginVertical: 10,
-              }}
+              buttonStyle={styles.Button}
+              titleStyle={styles.ButtonText}
+              containerStyle={styles.ButtonContainer}
               onPress={() => {
                 navigation.navigate("CompletePurchase");
               }}
@@ -161,7 +151,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 35,
-    marginHorizontal: 10,
+    paddingRight:10,
   },
   bookText: {
     color: "#020004",
@@ -200,6 +190,8 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 20,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   pickFriendContainer: {
     marginTop: 20,
@@ -210,6 +202,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "400",
     marginBottom: 8,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   pickFriendHeading2: {
     justifyContent: "center",
@@ -217,6 +211,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "400",
     marginVertical: 10,
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   selectedFriend: {
     flexDirection: "row",
@@ -227,6 +223,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#D8CCE7",
     marginVertical: 5,
+    
   },
   friend: {
     flexDirection: "row",
@@ -252,11 +249,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     color: "#000000",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   friendNumber: {
     fontSize: 11,
     fontWeight: "400",
     color: "#413F44",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   addFriendContainer: {
     justifyContent: "center",
@@ -269,9 +270,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   addFriendBtnText: {
-    fontWeight: "bold",
+    fontWeight: "400",
     fontSize: 14,
     color: "#0C001B",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
   },
   addFriendBtnContainer: {
     height: 35,
@@ -283,5 +286,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginBottom: 10,
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  Button: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding:12
+  },
+  ButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+
+  },
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
+    width: 350,
+    marginVertical: 10,
   },
 });

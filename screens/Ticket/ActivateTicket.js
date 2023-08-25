@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@rneui/themed";
-import ReadNfc from "./ReadNfc";
+import SvgUri from 'react-native-svg-uri';
 
 import React, { useState } from "react";
 // Get the window width
@@ -27,17 +27,19 @@ const ActivateTicket = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
-        <MaterialIcons
-          name="chevron-left"
-          size={30}
-          onPress={() => navigation.navigate("Ticket")}
+        <SvgUri
+          source={require("../../assets/notification.svg")}
+          fill="black" // Use fill to set the SVG color
         />
         <Image
           source={require("../../assets/logo.png")}
           style={{ width: 80, height: 80 }}
           resizeMode="contain"
         />
-        <MaterialIcons name="search" size={30} />
+        <SvgUri
+        source={require("../../assets/search-normal.svg")}
+        fill="black" // Use fill to set the SVG color
+      />
       </View>
       <View style={styles.TicketsContainer}>
         <View style={styles.headingTextContainer}>
@@ -64,20 +66,9 @@ const ActivateTicket = ({ navigation }) => {
               title="فعل التذكرة"
               loading={false}
               loadingProps={{ size: "small", color: "#3D0087" }}
-              buttonStyle={{
-                backgroundColor: "#19E578",
-                borderRadius: 15,
-                padding: 10,
-              }}
-              titleStyle={{
-                fontWeight: "bold",
-                fontSize: 16,
-                color: "#3D0087",
-              }}
-              containerStyle={{
-                width: 300,
-                marginVertical: 10,
-              }}
+              buttonStyle={styles.Button}
+              titleStyle={styles.ButtonText}
+              containerStyle={styles.ButtonContainer}
               onPress={handleButtonPress}
             />
           </View>
@@ -98,6 +89,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
+    paddingRight:10,
+    paddingLeft:5
   },
   TicketsContainer: {
     marginTop: 20,
@@ -124,9 +117,33 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     fontWeight: "400",
+    fontFamily: "IBMPlexSans-Regular"
+
   },
   
   headingTextContainer:{
     alignItems:"flex-end"
-  }
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  Button: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding:12
+  },
+  ButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+    fontFamily: "IBMPlexSans-Regular"
+
+  },
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
+    width: 300,
+    marginVertical: 10,
+  },
 });
