@@ -29,7 +29,7 @@ const OnBoarding = ({ navigation }) => {
 
       <View style={styles.textContainer}>
         <Text style={styles.text}>تذاكر رقمية</Text>
-        <Text style={styles.text}>لكل فعاليات الترفيه الأولى</Text>
+        <Text style={styles.text}> لكل فعاليات الترفيه الأولى</Text>
         <Text style={styles.text}>من نوعها</Text>
       </View>
 
@@ -48,7 +48,10 @@ const OnBoarding = ({ navigation }) => {
         <Text style={[styles.loginText, { color: "#F6F5F6" }]}>عندك حساب؟</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={{marginBottom:-50}} onPress={handleAdminLoginPress}>
+      <TouchableOpacity
+        style={{ marginBottom: -50 }}
+        onPress={handleAdminLoginPress}
+      >
         <Text style={styles.adminLoginText}>سجل دخولك كمنظم</Text>
       </TouchableOpacity>
     </LinearGradient>
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imgContainer: {
-    marginTop:70
+    marginTop: 70,
   },
   img: {
     width: 250,
@@ -86,23 +89,23 @@ const styles = StyleSheet.create({
   signupButton: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   signupButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "IBMPlexSans-Regular",
   },
   signupButtonContainer: {
     width: 350,
-    marginBottom:16
+    marginBottom: 16,
   },
 
   loginText: {
     color: "#19E578",
     fontSize: 15,
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "IBMPlexSans-Regular",
   },
   signUp: {
     justifyContent: "center",
@@ -113,8 +116,7 @@ const styles = StyleSheet.create({
   adminLoginText: {
     color: "#F6F5F6",
     fontSize: 15,
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
 });
 

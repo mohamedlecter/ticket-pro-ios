@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@rneui/themed";
-import SvgUri from 'react-native-svg-uri';
+import SvgUri from "react-native-svg-uri";
 
 import React, { useState } from "react";
 // Get the window width
@@ -37,9 +37,9 @@ const ActivateTicket = ({ navigation }) => {
           resizeMode="contain"
         />
         <SvgUri
-        source={require("../../assets/search-normal.svg")}
-        fill="black" // Use fill to set the SVG color
-      />
+          source={require("../../assets/search-normal.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
       </View>
       <View style={styles.TicketsContainer}>
         <View style={styles.headingTextContainer}>
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
-    paddingRight:10,
-    paddingLeft:5
+    paddingRight: 10,
+    paddingLeft: 5,
   },
   TicketsContainer: {
     marginTop: 20,
@@ -117,12 +117,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
-  
-  headingTextContainer:{
-    alignItems:"flex-end"
+
+  headingTextContainer: {
+    alignItems: "flex-end",
   },
   btnContainer: {
     alignItems: "center",
@@ -131,14 +130,13 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   ButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   ButtonContainer: {
     marginHorizontal: 50,

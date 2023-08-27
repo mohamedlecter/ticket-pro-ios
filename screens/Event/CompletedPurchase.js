@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 50,
-    paddingRight:10,
+    paddingRight: 10,
   },
   container: {
     flex: 1,
@@ -82,16 +82,14 @@ const styles = StyleSheet.create({
     color: "#F6F5F6",
     fontSize: 15,
     fontWeight: "400",
-    textAlign:"right",
-    fontFamily: "IBMPlexSans-Regular"
-
+    textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular",
   },
   heading: {
     color: "#F6F5F6",
     fontSize: 30,
     fontWeight: "bold",
-    fontFamily: "IBMPlexSans-Bold"
-
+    fontFamily: "IBMPlexSans-Bold",
   },
   btnContainer: {
     alignItems: "center",
@@ -100,19 +98,18 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:15
+    padding: 15,
   },
   ButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   ButtonContainer: {
     marginHorizontal: 50,
     height: 50,
     width: 350,
-    marginVertical:10
+    marginVertical: 10,
   },
 });

@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     dispatch({
       type: LOGIN_FAIL,
       payload: error.response.data.msg,
@@ -64,7 +64,6 @@ export const signup = (name, email, password, phone) => async (dispatch) => {
       password,
       phone,
     });
-
 
     dispatch({
       type: SIGNUP_SUCCESS,

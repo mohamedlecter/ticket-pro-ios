@@ -1,5 +1,5 @@
 // redux/reducers/tickets.js
-import { BOOK_TICKET } from '../constants/tickets';
+import { BOOK_TICKET } from "../constants/tickets";
 
 const initialState = {
   bookedTickets: [],

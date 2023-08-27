@@ -10,8 +10,7 @@ import {
 import React, { useState } from "react";
 import TopNav from "../../components/TopNav";
 import { Button } from "@rneui/themed";
-import SvgUri from 'react-native-svg-uri';
-
+import SvgUri from "react-native-svg-uri";
 
 const EventInfo = ({ navigation }) => {
   const [desClicked, setDesClicked] = useState(false);
@@ -64,20 +63,21 @@ const EventInfo = ({ navigation }) => {
         </View>
         <View style={styles.eventDescContainer}>
           <TouchableOpacity onPress={handleDesClick}>
-          <SvgUri
-          source={require("../../assets/arrow-left.svg")}
-          fill="black" // Use fill to set the SVG color
-          style={{ transform: [{ rotate: desClicked? "90deg" : "-90deg" }] }}
-
-          />
+            <SvgUri
+              source={require("../../assets/arrow-left.svg")}
+              fill="black" // Use fill to set the SVG color
+              style={{
+                transform: [{ rotate: desClicked ? "90deg" : "-90deg" }],
+              }}
+            />
           </TouchableOpacity>
 
           <Text style={styles.eventDescHeading}>وصف الفعالية</Text>
         </View>
 
         {desClicked && (
-        <View style={styles.eventDesc}>
-        <Text style={styles.eventDescText}>
+          <View style={styles.eventDesc}>
+            <Text style={styles.eventDescText}>
               كل شي فيه فوق الخيال، بشاشاته العملاقة المضيئة اللي تستحضر روح
               التايم السكوير، وزواياه اللي مليانة فعاليات مثل النافورة الراقصة
               والحدائق، وعدد كبير من المتاجر والمطاعم العالمية والمحلية.
@@ -91,26 +91,25 @@ const EventInfo = ({ navigation }) => {
 
         <View style={styles.termsContainer}>
           <SvgUri
-          source={require("../../assets/arrow-left.svg")}
-          fill="black" // Use fill to set the SVG color
-          style={{ transform: [{ rotate: '-90deg' }] }}
-
+            source={require("../../assets/arrow-left.svg")}
+            fill="black" // Use fill to set the SVG color
+            style={{ transform: [{ rotate: "-90deg" }] }}
           />
           <Text style={styles.terms}>الشروط والأحكام</Text>
         </View>
         <View style={styles.btnContainer}>
-        <Button
-          title="احجز تذكرتك"
-          loading={false}
-          loadingProps={{ size: "small", color: "#3D0087" }}
-          buttonStyle={styles.Button}
-          titleStyle={styles.ButtonText}
-          containerStyle={styles.ButtonContainer}
-          onPress={() => {
-            navigation.navigate("PickTicket");
-          }}
+          <Button
+            title="احجز تذكرتك"
+            loading={false}
+            loadingProps={{ size: "small", color: "#3D0087" }}
+            buttonStyle={styles.Button}
+            titleStyle={styles.ButtonText}
+            containerStyle={styles.ButtonContainer}
+            onPress={() => {
+              navigation.navigate("PickTicket");
+            }}
           />
-      </View>
+        </View>
       </View>
     </ScrollView>
   );
@@ -139,7 +138,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 30,
     fontFamily: "IBMPlexSans-Bold", // Adjust font family name
-
   },
   eventLocation: {
     fontSize: 14,
@@ -148,14 +146,12 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     marginLeft: 5,
     fontFamily: "IBMPlexSans-Bold", // Adjust font family name
-
   },
   eventDate: {
     color: "#413F44",
     fontSize: 14,
     fontWeight: "400",
     fontFamily: "IBMPlexSans-Bold", // Adjust font family name
-
   },
   price: {
     color: "#0C001B",
@@ -164,7 +160,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     justifyContent: "center",
     fontFamily: "IBMPlexSans-Bold", // Adjust font family name
-
   },
   desc: {
     color: "#0C001B",
@@ -172,7 +167,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: 20,
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   eventDescContainer: {
     marginTop: 35,
@@ -188,26 +182,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "400",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   eventDescText: {
     color: "#0C001B",
     fontSize: 14,
     fontWeight: "400",
     justifyContent: "center",
-    textAlign:"right",
+    textAlign: "right",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   eventDesc: {
-    alignItems:"flex-end"
+    alignItems: "flex-end",
   },
   terms: {
     color: "#0C001B",
     fontSize: 18,
     fontWeight: "400",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   btnContainer: {
     alignItems: "center",
@@ -216,14 +207,13 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   ButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   ButtonContainer: {
     marginHorizontal: 50,

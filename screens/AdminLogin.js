@@ -15,8 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAdmin } from "../redux/actions/users";
 import { MaterialIcons } from "@expo/vector-icons";
 import DatePicker from "react-native-datepicker";
-import SvgUri from 'react-native-svg-uri';
-
+import SvgUri from "react-native-svg-uri";
 
 const AdminLogin = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
@@ -26,40 +25,37 @@ const AdminLogin = ({ navigation }) => {
   const [birthdate, setBirthdate] = useState("");
   const [msg, setMsg] = useState(null);
 
-  const handleLogin = async() => {
+  const handleLogin = async () => {
     if (adminId === "" || birthdate === "") {
       setMsg("Please enter all fields");
-    } 
+    }
     try {
-     await dispatch(loginAdmin(adminId, birthdate));
-
+      await dispatch(loginAdmin(adminId, birthdate));
     } catch (error) {
       if (error.response && error.response.data && error.response.data.msg) {
         setMsg(error.response.data.msg); // Set error message from server
-      }  else {
+      } else {
         setMsg("Invalid admin Id or Birth date");
       }
-
-  }
-};
+    }
+  };
   useEffect(() => {
     if (isAdmin) {
       navigation.navigate("Bottom Nav");
     }
   }, [isAdmin, navigation]);
 
-useEffect(() => {
-  if (msg) {
-    Alert.alert("Error", msg);
-    setMsg(null); // Clear the error message
-  }
-}, [msg]);
-
+  useEffect(() => {
+    if (msg) {
+      Alert.alert("Error", msg);
+      setMsg(null); // Clear the error message
+    }
+  }, [msg]);
 
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
-      <SvgUri
+        <SvgUri
           source={require("../assets/arrow-left.svg")}
           fill="black" // Use fill to set the SVG color
         />
@@ -69,9 +65,9 @@ useEffect(() => {
           resizeMode="contain"
         />
         <SvgUri
-        source={require("../assets/search-normal.svg")}
-        fill="black" // Use fill to set the SVG color
-      />
+          source={require("../assets/search-normal.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
       </View>
       <View style={styles.form}>
         <Text
@@ -81,8 +77,7 @@ useEffect(() => {
             fontWeight: "400",
             textAlign: "right",
             marginVertical: 10,
-        fontFamily: "IBMPlexSans-Regular"
-
+            fontFamily: "IBMPlexSans-Regular",
           }}
         >
           التسجيل كمنظم{" "}
@@ -97,25 +92,30 @@ useEffect(() => {
           />
         </View>
 
-          <View style={[ styles.inputView, {justifyContent:"center", alignItems: "flex-end"}]}>
-        <DatePicker
-    style={styles.DatePicker}
-    date={birthdate}
-    mode="date"
-    placeholder="تاريخ الميلاد"
-    format="DD-MM-YYYY"
-    minDate="01-01-1930"
-    maxDate={new Date()}
-    confirmBtnText="تأكيد"
-    cancelBtnText="إلغاء"
-    customStyles={{
-      dateInput: styles.dateInput,
-      placeholderText: styles.datePlaceholderText,
-      dateText: styles.dateText,
-    }}
-    showIcon={false} // Hide the date icon
-    onDateChange={(date) => setBirthdate(date)}
-  />
+        <View
+          style={[
+            styles.inputView,
+            { justifyContent: "center", alignItems: "flex-end" },
+          ]}
+        >
+          <DatePicker
+            style={styles.DatePicker}
+            date={birthdate}
+            mode="date"
+            placeholder="تاريخ الميلاد"
+            format="DD-MM-YYYY"
+            minDate="01-01-1930"
+            maxDate={new Date()}
+            confirmBtnText="تأكيد"
+            cancelBtnText="إلغاء"
+            customStyles={{
+              dateInput: styles.dateInput,
+              placeholderText: styles.datePlaceholderText,
+              dateText: styles.dateText,
+            }}
+            showIcon={false} // Hide the date icon
+            onDateChange={(date) => setBirthdate(date)}
+          />
         </View>
         <View
           style={{
@@ -159,8 +159,14 @@ useEffect(() => {
             </View>
           </View>
         </View>
-        <View style={{ marginTop: 16, alignItems:"flex-end" }}>
-          <Text style={{ color: "#180036", fontSize: 14, fontFamily: "IBMPlexSans-Regular" }}>
+        <View style={{ marginTop: 16, alignItems: "flex-end" }}>
+          <Text
+            style={{
+              color: "#180036",
+              fontSize: 14,
+              fontFamily: "IBMPlexSans-Regular",
+            }}
+          >
             *رفع الطلب لا يعني القبول
           </Text>
         </View>
@@ -194,14 +200,13 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "space-between",
     width: 370,
-    paddingRight:10,
-
+    paddingRight: 10,
   },
   inputView: {
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
     marginVertical: 16,
-    alignItems:"flex-end",
+    alignItems: "flex-end",
   },
   TextInput: {
     height: 48,
@@ -211,8 +216,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "right",
     paddingRight: 10,
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   signUp: {
     justifyContent: "center",
@@ -236,8 +240,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   checkbox: {
     margin: 8,
@@ -257,17 +260,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     textAlign: "left", // Align the placeholder text to the right
-    marginRight:-60,
-    fontFamily: "IBMPlexSans-Regular"
-
+    marginRight: -60,
+    fontFamily: "IBMPlexSans-Regular",
   },
   dateText: {
     color: "#180036",
     fontSize: 16,
     fontWeight: "400",
     textAlign: "right",
-    marginRight:-40,
-    fontFamily: "IBMPlexSans-Regular"
+    marginRight: -40,
+    fontFamily: "IBMPlexSans-Regular",
   },
   btnContainer: {
     alignItems: "center",
@@ -276,14 +278,13 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   ButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   ButtonContainer: {
     marginHorizontal: 50,
@@ -291,5 +292,4 @@ const styles = StyleSheet.create({
     width: 350,
     marginVertical: 10,
   },
-
 });

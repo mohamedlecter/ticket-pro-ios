@@ -4,14 +4,13 @@ import { MaterialIcons } from "@expo/vector-icons";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import { useDispatch, useSelector } from "react-redux";
 import AdminTicket from "../../components/admin/AdminTicket";
-import SvgUri from 'react-native-svg-uri';
-
+import SvgUri from "react-native-svg-uri";
 
 export default function Ticket({ navigation }) {
   const { isAdmin } = useSelector((state) => state.userReducer);
   return (
     <View style={styles.container}>
-     <View style={styles.topNav}>
+      <View style={styles.topNav}>
         <SvgUri
           source={require("../../assets/notification.svg")}
           fill="black" // Use fill to set the SVG color
@@ -22,10 +21,10 @@ export default function Ticket({ navigation }) {
           resizeMode="contain"
         />
         <SvgUri
-        source={require("../../assets/search-normal.svg")}
-        fill="black" // Use fill to set the SVG color
-      />
-    </View>
+          source={require("../../assets/search-normal.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
+      </View>
       {isAdmin ? (
         <AdminTicket navigation={navigation} />
       ) : (
@@ -39,10 +38,10 @@ export default function Ticket({ navigation }) {
             onPress={() => navigation.navigate("Activate Ticket")}
           >
             <View>
-            <SvgUri
-              source={require("../../assets/arrow-left.svg")}
-              fill="black" // Use fill to set the SVG color
-            />
+              <SvgUri
+                source={require("../../assets/arrow-left.svg")}
+                fill="black" // Use fill to set the SVG color
+              />
             </View>
 
             <View style={styles.ticketCardTextContainer}>
@@ -117,12 +116,12 @@ export default function Ticket({ navigation }) {
             </View>
             <Image
               source={require("../../assets/event3.png")}
-              style={{ width: 120, height: 120,}}
+              style={{ width: 120, height: 120 }}
             />
           </View>
 
           <View style={styles.ticketCard}>
-          <SvgUri
+            <SvgUri
               source={require("../../assets/arrow-left.svg")}
               fill="black" // Use fill to set the SVG color
             />
@@ -176,8 +175,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
-    paddingRight:10,
-    paddingLeft:5
+    paddingRight: 10,
+    paddingLeft: 5,
   },
   TicketsContainer: {
     marginTop: 40,
@@ -189,8 +188,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   ticketCard: {
     backgroundColor: "#FFFFFF",

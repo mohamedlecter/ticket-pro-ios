@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../redux/actions/users"; // Import your logout action
 import { Button } from "@rneui/themed";
 
-
-export default function Settings({navigation}) {
+export default function Settings({ navigation }) {
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
@@ -24,10 +23,9 @@ export default function Settings({navigation}) {
           titleStyle={styles.loginButtonText}
           containerStyle={styles.loginButtonContainer}
           onPress={handleSignOut}
-          />
-        </View>
+        />
+      </View>
     </View>
-    
   );
 }
 
@@ -49,14 +47,13 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   loginButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   loginButtonContainer: {
     marginHorizontal: 50,
@@ -64,5 +61,4 @@ const styles = StyleSheet.create({
     width: 350,
     marginVertical: 10,
   },
-  
 });

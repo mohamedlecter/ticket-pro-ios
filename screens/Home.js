@@ -37,10 +37,10 @@ export default function Home({ navigation }) {
 
         <View style={styles.eventsContainer}>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <View style={styles.imagesContainer}>
+            <View style={styles.imagesContainer}>
               <Image source={require("../assets/event2.png")} />
               <Image source={require("../assets/event3.png")} />
-              </View>
+            </View>
             <View
               style={{
                 justifyContent: "center",

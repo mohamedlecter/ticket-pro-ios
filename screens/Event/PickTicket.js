@@ -10,54 +10,53 @@ import {
 } from "react-native";
 import { Button } from "@rneui/themed";
 import Calender from "../../components/Calender";
-import SvgUri from 'react-native-svg-uri';
-
+import SvgUri from "react-native-svg-uri";
 
 const PickTicket = ({ navigation }) => {
+  const [ticketQuantity, setTicketQuantity] = useState(0);
+  const [vipTicketQuantity, setVipTicketQuantity] = useState(0);
 
-    const [ticketQuantity, setTicketQuantity] = useState(0);
-    const [vipTicketQuantity, setVipTicketQuantity] = useState(0);
+  const ticketPrice = 55.0;
+  const vipTicketPrice = 300.0;
 
-    const ticketPrice = 55.0;
-    const vipTicketPrice = 300.0;
+  const totalCost =
+    ticketQuantity * ticketPrice + vipTicketQuantity * vipTicketPrice;
 
-    const totalCost = ticketQuantity * ticketPrice + vipTicketQuantity * vipTicketPrice;
-
-    const handleAddTicket = (type) => {
-      if (type === "regular") {
-        setTicketQuantity(ticketQuantity + 1);
-      } else if (type === "vip") {
-        setVipTicketQuantity(vipTicketQuantity + 1);
-      }
-    };
-
-    const handleRemoveTicket = (type) => {
-      if (type === "regular" && ticketQuantity > 0) {
-        setTicketQuantity(ticketQuantity - 1);
-      } else if (type === "vip" && vipTicketQuantity > 0) {
-        setVipTicketQuantity(vipTicketQuantity - 1);
-      }
-    };
-
-    const handleNavigate = ()=>{
-      let availableTickets = ticketQuantity + vipTicketQuantity; // Replace this with the actual number of available tickets
-      navigation.navigate("PickFriends", { availableTickets, totalCost });
+  const handleAddTicket = (type) => {
+    if (type === "regular") {
+      setTicketQuantity(ticketQuantity + 1);
+    } else if (type === "vip") {
+      setVipTicketQuantity(vipTicketQuantity + 1);
     }
+  };
+
+  const handleRemoveTicket = (type) => {
+    if (type === "regular" && ticketQuantity > 0) {
+      setTicketQuantity(ticketQuantity - 1);
+    } else if (type === "vip" && vipTicketQuantity > 0) {
+      setVipTicketQuantity(vipTicketQuantity - 1);
+    }
+  };
+
+  const handleNavigate = () => {
+    let availableTickets = ticketQuantity + vipTicketQuantity; // Replace this with the actual number of available tickets
+    navigation.navigate("PickFriends", { availableTickets, totalCost });
+  };
 
   return (
     <ScrollView>
       <View style={styles.topNav}>
         <TouchableOpacity onPress={() => navigation.navigate("EventInfo")}>
-        <SvgUri
-          source={require("../../assets/arrow-left.svg")}
-          fill="black" // Use fill to set the SVG color
-        />
+          <SvgUri
+            source={require("../../assets/arrow-left.svg")}
+            fill="black" // Use fill to set the SVG color
+          />
         </TouchableOpacity>
         <Text style={styles.bookText}>حجز الفعالية</Text>
         <SvgUri
-        source={require("../../assets/search-normal.svg")}
-        fill="black" // Use fill to set the SVG color
-      />
+          source={require("../../assets/search-normal.svg")}
+          fill="black" // Use fill to set the SVG color
+        />
       </View>
 
       <View style={styles.container}>
@@ -86,29 +85,29 @@ const PickTicket = ({ navigation }) => {
             </View>
             <View style={styles.ticketPriceContainer}>
               <View style={styles.quantity}>
-              <TouchableOpacity
-                style={{
-                  marginHorizontal:16
-                }}
-                onPress={() => handleRemoveTicket("regular")}
+                <TouchableOpacity
+                  style={{
+                    marginHorizontal: 16,
+                  }}
+                  onPress={() => handleRemoveTicket("regular")}
                 >
-                <SvgUri
-                  source={require("../../assets/minus-cirlce.svg")}
-                  fill="black" // Use fill to set the SVG color
-                />
+                  <SvgUri
+                    source={require("../../assets/minus-cirlce.svg")}
+                    fill="black" // Use fill to set the SVG color
+                  />
                 </TouchableOpacity>
 
                 <Text style={styles.quantityText}>{ticketQuantity}</Text>
                 <TouchableOpacity
-                style={{
-                  marginHorizontal:16
-                }}
-                onPress={() => handleAddTicket("regular")}
+                  style={{
+                    marginHorizontal: 16,
+                  }}
+                  onPress={() => handleAddTicket("regular")}
                 >
-                <SvgUri
-                  source={require("../../assets/add-circle.svg")}
-                  fill="black" // Use fill to set the SVG color
-                />
+                  <SvgUri
+                    source={require("../../assets/add-circle.svg")}
+                    fill="black" // Use fill to set the SVG color
+                  />
                 </TouchableOpacity>
               </View>
               <Text styles={styles.quantityText}>55.00 ريال</Text>
@@ -122,29 +121,29 @@ const PickTicket = ({ navigation }) => {
             </View>
             <View style={styles.ticketPriceContainer}>
               <View style={styles.quantity}>
-              <TouchableOpacity
-                style={{
-                  marginHorizontal:16
-                }}
-                onPress={() => handleRemoveTicket("vip")}
+                <TouchableOpacity
+                  style={{
+                    marginHorizontal: 16,
+                  }}
+                  onPress={() => handleRemoveTicket("vip")}
                 >
-                <SvgUri
-                  source={require("../../assets/minus-cirlce.svg")}
-                  fill="black" // Use fill to set the SVG color
-                />
+                  <SvgUri
+                    source={require("../../assets/minus-cirlce.svg")}
+                    fill="black" // Use fill to set the SVG color
+                  />
                 </TouchableOpacity>
 
                 <Text style={styles.quantityText}>{vipTicketQuantity}</Text>
                 <TouchableOpacity
-                style={{
-                  marginHorizontal:16
-                }}
-                onPress={() => handleAddTicket("vip")}
+                  style={{
+                    marginHorizontal: 16,
+                  }}
+                  onPress={() => handleAddTicket("vip")}
                 >
-                <SvgUri
-                  source={require("../../assets/add-circle.svg")}
-                  fill="black" // Use fill to set the SVG color
-                />
+                  <SvgUri
+                    source={require("../../assets/add-circle.svg")}
+                    fill="black" // Use fill to set the SVG color
+                  />
                 </TouchableOpacity>
               </View>
               <Text styles={styles.quantityText}>300.00 ريال</Text>
@@ -152,20 +151,20 @@ const PickTicket = ({ navigation }) => {
           </View>
 
           <View style={styles.totalContainer}>
-          <Text style={styles.totalText}>{totalCost} ريال</Text>
+            <Text style={styles.totalText}>{totalCost} ريال</Text>
             <Text style={styles.totalText}>الإجمالي</Text>
           </View>
           <View style={styles.btnContainer}>
-        <Button
-          title="احجز تذكرتك"
-          loading={false}
-          loadingProps={{ size: "small", color: "#3D0087" }}
-          buttonStyle={styles.Button}
-          titleStyle={styles.ButtonText}
-          containerStyle={styles.ButtonContainer}
-          onPress={handleNavigate}
-          />
-      </View>
+            <Button
+              title="احجز تذكرتك"
+              loading={false}
+              loadingProps={{ size: "small", color: "#3D0087" }}
+              buttonStyle={styles.Button}
+              titleStyle={styles.ButtonText}
+              containerStyle={styles.ButtonContainer}
+              onPress={handleNavigate}
+            />
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -178,7 +177,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 35,
-    paddingRight:10,
+    paddingRight: 10,
   },
   bookText: {
     color: "#020004",
@@ -207,7 +206,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 12,
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   unfinishedStep: {
     marginHorizontal: 10,
@@ -215,14 +213,12 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 12,
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   pickTcketHeading: {
     justifyContent: "flex-end",
     fontSize: 20,
     fontWeight: "400",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   pickTcketContainer: {
     marginTop: 25,
@@ -251,7 +247,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#020004",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   btnContainer: {
     justifyContent: "center",
@@ -272,7 +267,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: "#020004",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   btnContainer: {
     alignItems: "center",
@@ -281,14 +275,13 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   ButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   ButtonContainer: {
     marginHorizontal: 50,

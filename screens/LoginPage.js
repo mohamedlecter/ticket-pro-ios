@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Alert,
   KeyboardAvoidingView,
-  Platform 
+  Platform,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@rneui/themed";
@@ -22,7 +22,6 @@ const LoginPage = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState(null);
-
 
   const handleLogin = async () => {
     if (email === "" || password === "") {
@@ -54,10 +53,13 @@ const LoginPage = ({ navigation }) => {
   }, [msg]);
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}  style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <Image source={require("../assets/loginPic3.png")} />
 
-        <View style={styles.form}> 
+      <View style={styles.form}>
         <Text style={styles.title}>تسجيل دخول</Text>
 
         <View style={styles.inputView}>
@@ -69,14 +71,13 @@ const LoginPage = ({ navigation }) => {
           />
         </View>
         <View style={styles.inputView}>
-
           <TextInput
             placeholder="كلمة المرور"
             style={styles.TextInput}
             placeholderTextColor="#180036"
             onChangeText={(text) => setPassword(text)}
             secureTextEntry
-            />
+          />
         </View>
         <View style={styles.checkboxContainer}>
           <Text style={styles.label}>احفظ كلمة المرور</Text>
@@ -84,7 +85,7 @@ const LoginPage = ({ navigation }) => {
             style={styles.checkbox}
             value={isChecked}
             onValueChange={setChecked}
-            />
+          />
         </View>
       </View>
 
@@ -97,11 +98,11 @@ const LoginPage = ({ navigation }) => {
           titleStyle={styles.loginButtonText}
           containerStyle={styles.loginButtonContainer}
           onPress={handleLogin}
-          />
+        />
         <TouchableOpacity
           style={styles.signUp}
           onPress={() => navigation.navigate("Signup")}
-          >
+        >
           <Text style={styles.signUpText}>سجل دخولك</Text>
           <Text style={styles.signInText}>ماعندك حساب؟</Text>
         </TouchableOpacity>
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F5F6",
     alignItems: "center",
     justifyContent: "center",
-    marginTop:30
+    marginTop: 30,
   },
   inputView: {
     backgroundColor: "#FFFFFF",
@@ -132,7 +133,6 @@ const styles = StyleSheet.create({
     textAlign: "right",
     paddingRight: 10,
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   form: {
     width: 348,
@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
     textAlign: "right",
     marginVertical: 10,
     fontFamily: "IBMPlexSans-Bold", // Adjust font family name
-
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -158,11 +157,10 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "right",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   checkbox: {
     margin: 8,
-    borderRadius:7
+    borderRadius: 7,
   },
   btnContainer: {
     alignItems: "center",
@@ -171,14 +169,13 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   loginButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   loginButtonContainer: {
     marginHorizontal: 50,
@@ -196,13 +193,11 @@ const styles = StyleSheet.create({
     color: "#3D0087",
     fontSize: 15,
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
   signInText: {
     color: "#413F44",
     fontSize: 15,
     fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
   },
 });
 

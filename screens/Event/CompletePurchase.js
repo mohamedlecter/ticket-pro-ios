@@ -10,8 +10,7 @@ import {
 import Checkbox from "expo-checkbox";
 import { Button } from "@rneui/base";
 import { ScrollView } from "react-native";
-import SvgUri from 'react-native-svg-uri';
-
+import SvgUri from "react-native-svg-uri";
 
 export default function CompletePurchase({ navigation, route }) {
   const [isChecked, setChecked] = useState(false);
@@ -28,7 +27,6 @@ export default function CompletePurchase({ navigation, route }) {
   };
   const { totalCost } = route.params;
   const { availableTickets } = route.params;
-  
 
   console.log(totalCost);
 
@@ -41,10 +39,10 @@ export default function CompletePurchase({ navigation, route }) {
     <ScrollView>
       <View style={styles.topNav}>
         <TouchableOpacity onPress={handleGoBack}>
-        <SvgUri
+          <SvgUri
             source={require("../../assets/arrow-left.svg")}
             fill="black" // Use fill to set the SVG color
-         />
+          />
         </TouchableOpacity>
         <Text style={styles.bookText}>حجز الفعالية</Text>
         <SvgUri
@@ -65,8 +63,8 @@ export default function CompletePurchase({ navigation, route }) {
         </View>
 
         <View style={styles.billContainer}>
-        <View style={{ overflow: 'hidden' }}>
-        <Text style={styles.billHeaderText}>الفاتورة</Text>
+          <View style={{ overflow: "hidden" }}>
+            <Text style={styles.billHeaderText}>الفاتورة</Text>
             <View style={styles.billItem}>
               <Text style={styles.billText}>{totalCost} ريال</Text>
               <Text style={styles.billText}>{availableTickets}X</Text>
@@ -78,9 +76,7 @@ export default function CompletePurchase({ navigation, route }) {
               <Text style={styles.billText}>الضريبة</Text>
             </View>
           </View>
-          <View style={styles.billHeader}>
-            
-          </View>
+          <View style={styles.billHeader}></View>
           <View style={styles.total}>
             <Text style={styles.totalText}>{finalTotal} ريال</Text>
             <Text style={styles.totalText}>الإجمالي:</Text>
@@ -135,24 +131,27 @@ export default function CompletePurchase({ navigation, route }) {
             </View>
           </View>
           <View style={styles.btnContainer}>
-          <Button
-            loading={false}
-            loadingProps={{ size: "small", color: "#3D0087" }}
-            buttonStyle={[styles.Button, {backgroundColor:"#020004", padding:15}]}
-            titleStyle={styles.ButtonText}
-            containerStyle={styles.ButtonContainer}
-            onPress={handleGoBack}
-            icon={<Image source={require("../../assets/applePay.png")} />}
-          />
-          <Button
-            title="شراء الآن"
-            loading={false}
-            loadingProps={{ size: "small", color: "#3D0087" }}
-            buttonStyle={styles.Button}
-            titleStyle={styles.ButtonText}
-            containerStyle={[styles.ButtonContainer, {marginVertical:0}]}
-            onPress={handlePurchase}
-          />
+            <Button
+              loading={false}
+              loadingProps={{ size: "small", color: "#3D0087" }}
+              buttonStyle={[
+                styles.Button,
+                { backgroundColor: "#020004", padding: 15 },
+              ]}
+              titleStyle={styles.ButtonText}
+              containerStyle={styles.ButtonContainer}
+              onPress={handleGoBack}
+              icon={<Image source={require("../../assets/applePay.png")} />}
+            />
+            <Button
+              title="شراء الآن"
+              loading={false}
+              loadingProps={{ size: "small", color: "#3D0087" }}
+              buttonStyle={styles.Button}
+              titleStyle={styles.ButtonText}
+              containerStyle={[styles.ButtonContainer, { marginVertical: 0 }]}
+              onPress={handlePurchase}
+            />
           </View>
         </View>
       </View>
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 35,
-    paddingRight:10,
+    paddingRight: 10,
   },
   icon: {
     // width: 30,
@@ -176,8 +175,7 @@ const styles = StyleSheet.create({
     color: "#020004",
     fontSize: 18,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   container: {
     marginTop: 16,
@@ -198,8 +196,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 12,
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   billContainer: {
     marginTop: 20,
@@ -209,17 +206,16 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderStyle: "dashed",
     // margin:-2,
-    borderStyle: 'dashed',
+    borderStyle: "dashed",
     borderWidth: 0.7,
-    borderColor: '#827E87',
+    borderColor: "#827E87",
   },
   billHeaderText: {
     fontSize: 28,
     fontWeight: "400",
     marginBottom: 16,
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   billItem: {
     justifyContent: "space-between",
@@ -232,7 +228,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#0C001B",
     textAlign: "center",
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "IBMPlexSans-Regular",
   },
   total: {
     flexDirection: "row",
@@ -244,8 +240,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     color: "#0C001B",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   paymentContainer: {
     marginTop: 32,
@@ -255,8 +250,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#0C001B",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -269,8 +263,7 @@ const styles = StyleSheet.create({
     color: "#180036",
     fontWeight: "400",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   checkbox: {
     marginLeft: 8,
@@ -283,20 +276,19 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#19E578",
     borderRadius: 16,
-    padding:12
+    padding: 12,
   },
   ButtonText: {
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular"
-
+    fontFamily: "IBMPlexSans-Regular",
   },
   ButtonContainer: {
     marginHorizontal: 50,
     height: 50,
     width: 350,
-    marginVertical:10
+    marginVertical: 10,
   },
   cardContainer: {
     marginTop: 16,
@@ -318,8 +310,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "400",
     color: "#180036",
-    textAlign:"right",
-    fontFamily: "IBMPlexSans-Regular"
+    textAlign: "right",
+    fontFamily: "IBMPlexSans-Regular",
   },
   expiryContainer: {
     justifyContent: "space-between",
@@ -351,6 +343,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#180036",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "IBMPlexSans-Regular",
   },
 });
