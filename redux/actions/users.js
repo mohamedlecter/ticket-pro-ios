@@ -50,7 +50,6 @@ export const loginAdmin = (adminId, birthdate) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log(error, "\n from error");
     dispatch({
       type: ADMIN_LOGIN_FAIL,
       payload: error.response.data.msg,

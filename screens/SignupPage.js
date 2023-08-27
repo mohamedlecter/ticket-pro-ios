@@ -96,6 +96,9 @@ const SignupPage = ({ navigation }) => {
           containerStyle={styles.signupButtonContainer}
           onPress={handleSignup}
         />
+        <View style={styles.authMessageContainer}>
+  {msg && <Text style={styles.authMessage}>{msg}</Text>}
+</View>
         <TouchableOpacity
           style={styles.signIn}
           onPress={() => navigation.navigate("Login")}

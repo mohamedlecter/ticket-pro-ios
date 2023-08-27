@@ -29,11 +29,17 @@ const AdminLogin = ({ navigation }) => {
   const handleLogin = async() => {
     if (adminId === "" || birthdate === "") {
       setMsg("Please enter all fields");
-    } try {
+    } 
+    try {
      await dispatch(loginAdmin(adminId, birthdate));
-     navigation.navigate("Bottom Nav");
+
+     if (isAdmin) {
+      navigation.navigate("Bottom Nav");
+    } else {
+      setMsg("Invalid admin Id or Birth date");
+    }
     } catch (error) {
-    setMsg("Invalid email or password");
+    setMsg("Invalid admin Id or Birth date");
   }
 };
   useEffect(() => {

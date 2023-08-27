@@ -68,21 +68,21 @@ export default userReducer = (state = initialState, { type, payload }) => {
         isAuth: false,
         isLoading: false,
       };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        user: payload,
-        isAuth: true,
-        isLoading: false,
-        isAdmin: false,
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        user: null,
-        isAuth: false,
-        isLoading: false,
-      };
+      case LOGIN_SUCCESS:
+        return {
+          ...state,
+          user: payload,
+          isAuth: true,
+          isLoading: false,
+          isAdmin: false,
+        };
+      case LOGIN_FAIL:
+        return {
+          ...state,
+          user: null,
+          isAuth: false,
+          isLoading: false,
+        };
     case SIGNUP_SUCCESS:
       return {
         ...state,
@@ -133,6 +133,7 @@ export default userReducer = (state = initialState, { type, payload }) => {
         user: null,
         isAuth: false,
         isLoading: false,
+        isAdmin: false
       };
     default:
       return state;

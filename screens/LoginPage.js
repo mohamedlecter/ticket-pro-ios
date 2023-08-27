@@ -26,16 +26,20 @@ const LoginPage = ({ navigation }) => {
   const handleLogin = async () => {
     if (email === "" || password === "") {
       setMsg("Please enter all fields");
+      return;
     }
     try {
       await dispatch(login(email, password));
-      // If login was successful, navigate to the Bottom Nav screen
-      navigation.navigate("Bottom Nav");
+      // Check if login is successful based on isAuth flag in Redux state
+      if (isAuth) {
+        navigation.navigate("Bottom Nav");
+      } else {
+        setMsg("Invalid email or password");
+      }
     } catch (error) {
       setMsg("Invalid email or password");
     }
   };
-
   useEffect(() => {
     if (msg) {
       Alert.alert("Error", msg);
@@ -88,6 +92,9 @@ const LoginPage = ({ navigation }) => {
           containerStyle={styles.loginButtonContainer}
           onPress={handleLogin}
           />
+          {/* <View style={styles.authMessageContainer}>
+  {msg && <Text style={styles.authMessage}>{msg}</Text>}
+</View> */}
         <TouchableOpacity
           style={styles.signUp}
           onPress={() => navigation.navigate("Signup")}
