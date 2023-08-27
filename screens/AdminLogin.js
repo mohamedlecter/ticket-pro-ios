@@ -33,21 +33,28 @@ const AdminLogin = ({ navigation }) => {
     try {
      await dispatch(loginAdmin(adminId, birthdate));
 
-     if (isAdmin) {
-      navigation.navigate("Bottom Nav");
-    } else {
-      setMsg("Invalid admin Id or Birth date");
-    }
     } catch (error) {
-    setMsg("Invalid admin Id or Birth date");
+      if (error.response && error.response.data && error.response.data.msg) {
+        setMsg(error.response.data.msg); // Set error message from server
+      }  else {
+        setMsg("Invalid admin Id or Birth date");
+      }
+
   }
 };
   useEffect(() => {
-    if (msg) {
-      Alert.alert("Error", msg);
-      setMsg(null);
+    if (isAdmin) {
+      navigation.navigate("Bottom Nav");
     }
-  }, [msg]);
+  }, [isAdmin, navigation]);
+
+useEffect(() => {
+  if (msg) {
+    Alert.alert("Error", msg);
+    setMsg(null); // Clear the error message
+  }
+}, [msg]);
+
 
   return (
     <View style={styles.container}>

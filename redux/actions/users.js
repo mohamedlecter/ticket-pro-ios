@@ -29,6 +29,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
+    console.log(error)
     dispatch({
       type: LOGIN_FAIL,
       payload: error.response.data.msg,
@@ -37,8 +38,6 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const loginAdmin = (adminId, birthdate) => async (dispatch) => {
-  console.log(adminId)
-  console.log(birthdate)
   try {
     const res = await axios.post(`${API}/admin/adminLogin`, {
       adminId,
@@ -66,7 +65,6 @@ export const signup = (name, email, password, phone) => async (dispatch) => {
       phone,
     });
 
-    console.log(data);
 
     dispatch({
       type: SIGNUP_SUCCESS,

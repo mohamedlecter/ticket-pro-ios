@@ -18,8 +18,6 @@ export default function Home({ navigation }) {
     require("../assets/event1.png"),
     require("../assets/event1.png"),
   ];
-  console.log("isAdmin", isAdmin);
-  console.log("user", user);
 
   return isAdmin ? (
     <HomeAdmin />

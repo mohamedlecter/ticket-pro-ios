@@ -13,7 +13,7 @@ import { ScrollView } from "react-native";
 import SvgUri from 'react-native-svg-uri';
 
 
-export default function CompletePurchase({ navigation }) {
+export default function CompletePurchase({ navigation, route }) {
   const [isChecked, setChecked] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
   const [ccv, setCCV] = useState("");
@@ -26,6 +26,16 @@ export default function CompletePurchase({ navigation }) {
   const handlePurchase = () => {
     navigation.navigate("CompletedPurchase");
   };
+  const { totalCost } = route.params;
+  const { availableTickets } = route.params;
+  
+
+  console.log(totalCost);
+
+  const taxRate = 0.15;
+  // Calculate tax and total
+  const taxAmount = totalCost * taxRate;
+  const finalTotal = totalCost + taxAmount;
 
   return (
     <ScrollView>
@@ -58,8 +68,8 @@ export default function CompletePurchase({ navigation }) {
         <View style={{ overflow: 'hidden' }}>
         <Text style={styles.billHeaderText}>الفاتورة</Text>
             <View style={styles.billItem}>
-              <Text style={styles.billText}>233.75 ريال</Text>
-              <Text style={styles.billText}>5X</Text>
+              <Text style={styles.billText}>{totalCost} ريال</Text>
+              <Text style={styles.billText}>{availableTickets}X</Text>
               <Text style={styles.billText}>بوليفارد الرياض</Text>
             </View>
             <View style={[styles.billItem, { marginBottom: 24 }]}>
@@ -72,7 +82,7 @@ export default function CompletePurchase({ navigation }) {
             
           </View>
           <View style={styles.total}>
-            <Text style={styles.totalText}>275 ريال</Text>
+            <Text style={styles.totalText}>{finalTotal} ريال</Text>
             <Text style={styles.totalText}>الإجمالي:</Text>
           </View>
         </View>

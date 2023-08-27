@@ -35,7 +35,12 @@ const FriendItem = ({ name, number, isSelected, onPress }) => (
   </TouchableOpacity>
 );
 
-export default function PickFriends({ navigation }) {
+export default function PickFriends({ navigation , route }) {
+  const { availableTickets } = route.params;
+  const { totalCost } = route.params;
+  
+
+
   const [selectedFriends, setSelectedFriends] = useState([]);
 
   const handleFriendClick = (friendIndex) => {
@@ -116,7 +121,7 @@ export default function PickFriends({ navigation }) {
 
           <View style={styles.remainingTickets}>
             <View style={styles.row}>
-              <Text style={{ fontWeight: "700", fontSize: 18, fontFamily: "IBMPlexSans-Regular"}}>4/5 تذاكر</Text>
+              <Text style={{ fontWeight: "700", fontSize: 18, fontFamily: "IBMPlexSans-Regular"}}>{selectedFriends.length}/{availableTickets} تذاكر</Text>
               <Text style={{ fontWeight: "700", fontSize: 18, fontFamily: "IBMPlexSans-Regular" }}>
                 عدد التذاكر المتبقية:
               </Text>
@@ -135,7 +140,7 @@ export default function PickFriends({ navigation }) {
               titleStyle={styles.ButtonText}
               containerStyle={styles.ButtonContainer}
               onPress={() => {
-                navigation.navigate("CompletePurchase");
+                navigation.navigate("CompletePurchase", {availableTickets, totalCost});
               }}
             />
           </View>

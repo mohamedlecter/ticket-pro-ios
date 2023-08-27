@@ -118,6 +118,7 @@ export default userReducer = (state = initialState, { type, payload }) => {
         user: null,
         isAuth: false,
         isLoading: false,
+        isAdmin: false,
       };
     case ADMIN_LOGIN_SUCCESS:
       return {

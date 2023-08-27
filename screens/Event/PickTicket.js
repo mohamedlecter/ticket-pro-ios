@@ -14,6 +14,36 @@ import SvgUri from 'react-native-svg-uri';
 
 
 const PickTicket = ({ navigation }) => {
+
+    const [ticketQuantity, setTicketQuantity] = useState(0);
+    const [vipTicketQuantity, setVipTicketQuantity] = useState(0);
+
+    const ticketPrice = 55.0;
+    const vipTicketPrice = 300.0;
+
+    const totalCost = ticketQuantity * ticketPrice + vipTicketQuantity * vipTicketPrice;
+
+    const handleAddTicket = (type) => {
+      if (type === "regular") {
+        setTicketQuantity(ticketQuantity + 1);
+      } else if (type === "vip") {
+        setVipTicketQuantity(vipTicketQuantity + 1);
+      }
+    };
+
+    const handleRemoveTicket = (type) => {
+      if (type === "regular" && ticketQuantity > 0) {
+        setTicketQuantity(ticketQuantity - 1);
+      } else if (type === "vip" && vipTicketQuantity > 0) {
+        setVipTicketQuantity(vipTicketQuantity - 1);
+      }
+    };
+
+    const handleNavigate = ()=>{
+      let availableTickets = ticketQuantity + vipTicketQuantity; // Replace this with the actual number of available tickets
+      navigation.navigate("PickFriends", { availableTickets, totalCost });
+    }
+
   return (
     <ScrollView>
       <View style={styles.topNav}>
@@ -56,15 +86,30 @@ const PickTicket = ({ navigation }) => {
             </View>
             <View style={styles.ticketPriceContainer}>
               <View style={styles.quantity}>
-                <Image
-                  source={require("../../assets/minus-cirlce.png")}
-                  style={{ marginHorizontal: 15 }}
+              <TouchableOpacity
+                style={{
+                  marginHorizontal:16
+                }}
+                onPress={() => handleRemoveTicket("regular")}
+                >
+                <SvgUri
+                  source={require("../../assets/minus-cirlce.svg")}
+                  fill="black" // Use fill to set the SVG color
                 />
-                <Text style={styles.quantityText}>5</Text>
-                <Image
-                  source={require("../../assets/add-circle.png")}
-                  style={{ marginHorizontal: 15 }}
+                </TouchableOpacity>
+
+                <Text style={styles.quantityText}>{ticketQuantity}</Text>
+                <TouchableOpacity
+                style={{
+                  marginHorizontal:16
+                }}
+                onPress={() => handleAddTicket("regular")}
+                >
+                <SvgUri
+                  source={require("../../assets/add-circle.svg")}
+                  fill="black" // Use fill to set the SVG color
                 />
+                </TouchableOpacity>
               </View>
               <Text styles={styles.quantityText}>55.00 ريال</Text>
             </View>
@@ -77,22 +122,37 @@ const PickTicket = ({ navigation }) => {
             </View>
             <View style={styles.ticketPriceContainer}>
               <View style={styles.quantity}>
-                <Image
-                  source={require("../../assets/minus-cirlce.png")}
-                  style={{ marginHorizontal: 15 }}
+              <TouchableOpacity
+                style={{
+                  marginHorizontal:16
+                }}
+                onPress={() => handleRemoveTicket("vip")}
+                >
+                <SvgUri
+                  source={require("../../assets/minus-cirlce.svg")}
+                  fill="black" // Use fill to set the SVG color
                 />
-                <Text style={styles.quantityText}>0</Text>
-                <Image
-                  source={require("../../assets/add-circle.png")}
-                  style={{ marginHorizontal: 15 }}
+                </TouchableOpacity>
+
+                <Text style={styles.quantityText}>{vipTicketQuantity}</Text>
+                <TouchableOpacity
+                style={{
+                  marginHorizontal:16
+                }}
+                onPress={() => handleAddTicket("vip")}
+                >
+                <SvgUri
+                  source={require("../../assets/add-circle.svg")}
+                  fill="black" // Use fill to set the SVG color
                 />
+                </TouchableOpacity>
               </View>
               <Text styles={styles.quantityText}>300.00 ريال</Text>
             </View>
           </View>
 
           <View style={styles.totalContainer}>
-            <Text style={styles.totalText}>275.00 ريال</Text>
+          <Text style={styles.totalText}>{totalCost} ريال</Text>
             <Text style={styles.totalText}>الإجمالي</Text>
           </View>
           <View style={styles.btnContainer}>
@@ -103,9 +163,7 @@ const PickTicket = ({ navigation }) => {
           buttonStyle={styles.Button}
           titleStyle={styles.ButtonText}
           containerStyle={styles.ButtonContainer}
-          onPress={() => {
-            navigation.navigate("PickFriends");
-          }}
+          onPress={handleNavigate}
           />
       </View>
         </View>

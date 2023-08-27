@@ -23,6 +23,7 @@ const LoginPage = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState(null);
 
+
   const handleLogin = async () => {
     if (email === "" || password === "") {
       setMsg("Please enter all fields");
@@ -30,20 +31,25 @@ const LoginPage = ({ navigation }) => {
     }
     try {
       await dispatch(login(email, password));
-      // Check if login is successful based on isAuth flag in Redux state
-      if (isAuth) {
-        navigation.navigate("Bottom Nav");
-      } else {
-        setMsg("Invalid email or password");
-      }
     } catch (error) {
-      setMsg("Invalid email or password");
+      if (error.response && error.response.data && error.response.data.msg) {
+        setMsg(error.response.data.msg); // Set error message from server
+      } else {
+        setMsg("Invalid email or password"); // Default error message
+      }
     }
   };
+
+  useEffect(() => {
+    if (isAuth) {
+      navigation.navigate("Bottom Nav");
+    }
+  }, [isAuth, navigation]);
+
   useEffect(() => {
     if (msg) {
       Alert.alert("Error", msg);
-      setMsg(null);
+      setMsg(null); // Clear the error message
     }
   }, [msg]);
 
@@ -92,9 +98,6 @@ const LoginPage = ({ navigation }) => {
           containerStyle={styles.loginButtonContainer}
           onPress={handleLogin}
           />
-          {/* <View style={styles.authMessageContainer}>
-  {msg && <Text style={styles.authMessage}>{msg}</Text>}
-</View> */}
         <TouchableOpacity
           style={styles.signUp}
           onPress={() => navigation.navigate("Signup")}
