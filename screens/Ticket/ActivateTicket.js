@@ -17,12 +17,13 @@ const windowWidth = Dimensions.get("window").width;
 // Calculate the width for the image inside img view
 const imgWidth = windowWidth - 39; // Assuming a margin of 20 on each side of the ticketCard
 
-const ActivateTicket = ({ navigation }) => {
+const ActivateTicket = ({ navigation, route }) => {
   const [showNFCWidget, setShowNFCWidget] = useState(false);
-
   const handleButtonPress = () => {
     navigation.navigate("Read Nfc");
   };
+
+  const { title, date, ticketCount, imageSource } = route.params;
 
   return (
     <View style={styles.container}>
@@ -54,11 +55,11 @@ const ActivateTicket = ({ navigation }) => {
               <Image source={require("../../assets/groupProfile.png")} />
             </View>
             <View style={{ alignItems: "flex-end", marginLeft: 100 }}>
+              <Text style={[styles.text, { fontWeight: "700" }]}>{title}</Text>
+              <Text style={(styles.text, { marginVertical: 8 })}>{date}</Text>
               <Text style={[styles.text, { fontWeight: "700" }]}>
-                البوليفارد ، الرياض
+                {ticketCount} تذاكر
               </Text>
-              <Text style={(styles.text, { marginVertical: 8 })}>24 ابريل</Text>
-              <Text style={[styles.text, { fontWeight: "700" }]}>6 تذاكر</Text>
             </View>
           </View>
           <View style={styles.btnContainer}>

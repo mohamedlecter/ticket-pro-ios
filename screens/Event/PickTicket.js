@@ -12,12 +12,13 @@ import { Button } from "@rneui/themed";
 import Calender from "../../components/Calender";
 import SvgUri from "react-native-svg-uri";
 
-const PickTicket = ({ navigation }) => {
+const PickTicket = ({ navigation, route }) => {
+  const { event } = route.params; // Extract the eventId from the route params
   const [ticketQuantity, setTicketQuantity] = useState(0);
   const [vipTicketQuantity, setVipTicketQuantity] = useState(0);
 
-  const ticketPrice = 55.0;
-  const vipTicketPrice = 300.0;
+  const ticketPrice = event.eventMinPrice;
+  const vipTicketPrice = event.eventVipTicketPrice;
 
   const totalCost =
     ticketQuantity * ticketPrice + vipTicketQuantity * vipTicketPrice;
@@ -40,7 +41,7 @@ const PickTicket = ({ navigation }) => {
 
   const handleNavigate = () => {
     let availableTickets = ticketQuantity + vipTicketQuantity; // Replace this with the actual number of available tickets
-    navigation.navigate("PickFriends", { availableTickets, totalCost });
+    navigation.navigate("PickFriends", { availableTickets, totalCost, event });
   };
 
   return (
@@ -110,7 +111,9 @@ const PickTicket = ({ navigation }) => {
                   />
                 </TouchableOpacity>
               </View>
-              <Text styles={styles.quantityText}>55.00 ريال</Text>
+              <Text styles={styles.quantityText}>
+                {event.eventMinPrice} ريال
+              </Text>
             </View>
           </View>
           <View style={styles.ticketOptions}>
@@ -146,7 +149,9 @@ const PickTicket = ({ navigation }) => {
                   />
                 </TouchableOpacity>
               </View>
-              <Text styles={styles.quantityText}>300.00 ريال</Text>
+              <Text styles={styles.quantityText}>
+                {event.eventVipTicketPrice} ريال
+              </Text>
             </View>
           </View>
 

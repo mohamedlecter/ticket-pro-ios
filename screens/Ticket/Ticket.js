@@ -5,15 +5,20 @@ import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import { useDispatch, useSelector } from "react-redux";
 import AdminTicket from "../../components/admin/AdminTicket";
 import SvgUri from "react-native-svg-uri";
+import { ScrollView } from "react-native";
 
 export default function Ticket({ navigation }) {
   const { isAdmin } = useSelector((state) => state.userReducer);
+  const { bookedTickets } = useSelector((state) => state.ticketsReducer); // Update the selector to match your store structure
+
+  console.log(bookedTickets);
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.topNav}>
         <SvgUri
           source={require("../../assets/notification.svg")}
-          fill="black" // Use fill to set the SVG color
+          fill="black"
         />
         <Image
           source={require("../../assets/logo.png")}
@@ -22,7 +27,7 @@ export default function Ticket({ navigation }) {
         />
         <SvgUri
           source={require("../../assets/search-normal.svg")}
-          fill="black" // Use fill to set the SVG color
+          fill="black"
         />
       </View>
       {isAdmin ? (
@@ -33,136 +38,65 @@ export default function Ticket({ navigation }) {
             <Text style={styles.text}>تذاكري</Text>
           </View>
 
-          <TouchableOpacity
-            style={styles.ticketCard}
-            onPress={() => navigation.navigate("Activate Ticket")}
-          >
-            <View>
-              <SvgUri
-                source={require("../../assets/arrow-left.svg")}
-                fill="black" // Use fill to set the SVG color
+          {bookedTickets.map((ticket, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.ticketCard}
+              onPress={() => navigation.navigate("Activate Ticket")}
+            >
+              <View>
+                <SvgUri
+                  source={require("../../assets/arrow-left.svg")}
+                  fill="black"
+                />
+              </View>
+
+              <View style={styles.ticketCardTextContainer}>
+                <View>
+                  <View style={styles.headingTextContainer}>
+                    <Text
+                      style={[
+                        styles.text,
+                        { fontSize: 16, fontWeight: "bold" },
+                      ]}
+                    >
+                      {ticket.eventName}
+                    </Text>
+                  </View>
+                  <View style={[styles.headingTextContainer, { marginTop: 8 }]}>
+                    <Text style={{ fontSize: 14 }}>{ticket.eventDate}</Text>
+                  </View>
+                  <View
+                    style={{
+                      justifyContent: "space-between",
+                      flexDirection: "row",
+                      width: 160,
+                      marginTop: 8,
+                    }}
+                  >
+                    <Text style={[styles.text, { fontSize: 14 }]}>
+                      {ticket.eventStatus}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.text,
+                        { fontSize: 14, fontWeight: "bold" },
+                      ]}
+                    >
+                      {ticket.ticketCount} تذاكر
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Image
+                source={ticket.eventImage}
+                style={{ width: 120, height: 120 }}
               />
-            </View>
-
-            <View style={styles.ticketCardTextContainer}>
-              <View>
-                <View style={styles.headingTextContainer}>
-                  <Text
-                    style={[styles.text, { fontSize: 16, fontWeight: "bold" }]}
-                  >
-                    راسيل مينيا ، جدة
-                  </Text>
-                </View>
-                <View style={[styles.headingTextContainer, { marginTop: 8 }]}>
-                  <Text style={{ fontSize: 14 }}>5 نوفمبر</Text>
-                </View>
-                <View
-                  style={{
-                    justifyContent: "space-between",
-                    flexDirection: "row",
-                    width: 160,
-                    marginTop: 8,
-                  }}
-                >
-                  <Text style={[styles.text, { fontSize: 14 }]}>غير مفعلة</Text>
-                  <Text
-                    style={[styles.text, { fontSize: 14, fontWeight: "bold" }]}
-                  >
-                    6 تذاكر
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <Image
-              source={require("../../assets/event6.png")}
-              style={{ width: 120, height: 120 }}
-            />
-          </TouchableOpacity>
-
-          <View style={styles.ticketCard}>
-            <SvgUri
-              source={require("../../assets/arrow-left.svg")}
-              fill="black" // Use fill to set the SVG color
-            />
-
-            <View style={styles.ticketCardTextContainer}>
-              <View>
-                <View style={styles.headingTextContainer}>
-                  <Text
-                    style={[styles.text, { fontSize: 16, fontWeight: "bold" }]}
-                  >
-                    الرويشد ، الرياض
-                  </Text>
-                </View>
-                <View style={[styles.headingTextContainer, { marginTop: 8 }]}>
-                  <Text style={{ fontSize: 14 }}>30 اكتوبر</Text>
-                </View>
-                <View
-                  style={{
-                    justifyContent: "space-between",
-                    flexDirection: "row",
-                    width: 160,
-                    marginTop: 8,
-                  }}
-                >
-                  <Text style={[styles.text, { fontSize: 14 }]}>مفعلة</Text>
-                  <Text
-                    style={[styles.text, { fontSize: 14, fontWeight: "bold" }]}
-                  >
-                    6 تذاكر
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <Image
-              source={require("../../assets/event3.png")}
-              style={{ width: 120, height: 120 }}
-            />
-          </View>
-
-          <View style={styles.ticketCard}>
-            <SvgUri
-              source={require("../../assets/arrow-left.svg")}
-              fill="black" // Use fill to set the SVG color
-            />
-
-            <View style={styles.ticketCardTextContainer}>
-              <View>
-                <View style={styles.headingTextContainer}>
-                  <Text
-                    style={[styles.text, { fontSize: 16, fontWeight: "bold" }]}
-                  >
-                    فيا رياض ، الرياض
-                  </Text>
-                </View>
-                <View style={[styles.headingTextContainer, { marginTop: 8 }]}>
-                  <Text style={{ fontSize: 14 }}>25 اكتوبر</Text>
-                </View>
-                <View
-                  style={{
-                    justifyContent: "space-between",
-                    flexDirection: "row",
-                    width: 160,
-                    marginTop: 8,
-                  }}
-                >
-                  <Text style={[styles.text, { fontSize: 14 }]}>مفعلة</Text>
-                  <Text
-                    style={[styles.text, { fontSize: 14, fontWeight: "bold" }]}
-                  >
-                    6 تذاكر
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <Image
-              source={require("../../assets/event2.png")}
-              style={{ width: 120, height: 120 }}
-            />
-          </View>
+            </TouchableOpacity>
+          ))}
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 

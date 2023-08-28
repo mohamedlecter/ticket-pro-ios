@@ -23,12 +23,13 @@ export default function CompletePurchase({ navigation, route }) {
   };
 
   const handlePurchase = () => {
-    navigation.navigate("CompletedPurchase");
+    navigation.navigate("CompletedPurchase", { availableTickets, event });
   };
   const { totalCost } = route.params;
   const { availableTickets } = route.params;
+  const { event } = route.params;
 
-  console.log(totalCost);
+  console.log(event);
 
   const taxRate = 0.15;
   // Calculate tax and total

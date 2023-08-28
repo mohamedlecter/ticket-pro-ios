@@ -9,8 +9,21 @@ import {
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Button } from "@rneui/base";
+import { useDispatch } from "react-redux";
+import { bookTicket } from "../../redux/actions/tickets";
 
-export default function CompletedPurchase({ navigation }) {
+export default function CompletedPurchase({ navigation, route }) {
+  const { availableTickets, event } = route.params;
+  const dispatch = useDispatch();
+
+  const handlePurchaseCompletion = () => {
+    dispatch(bookTicket(event, availableTickets)); // Dispatch the event data to the Redux store
+    navigation.navigate("TicketTab"); // change to homepage
+
+    // ... other logic for completing the purchase
+  };
+
+  console.log("CompletedPurchase Screen - Received event:", event);
   return (
     <LinearGradient
       colors={["#7D21CF", "#170036"]}
@@ -53,7 +66,7 @@ export default function CompletedPurchase({ navigation }) {
             buttonStyle={styles.Button}
             titleStyle={styles.ButtonText}
             containerStyle={styles.ButtonContainer}
-            onPress={() => navigation.navigate("TicketTab")} // change to homepage
+            onPress={handlePurchaseCompletion}
           />
         </View>
       </View>

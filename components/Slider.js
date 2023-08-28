@@ -22,7 +22,7 @@ const ImageCarousel = ({ images, navigation }) => {
           <TouchableOpacity
             style={styles.slide}
             key={index}
-            onPress={() => navigation.navigate("EventInfo")}
+            onPress={() => navigation.navigate("EventInfo", { eventId: "0" })}
           >
             <Image source={image} style={styles.image} />
           </TouchableOpacity>

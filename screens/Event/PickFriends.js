@@ -37,6 +37,7 @@ const FriendItem = ({ name, number, isSelected, onPress }) => (
 export default function PickFriends({ navigation, route }) {
   const { availableTickets } = route.params;
   const { totalCost } = route.params;
+  const { event } = route.params;
 
   const [selectedFriends, setSelectedFriends] = useState([]);
 
@@ -156,6 +157,7 @@ export default function PickFriends({ navigation, route }) {
                 navigation.navigate("CompletePurchase", {
                   availableTickets,
                   totalCost,
+                  event,
                 });
               }}
             />

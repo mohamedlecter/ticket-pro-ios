@@ -11,9 +11,12 @@ import React, { useState } from "react";
 import TopNav from "../../components/TopNav";
 import { Button } from "@rneui/themed";
 import SvgUri from "react-native-svg-uri";
+import data from "../../data";
 
-const EventInfo = ({ navigation }) => {
+const EventInfo = ({ navigation, route }) => {
   const [desClicked, setDesClicked] = useState(false);
+  const { eventId } = route.params; // Extract the eventId from the route params
+  const event = data.find((item) => item.id === eventId); // Find the event based on eventId
   let isTicketPage = true;
 
   const handleDesClick = () => {
@@ -26,10 +29,7 @@ const EventInfo = ({ navigation }) => {
 
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={require("../../assets/event1.png")}
-            style={styles.image}
-          />
+          <Image source={event.eventImage} style={styles.image} />
         </View>
 
         <View style={styles.eventTitleContainer}>
@@ -45,21 +45,17 @@ const EventInfo = ({ navigation }) => {
                 source={require("../../assets/location.png")}
                 style={{ width: 30, height: 30 }}
               />
-              <Text style={styles.eventLocation}>الرياض</Text>
+              <Text style={styles.eventLocation}>{event.eventLocation}</Text>
             </View>
-            <Text style={styles.eventTitle}>بوليفارد الرياض</Text>
+            <Text style={styles.eventTitle}>{event.eventName}</Text>
           </View>
         </View>
         <View style={{ alignItems: "flex-end" }}>
-          <Text style={styles.eventDate}>25 اكتوبر - 30 ديسمبر</Text>
-          <Text style={styles.price}>تبدأ من 55.00 ريال</Text>
+          <Text style={styles.eventDate}>{event.eventDate}</Text>
+          <Text style={styles.price}>تبدأ من {event.eventMinPrice} ريال</Text>
 
-          <Text style={styles.desc}>
-            من 6م-1ص ايام الاسبوع (تغلق البوابات الساعه ١2ص){" "}
-          </Text>
-          <Text style={styles.desc}>
-            من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)
-          </Text>
+          <Text style={styles.desc}>{event.eventWeeekDaysWorkingHours} </Text>
+          <Text style={styles.desc}>{event.eventWeekendWorkingHours} </Text>
         </View>
         <View style={styles.eventDescContainer}>
           <TouchableOpacity onPress={handleDesClick}>
@@ -77,15 +73,7 @@ const EventInfo = ({ navigation }) => {
 
         {desClicked && (
           <View style={styles.eventDesc}>
-            <Text style={styles.eventDescText}>
-              كل شي فيه فوق الخيال، بشاشاته العملاقة المضيئة اللي تستحضر روح
-              التايم السكوير، وزواياه اللي مليانة فعاليات مثل النافورة الراقصة
-              والحدائق، وعدد كبير من المتاجر والمطاعم العالمية والمحلية.
-              بالإضافة لمسارح موعودين فيها بعروض من الخيال، وأكبر دار سينما في
-              المملكة العربية السعودية. بيستقبل البوليڤارد زوّاره كل يوم بحُب
-              وحماس، عشان يعيشون تجربة ماراح تتكرر، وخيال أكبر من الخيالات اللي
-              تصوروها.
-            </Text>
+            <Text style={styles.eventDescText}>{event.eventDescription}</Text>
           </View>
         )}
 
@@ -106,7 +94,7 @@ const EventInfo = ({ navigation }) => {
             titleStyle={styles.ButtonText}
             containerStyle={styles.ButtonContainer}
             onPress={() => {
-              navigation.navigate("PickTicket");
+              navigation.navigate("PickTicket", { event });
             }}
           />
         </View>
