@@ -18,15 +18,15 @@ import {
 import axios from "axios";
 import API from "../../api";
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (name, password) => async (dispatch) => {
   try {
     const res = await axios.post(`${API}/user/login`, {
-      email,
+      name,
       password,
     });
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data,
+      payload: res.data.user,
     });
   } catch (error) {
     console.log(error);

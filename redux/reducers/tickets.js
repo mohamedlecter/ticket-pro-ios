@@ -26,6 +26,12 @@ const initialState = {
       eventWeekendWorkingHours: "من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)",
       eventStatus: "غير مفعلة",
       ticketCount: "6",
+      bookingTime:"2023-08-10T10:15:30.000Z",
+      user:  {
+        _id: "64aead5d13ddd4d59773fabb",
+        name: "سيف العتيبي",
+        phone: "9665541*****",
+      },
     },
     {
       id: "1",
@@ -43,6 +49,12 @@ const initialState = {
       eventWeekendWorkingHours: "من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)",
       eventStatus: "مفعلة",
       ticketCount: "6",
+      bookingTime:"2023-08-27T10:15:30.000Z",
+      user:  {
+        _id: "64aead5d13ddd4d59773fabb",
+        name: "ماجد العتيبي",
+        phone: "9665541*****",
+      },
     },
     {
       id: "2",
@@ -59,6 +71,12 @@ const initialState = {
       eventWeekendWorkingHours: "من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)",
       eventStatus: "مفعلة",
       ticketCount: "6",
+      bookingTime:"2023-08-15T10:15:30.000Z",
+      user:  {
+        _id: "64aead5d13ddd4d59773fabb",
+        name: "ماجد الجدعاني",
+        phone: "9665531*****",
+      },
     },
   ],
   // other initial state properties

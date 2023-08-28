@@ -23,7 +23,8 @@ const ActivateTicket = ({ navigation, route }) => {
     navigation.navigate("Read Nfc");
   };
 
-  const { title, date, ticketCount, imageSource } = route.params;
+  const { ticket} = route.params;
+
 
   return (
     <View style={styles.container}>
@@ -55,10 +56,10 @@ const ActivateTicket = ({ navigation, route }) => {
               <Image source={require("../../assets/groupProfile.png")} />
             </View>
             <View style={{ alignItems: "flex-end", marginLeft: 100 }}>
-              <Text style={[styles.text, { fontWeight: "700" }]}>{title}</Text>
-              <Text style={(styles.text, { marginVertical: 8 })}>{date}</Text>
+              <Text style={[styles.text, { fontWeight: "700" }]}>{ticket.eventName}</Text>
+              <Text style={(styles.text, { marginVertical: 8 })}>{ticket.eventDate}</Text>
               <Text style={[styles.text, { fontWeight: "700" }]}>
-                {ticketCount} تذاكر
+                {ticket.ticketCount} تذاكر
               </Text>
             </View>
           </View>

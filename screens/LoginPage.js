@@ -19,22 +19,22 @@ const LoginPage = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.userReducer);
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState(null);
 
   const handleLogin = async () => {
-    if (email === "" || password === "") {
+    if (name === "" || password === "") {
       setMsg("Please enter all fields");
       return;
     }
     try {
-      await dispatch(login(email, password));
+      await dispatch(login(name, password));
     } catch (error) {
       if (error.response && error.response.data && error.response.data.msg) {
         setMsg(error.response.data.msg); // Set error message from server
       } else {
-        setMsg("Invalid email or password"); // Default error message
+        setMsg("Invalid name or password"); // Default error message
       }
     }
   };
@@ -67,7 +67,7 @@ const LoginPage = ({ navigation }) => {
             placeholder="الاسم"
             style={styles.TextInput}
             placeholderTextColor="#180036"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text) => setName(text)}
           />
         </View>
         <View style={styles.inputView}>

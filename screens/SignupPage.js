@@ -18,7 +18,7 @@ import { signup } from "../redux/actions/users";
 const SignupPage = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.userReducer);
+  const { isSignedUp } = useSelector((state) => state.userReducer);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -31,13 +31,17 @@ const SignupPage = ({ navigation }) => {
     } else {
       try {
         await dispatch(signup(name, email, password, phone));
-        // If signup was successful, navigate to the login page
-        navigation.navigate("Login");
       } catch (error) {
         setMsg("An error occurred during signup");
       }
     }
   };
+
+  useEffect(() => {
+    if (isSignedUp) {
+      navigation.navigate("Login");
+    }
+  }, [isSignedUp, navigation]);
 
   useEffect(() => {
     if (msg) {

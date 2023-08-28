@@ -1,16 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
+import { useSelector } from "react-redux";
+import { formatDistanceToNow } from 'date-fns';
+import { ar } from 'date-fns/locale';
 
 const data = [
-  { time: "قبل 3 دقائق", name: "سيف العتيبي", phoneNumber: "9665541*****" },
-  { time: "قبل 5 دقائق", name: "ماجد الجدعاني", phoneNumber: "9665541*****" },
   { time: "قبل 10 دقائق", name: "محمد التميمي", phoneNumber: "9665541*****" },
   { time: "قبل 15 دقيقة", name: "طلال المالكي", phoneNumber: "9665006*****" },
   { time: "قبل 15 دقيقة", name: "حمد الشيباني", phoneNumber: "9665936*****" },
-  { time: "قبل ساعة", name: "موسى العصيمي", phoneNumber: "9665501*****" },
 ];
 
 const AdminTicket = ({ navigation }) => {
+  const bookedTickets = useSelector((state) => state.ticketsReducer.bookedTickets);
+
   return (
     <View style={{ marginTop: 38, marginHorizontal: 16 }}>
       <View style={styles.headingTextContainer}>
@@ -25,7 +27,17 @@ const AdminTicket = ({ navigation }) => {
           marginTop: 16,
         }}
       >
-        {data.map((item, index) => (
+         {bookedTickets.map((ticket, index) => (
+            <ListItem
+              key={index}
+              time={ticket.bookingTime ? formatDistanceToNow(new Date(ticket.bookingTime), { addSuffix: true, locale: ar }): ''}
+              name={ticket.user.name}
+              phoneNumber={ticket.user.phone}
+              ticketData={ticket}
+              navigation={navigation}
+            />
+          ))}
+        {/* {data.map((item, index) => (
           <ListItem
             key={index}
             time={item.time}
@@ -33,13 +45,13 @@ const AdminTicket = ({ navigation }) => {
             phoneNumber={item.phoneNumber}
             navigation={navigation}
           />
-        ))}
+        ))} */}
       </View>
     </View>
   );
 };
 
-const ListItem = ({ time, name, phoneNumber, navigation }) => (
+const ListItem = ({ time, name, phoneNumber, navigation, ticketData }) => (
   <TouchableOpacity
     style={{
       flexDirection: "row",
@@ -47,7 +59,7 @@ const ListItem = ({ time, name, phoneNumber, navigation }) => (
       alignItems: "center",
       margin: 16,
     }}
-    onPress={() => navigation.navigate("Ticket Info")}
+    onPress={() => navigation.navigate("Ticket Info", { ticketData })}
   >
     <View>
       <Text

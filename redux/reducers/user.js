@@ -22,6 +22,7 @@ const initialState = {
   isLoading: true,
   msg: null,
   isAdmin: false,
+  isSignedUp: false
 };
 
 export default userReducer = (state = initialState, { type, payload }) => {
@@ -87,9 +88,10 @@ export default userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         user: payload,
-        isAuth: true,
+        isAuth: false,
         isLoading: false,
         isAdmin: false,
+        isSignedUp: true
       };
     case SIGNUP_FAIL:
       return {
@@ -97,6 +99,7 @@ export default userReducer = (state = initialState, { type, payload }) => {
         user: null,
         isAuth: false,
         isLoading: false,
+        isSignedUp:false
       };
     case UPDATE_USER:
       return {

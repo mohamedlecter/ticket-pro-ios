@@ -10,12 +10,16 @@ import {
 import axios from "axios";
 import API from "../../api";
 // redux/actions/tickets.js
-export const bookTicket = (event, availableTickets) => async (dispatch) => {
+export const bookTicket = (event, availableTickets, user) => async (dispatch) => {
   try {
+    const currentTime = new Date(); // Get the current time
     const updatedEvent = {
       ...event,
       ticketCount: parseInt(availableTickets),
       eventStatus: "غير مفعلة",
+      user: user,
+      bookingTime: currentTime, // Add the booking time
+
     };
 
     dispatch({

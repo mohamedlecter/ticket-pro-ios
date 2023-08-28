@@ -29,8 +29,6 @@ export default function CompletePurchase({ navigation, route }) {
   const { availableTickets } = route.params;
   const { event } = route.params;
 
-  console.log(event);
-
   const taxRate = 0.15;
   // Calculate tax and total
   const taxAmount = totalCost * taxRate;

@@ -11,13 +11,16 @@ import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import AdminNfc from "./AdminNfc";
 import SvgUri from 'react-native-svg-uri';
-
+import { useSelector } from "react-redux";
+import { formatDistanceToNow } from 'date-fns';
+import { ar } from 'date-fns/locale';
 
 const windowWidth = Dimensions.get("window").width;
 
 export default function HomeAdmin() {
   const [showNFCWidget, setShowNFCWidget] = useState(true);
-
+  const bookedTickets = useSelector((state) => state.ticketsReducer.bookedTickets);
+  console.log(bookedTickets);
   const handleButtonPress = () => {
     setShowNFCWidget(true);
   };
@@ -56,23 +59,18 @@ export default function HomeAdmin() {
 
 
         <View style={styles.ticketsContainer}>
-          <TouchableOpacity style={{ marginTop: 16 }}>
+          <View style={{marginTop:10}}>
+
+        {bookedTickets.map((ticket, index) => (
             <TicketCard
-              time="قبل 3 دقائق"
-              name="سيف العتيبي"
-              phoneNumber="9665541*****"
+              key={index}
+              time={ticket.bookingTime ? formatDistanceToNow(new Date(ticket.bookingTime), { addSuffix: true, locale: ar }): ''}
+              name={ticket.user.name}
+              phoneNumber={ticket.user.phone}
             />
-          </TouchableOpacity>
-          <TicketCard
-            time="قبل 5 دقائق"
-            name="ماجد الجدعاني"
-            phoneNumber="9665531*****"
-          />
-          <TicketCard
-            time="قبل 10 دقائق"
-            name="محمد التميمي"
-            phoneNumber="9665055*****"
-          />
+          ))}
+          </View>
+
           <View style={styles.arrowContainer}>
           <SvgUri
               source={require("../../assets/arrow-left.svg")}

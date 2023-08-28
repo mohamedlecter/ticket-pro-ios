@@ -2,6 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import SvgUri from 'react-native-svg-uri';
+import { formatDistanceToNow } from 'date-fns';
+import { ar } from 'date-fns/locale';
+
 
 
 const data = [
@@ -16,7 +19,9 @@ const data = [
   },
 ];
 
-const TicketInfo = ({ navigation }) => {
+const TicketInfo = ({ navigation , route}) => {
+  const { ticketData } = route.params;
+
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
@@ -41,9 +46,7 @@ const TicketInfo = ({ navigation }) => {
         </View>
 
         <View style={styles.ticketContainer}>
-          {data.map((item, index) => (
-            <ListItem key={index} item={item} navigation={navigation} />
-          ))}
+          <ListItem item={ticketData} />
         </View>
       </View>
     </View>
@@ -52,23 +55,22 @@ const TicketInfo = ({ navigation }) => {
 
 const ListItem = ({ item, navigation }) => {
   const {
-    time,
-    name,
-    phoneNumber,
+    bookingTime,
+    user,
     eventName,
     eventDate,
-    numerOfTickets,
-    status,
+    ticketCount,
+    eventStatus,
   } = item;
 
   return (
     <View style={styles.listItem}>
       <View style={styles.rowContainer}>
-        <Text style={styles.timeText}>{time}</Text>
-        <Text style={styles.nameText}>{name}</Text>
+        <Text style={styles.timeText}>{bookingTime ? formatDistanceToNow(new Date(bookingTime), { addSuffix: true, locale: ar }): ''}</Text>
+        <Text style={styles.nameText}>{user.name}</Text>
       </View>
       <View style={styles.phoneNumberContainer}>
-        <Text style={styles.timeText}>{phoneNumber}</Text>
+        <Text style={styles.timeText}>{user.phone}</Text>
       </View>
 
       <View style={styles.eventContainer}>
@@ -79,8 +81,8 @@ const ListItem = ({ item, navigation }) => {
           <Text style={styles.eventDateText}>{eventDate}</Text>
         </View>
         <View style={styles.statusContainer}>
-          <Text style={styles.statusText}>{status}</Text>
-          <Text style={styles.ticketCountText}>{numerOfTickets} تذاكر</Text>
+          <Text style={styles.statusText}>{eventStatus}</Text>
+          <Text style={styles.ticketCountText}>{ticketCount} تذاكر</Text>
         </View>
       </View>
     </View>

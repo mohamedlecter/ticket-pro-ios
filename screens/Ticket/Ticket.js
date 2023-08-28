@@ -11,7 +11,7 @@ export default function Ticket({ navigation }) {
   const { isAdmin } = useSelector((state) => state.userReducer);
   const { bookedTickets } = useSelector((state) => state.ticketsReducer); // Update the selector to match your store structure
 
-  console.log(bookedTickets);
+  // console.log(bookedTickets);
 
   return (
     <ScrollView style={styles.container}>
@@ -42,8 +42,11 @@ export default function Ticket({ navigation }) {
             <TouchableOpacity
               key={index}
               style={styles.ticketCard}
-              onPress={() => navigation.navigate("Activate Ticket")}
-            >
+              onPress={() =>
+                navigation.navigate("Activate Ticket", {
+                  ticket,
+                })
+              }>
               <View>
                 <SvgUri
                   source={require("../../assets/arrow-left.svg")}
