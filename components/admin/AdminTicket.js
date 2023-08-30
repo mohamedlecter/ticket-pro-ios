@@ -67,7 +67,7 @@ const ListItem = ({ time, name, phoneNumber, navigation, ticketData }) => (
           color: "#413F44",
           fontSize: 11,
           fontWeight: "400",
-          fontFamily: "IBMPlexSans-Regular" 
+          fontFamily: "Dubai-Medium" 
         }}
       >
         {time}
@@ -79,7 +79,7 @@ const ListItem = ({ time, name, phoneNumber, navigation, ticketData }) => (
         justifyContent: "center",
       }}
     >
-      <Text style={{ color: "#000000", fontSize: 16, fontWeight: "400" ,fontFamily: "IBMPlexSans-Regular" }}>
+      <Text style={{ color: "#000000", fontSize: 16, fontWeight: "400" ,fontFamily: "Dubai-Medium" }}>
         {name}
       </Text>
       <Text
@@ -88,7 +88,7 @@ const ListItem = ({ time, name, phoneNumber, navigation, ticketData }) => (
           fontSize: 11,
           fontWeight: "400",
           marginTop: 4,
-          fontFamily: "IBMPlexSans-Regular" 
+          fontFamily: "Dubai-Medium" 
 
         }}
       >

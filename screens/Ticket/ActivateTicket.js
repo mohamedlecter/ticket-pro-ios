@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
 
   headingTextContainer: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   ButtonContainer: {
     marginHorizontal: 50,

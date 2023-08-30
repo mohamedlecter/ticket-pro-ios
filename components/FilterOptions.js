@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: "400",
     textAlign:"center",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
 
   },

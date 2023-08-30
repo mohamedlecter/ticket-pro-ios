@@ -133,14 +133,14 @@ const styles = StyleSheet.create({
     color: "#413F44",
     fontSize: 11,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular" 
+    fontFamily: "Dubai-Medium" 
 
   },
   nameText: {
     color: "#000000",
     fontSize: 16,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular" 
+    fontFamily: "Dubai-Medium" 
 
   },
   eventContainer: {
@@ -151,13 +151,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular" 
+    fontFamily: "Dubai-Medium" 
 
   },
   eventDateText: {
     fontSize: 14,
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular" 
+    fontFamily: "Dubai-Medium" 
 
   },
   statusContainer: {
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 11,
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular" 
+    fontFamily: "Dubai-Medium" 
 
   },
   ticketCountText: {

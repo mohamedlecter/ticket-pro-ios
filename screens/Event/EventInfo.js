@@ -41,10 +41,9 @@ const EventInfo = ({ navigation, route }) => {
                 justifyContent: "center",
               }}
             >
-              <Image
-                source={require("../../assets/location.png")}
-                style={{ width: 30, height: 30 }}
-              />
+            <SvgUri
+              source={require("../../assets/location.svg")}
+            />
               <Text style={styles.eventLocation}>{event.eventLocation}</Text>
             </View>
             <Text style={styles.eventTitle}>{event.eventName}</Text>
@@ -85,7 +84,7 @@ const EventInfo = ({ navigation, route }) => {
           />
           <Text style={styles.terms}>الشروط والأحكام</Text>
         </View>
-        <View style={styles.btnContainer}>
+        <View style={styles.floatingButtonContainer}>
           <Button
             title="احجز تذكرتك"
             loading={false}
@@ -107,7 +106,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: -100,
+    marginTop: -115,
   },
   container: {
     marginHorizontal: 20,
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "400",
     lineHeight: 20,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   eventDescContainer: {
     marginTop: 35,
@@ -169,7 +168,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontSize: 18,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   eventDescText: {
     color: "#0C001B",
@@ -177,7 +176,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     justifyContent: "center",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   eventDesc: {
     alignItems: "flex-end",
@@ -186,11 +185,13 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontSize: 18,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
-  btnContainer: {
-    alignItems: "center",
-    marginTop: 20,
+  floatingButtonContainer: {
+    position: 'absolute',
+    zIndex: 1, // Make sure it's above the content
+    top:400,
+    right:-50
   },
   Button: {
     backgroundColor: "#19E578",
@@ -201,14 +202,20 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   ButtonContainer: {
     marginHorizontal: 50,
     height: 50,
-    width: 350,
-    marginVertical: 10,
+    width: 330,
+    marginVertical: 16,
   },
+  image:{
+    width:335,
+    height:220,
+    borderRadius:16,
+    resizeMode:"stretch"
+  }
 });
 
 export default EventInfo;

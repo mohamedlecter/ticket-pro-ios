@@ -32,6 +32,11 @@ const initialState = {
         name: "سيف العتيبي",
         phone: "9665541*****",
       },
+      selectedDate: {
+        date: "26",
+        day: "الخميس",
+        month: "اكتوبر",
+      },
     },
     {
       id: "1",
@@ -55,6 +60,11 @@ const initialState = {
         name: "ماجد العتيبي",
         phone: "9665541*****",
       },
+      selectedDate: {
+        date: "26",
+        day: "الخميس",
+        month: "اكتوبر",
+      },
     },
     {
       id: "2",
@@ -76,6 +86,11 @@ const initialState = {
         _id: "64aead5d13ddd4d59773fabb",
         name: "ماجد الجدعاني",
         phone: "9665531*****",
+      },
+      selectedDate: {
+        date: "26",
+        day: "الخميس",
+        month: "اكتوبر",
       },
     },
   ],

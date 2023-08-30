@@ -16,7 +16,7 @@
     ],
     "ios": {
       "infoPlist": {
-        "NFCReaderUsageDescription": "Your description for NFC usage"
+        "UIBackgroundModes": ["nfc-reader"]
       },
       "supportsTablet": true,
       "bundleIdentifier": "ticketpro.com"

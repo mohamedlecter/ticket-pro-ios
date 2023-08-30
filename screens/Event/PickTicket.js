@@ -16,6 +16,7 @@ const PickTicket = ({ navigation, route }) => {
   const { event } = route.params; // Extract the eventId from the route params
   const [ticketQuantity, setTicketQuantity] = useState(0);
   const [vipTicketQuantity, setVipTicketQuantity] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
 
   const ticketPrice = event.eventMinPrice;
   const vipTicketPrice = event.eventVipTicketPrice;
@@ -41,7 +42,7 @@ const PickTicket = ({ navigation, route }) => {
 
   const handleNavigate = () => {
     let availableTickets = ticketQuantity + vipTicketQuantity; // Replace this with the actual number of available tickets
-    navigation.navigate("PickFriends", { availableTickets, totalCost, event });
+    navigation.navigate("PickFriends", { availableTickets, totalCost, event, selectedDate });
   };
 
   return (
@@ -73,7 +74,7 @@ const PickTicket = ({ navigation, route }) => {
             </View>
           </View>
         </View>
-        <Calender />
+        <Calender event={event} onDateSelect={setSelectedDate}/>
         <View style={styles.pickTcketContainer}>
           <View style={{ alignItems: "flex-end" }}>
             <Text style={styles.pickTcketHeading}>اختر تذكرتك</Text>
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
     color: "#020004",
     fontSize: 18,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   container: {
     marginTop: 16,
@@ -197,7 +198,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 20,
+    marginTop: 20,
+    marginBottom:10
   },
   step: {
     flexDirection: "row",
@@ -210,30 +212,30 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 12,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   unfinishedStep: {
     marginHorizontal: 10,
     color: "#B5B1BA",
     fontWeight: "400",
     fontSize: 12,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   pickTcketHeading: {
     justifyContent: "flex-end",
     fontSize: 20,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   pickTcketContainer: {
-    marginTop: 25,
+    marginTop: 16,
     marginHorizontal: 20,
   },
   ticketOptions: {
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
     padding: 20,
-    marginTop: 20,
+    marginTop: 16,
   },
   ticketPriceContainer: {
     flexDirection: "row",
@@ -251,7 +253,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "400",
     color: "#020004",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   btnContainer: {
     justifyContent: "center",
@@ -262,20 +264,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 45,
+    marginTop: 30,
     borderTopWidth: 1,
     borderTopColor: "#A39EA9",
   },
   totalText: {
     fontSize: 18,
     fontWeight: "400",
-    marginTop: 10,
+    marginTop: 16,
     color: "#020004",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   btnContainer: {
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 16,
   },
   Button: {
     backgroundColor: "#19E578",
@@ -286,13 +288,13 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   ButtonContainer: {
     marginHorizontal: 50,
     height: 50,
     width: 350,
-    marginVertical: 10,
+    marginBottom: 16,
   },
 });
 

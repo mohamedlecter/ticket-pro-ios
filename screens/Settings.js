@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   loginButtonContainer: {
     marginHorizontal: 50,

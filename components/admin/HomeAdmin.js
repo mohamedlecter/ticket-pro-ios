@@ -46,7 +46,7 @@ export default function HomeAdmin() {
       <View style={styles.justifyContent}>
         <View style={styles.contentContainer}>
           <View style={styles.numJustiftyContent}>
-            <Text style={[styles.text, { fontFamily: "IBMPlexSans-Regular"  } ]}>عدد الطلبات المقبولة</Text>
+            <Text style={[styles.text, { fontFamily: "Dubai-Medium"  } ]}>عدد الطلبات المقبولة</Text>
             <Text style={styles.numtext}>150</Text>
           </View>
         </View>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#000000",
     fontSize: 16,
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "Dubai-Medium"
   },
   container: {
     justifyContent: "center",
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 11,
     fontWeight: '400',
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "Dubai-Medium"
 
   },
   boldText: {
@@ -194,14 +194,14 @@ const styles = StyleSheet.create({
     alignItems:"flex-end",
     justifyContent:"flex-end",
     marginHorizontal:16,
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "Dubai-Medium"
 
   },
   numtext: {
     color: "#3D0087",
     fontSize: 37,
     fontWeight: '700',
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "Dubai-Medium"
 
   },
   justifyContent: {

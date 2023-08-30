@@ -13,12 +13,12 @@ import { useDispatch, useSelector} from "react-redux";
 import { bookTicket } from "../../redux/actions/tickets";
 
 export default function CompletedPurchase({ navigation, route }) {
-  const { availableTickets, event } = route.params;
+  const { availableTickets, event, selectedDate} = route.params;
   const user = useSelector((state) => state.userReducer.user);
   const dispatch = useDispatch();
 
   const handlePurchaseCompletion = () => {
-    dispatch(bookTicket(event, availableTickets, user));
+    dispatch(bookTicket(event, availableTickets, user, selectedDate));
     navigation.navigate("TicketTab"); // change to homepage
 
   };
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "400",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   heading: {
     color: "#F6F5F6",
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   ButtonContainer: {
     marginHorizontal: 50,

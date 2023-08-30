@@ -11,7 +11,7 @@ export default function Ticket({ navigation }) {
   const { isAdmin } = useSelector((state) => state.userReducer);
   const { bookedTickets } = useSelector((state) => state.ticketsReducer); // Update the selector to match your store structure
 
-  // console.log(bookedTickets);
+  console.log(bookedTickets);
 
   return (
     <ScrollView style={styles.container}>
@@ -66,8 +66,10 @@ export default function Ticket({ navigation }) {
                       {ticket.eventName}
                     </Text>
                   </View>
-                  <View style={[styles.headingTextContainer, { marginTop: 8 }]}>
-                    <Text style={{ fontSize: 14 }}>{ticket.eventDate}</Text>
+                  <View style={[styles.headingTextContainer, { marginTop: 8, flexDirection:"row", justifyContent:"flex-end" }]}>
+                    <Text style={{ fontSize: 14 }}>{ticket.selectedDate.month}</Text>
+                  <Text style={{ fontSize: 14 }}> {ticket.selectedDate.date}</Text>
+
                   </View>
                   <View
                     style={{
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   ticketCard: {
     backgroundColor: "#FFFFFF",

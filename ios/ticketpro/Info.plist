@@ -90,6 +90,11 @@
 		<string>IBMPlexSans-SemiBoldItalic.ttf</string>
 		<string>IBMPlexSans-Thin.ttf</string>
 		<string>IBMPlexSans-ThinItalic.ttf</string>
+		<string>Dubai-Bold.ttf</string>
+		<string>Dubai-Light.ttf</string>
+		<string>Dubai-Medium.ttf</string>
+		<string>Dubai-Regular.ttf</string>
+		<string>VINCHAND.ttf</string>
 	</array>
 </dict>
 </plist>

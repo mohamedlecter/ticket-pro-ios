@@ -50,21 +50,21 @@ export default function Home({ navigation }) {
                   navigation.navigate("EventInfo", { eventId: data[1].id })
                 }
               >
-                <Image source={data[1].eventImage} />
+                <Image source={data[1].eventImage} style={styles.image} />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("EventInfo", { eventId: data[2].id })
                 }
               >
-                <Image source={data[2].eventImage} />
+                <Image source={data[2].eventImage}  style={styles.image} />
               </TouchableOpacity>
             </View>
             <View
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                marginVertical: 10,
+                marginVertical: 5,
               }}
             >
               <TouchableOpacity
@@ -72,7 +72,7 @@ export default function Home({ navigation }) {
                   navigation.navigate("EventInfo", { eventId: data[3].id })
                 }
               >
-                <Image source={data[3].eventImage} />
+                <Image source={data[3].eventImage} style={styles.centerImage}  />
               </TouchableOpacity>
             </View>
             <View style={styles.imagesContainer}>
@@ -83,14 +83,14 @@ export default function Home({ navigation }) {
                   })
                 }
               >
-                <Image source={data[4].eventImage} />
+                <Image source={data[4].eventImage} style={styles.image} />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("EventInfo", { eventId: data[5].id })
                 }
               >
-                <Image source={data[5].eventImage} />
+                <Image source={data[5].eventImage} style={styles.image} />
               </TouchableOpacity>
             </View>
           </View>
@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
     height: 250,
   },
   headerContainer: {
-    marginTop: 10,
-    marginHorizontal: 10,
+    marginTop: 8,
+    marginBottom:8,
   },
 
   carouselContainer: {
@@ -121,13 +121,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     textAlign: "right",
-    marginTop: 16,
     width: 350,
   },
   imagesContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginHorizontal: 10,
     width: 350,
   },
+  image:{
+    width: 165,
+    height:165,
+    borderRadius:16
+  },
+  centerImage:{
+    width:340,
+    height:165,
+    borderRadius:16
+  }
 });

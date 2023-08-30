@@ -101,9 +101,10 @@ const SignupPage = ({ navigation }) => {
           onPress={handleSignup}
         />
         <View style={styles.authMessageContainer}>
-  {msg && <Text style={styles.authMessage}>{msg}</Text>}
-</View>
-        <TouchableOpacity
+        {msg && <Text style={styles.authMessage}>{msg}</Text>}
+      </View>
+      
+      <TouchableOpacity
           style={styles.signIn}
           onPress={() => navigation.navigate("Login")}
         >
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     textAlign: "right",
     marginVertical: 10,
-    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
   },
   input: {
@@ -151,8 +152,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderWidth:0.5,
     borderColor:"#DAD8DD",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     color: "#180036",
     fontWeight: "400",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
   },
   checkbox: {
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: "center",
-    marginTop: 20,
+    marginVertical: 16,
   },
   signupButton: {
     backgroundColor: "#19E578",
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
   },
   signupButtonContainer: {
@@ -196,18 +196,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    marginVertical: 10,
+    // marginVertical: 10,
   },
   signInText: {
     color: "#3D0087",
-    fontSize: 18,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontSize: 15,
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
   },
   haveAccountText: {
     color: "#413F44",
-    fontSize: 18,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontSize: 15,
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
   },
 });

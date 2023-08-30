@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     marginBottom: 40,
     fontSize: 22,
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "Dubai-Medium"
   },
   image: {
     marginBottom: 40,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     marginBottom: 20,
     fontSize: 16,
-    fontFamily: "IBMPlexSans-Regular"
+    fontFamily: "Dubai-Medium"
   },
   btnContainer: {
     alignItems: "center",

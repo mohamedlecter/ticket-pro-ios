@@ -17,17 +17,16 @@ export default function CompletePurchase({ navigation, route }) {
   const [cardNumber, setCardNumber] = useState("");
   const [ccv, setCCV] = useState("");
   const [expiration, setExpiration] = useState("");
+  const { totalCost, availableTickets, event, selectedDate} = route.params;
 
   const handleGoBack = () => {
     navigation.navigate("PickTicket");
   };
 
   const handlePurchase = () => {
-    navigation.navigate("CompletedPurchase", { availableTickets, event });
+    navigation.navigate("CompletedPurchase", { availableTickets, event, selectedDate });
   };
-  const { totalCost } = route.params;
-  const { availableTickets } = route.params;
-  const { event } = route.params;
+
 
   const taxRate = 0.15;
   // Calculate tax and total
@@ -174,7 +173,7 @@ const styles = StyleSheet.create({
     color: "#020004",
     fontSize: 18,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   container: {
     marginTop: 16,
@@ -195,7 +194,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 12,
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   billContainer: {
     marginTop: 20,
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     marginBottom: 16,
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   billItem: {
     justifyContent: "space-between",
@@ -227,7 +226,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#0C001B",
     textAlign: "center",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   total: {
     flexDirection: "row",
@@ -239,7 +238,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     color: "#0C001B",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   paymentContainer: {
     marginTop: 32,
@@ -249,7 +248,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#0C001B",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   checkboxContainer: {
     flexDirection: "row",
@@ -262,7 +261,7 @@ const styles = StyleSheet.create({
     color: "#180036",
     fontWeight: "400",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   checkbox: {
     marginLeft: 8,
@@ -281,7 +280,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   ButtonContainer: {
     marginHorizontal: 50,
@@ -310,7 +309,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#180036",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   expiryContainer: {
     justifyContent: "space-between",
@@ -342,6 +341,6 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#180036",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
 });

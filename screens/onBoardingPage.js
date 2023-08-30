@@ -18,7 +18,7 @@ const OnBoarding = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={["#170036", "#7D21CF"]}
+      colors={["#7D21CF", "#170036"]}
       style={styles.container}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
@@ -84,7 +84,9 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     letterSpacing: 1,
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular", // Add this line to set the font family
+    // fontFamily: "Dubai-Medium", // Add this line to set the font family
+    fontFamily: "IBMPlexSans-Medium",
+
   },
   signupButton: {
     backgroundColor: "#19E578",
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "IBMPlexSans-Medium",
   },
   signupButtonContainer: {
     width: 350,
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
   loginText: {
     color: "#19E578",
     fontSize: 15,
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "IBMPlexSans-Medium",
   },
   signUp: {
     justifyContent: "center",
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
   adminLoginText: {
     color: "#F6F5F6",
     fontSize: 15,
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "IBMPlexSans-Medium",
   },
 });
 

@@ -43,7 +43,13 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     alignItems: "center",
     marginTop: 20,
+    borderRadius:16
   },
+  image:{
+    width:340,
+    height:220,
+    borderRadius:16
+  }
 });
 
 export default ImageCarousel;

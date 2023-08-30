@@ -1,237 +1,101 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, {useState} from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-export default function Calender() {
+const Calender = ({event, onDateSelect}) => {
+  const days = [
+    { day: "الاحد", date: "29", month: "اكتوبر" },
+    { day: "السبت", date: "28", month: "اكتوبر" },
+    { day: "الجمعة", date: "27", month: "اكتوبر" },
+    { day: "الخميس", date: "26", month: "اكتوبر" },
+    { day: "الاربعاء", date: "25", month: "اكتوبر"},
+  ];
+  const [selectedDateIndex, setSelectedDateIndex] = useState(4);
+  const [selected, setSelected] = useState(true)
+
+  const handleOnpress = (index)=>{
+    setSelectedDateIndex(index);
+    setSelected(true)
+    const selectedDate = days[index];
+    onDateSelect(selectedDate || days[4]);  }
+
   return (
     <View style={styles.calenderContainer}>
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <Text style={styles.eventLocation}>بوليفارد الرياض</Text>
+      <View style={styles.locationContainer}>
+        <Text style={styles.eventLocation}>{event.eventName}</Text>
       </View>
 
       <View style={styles.calender}>
-        <View style={styles.calenderBtn2}>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-            }}
-          >
-            اكتوبر
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 16,
-              fontWeight: "700",
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            29
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-            }}
-          >
-            الاحد
-          </Text>
-        </View>
+        {days.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[
+              styles.calenderBtn,
+              {
+                backgroundColor: selected && selectedDateIndex === index ? "#64339F" : "#FFFFFF",
+                marginRight: index === days.length - 1 ? 0 : 5,
+              },
+              
+            ]}
+            onPress={()=>handleOnpress(index)}
 
-        <View style={styles.calenderBtn2}>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-            }}
           >
-            اكتوبر
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 16,
-              fontWeight: "700",
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            28
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-            }}
-          >
-            السبت
-          </Text>
-        </View>
-
-        <View style={styles.calenderBtn2}>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-            }}
-          >
-            اكتوبر
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 16,
-              fontWeight: "700",
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            27
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-            }}
-          >
-            الجمعة
-          </Text>
-        </View>
-
-        <View style={styles.calenderBtn2}>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            اكتوبر
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 16,
-              fontWeight: "700",
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            26
-          </Text>
-          <Text
-            style={{
-              color: "#0C001B",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            الخميس
-          </Text>
-        </View>
-
-        <View
-          style={[
-            styles.calenderBtn2,
-            { backgroundColor: "#64339F", marginRight: 0 },
-          ]}
-        >
-          <Text
-            style={{
-              color: "#FFFFFF",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            اكتوبر
-          </Text>
-          <Text
-            style={{
-              color: "#FFFFFF",
-              fontSize: 16,
-              fontWeight: "700",
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            25
-          </Text>
-          <Text
-            style={{
-              color: "#FFFFFF",
-              fontSize: 12,
-              fontWeight: "400",
-              marginVertical: 5,
-              fontFamily: "IBMPlexSans-Regular", // Adjust font family name
-            }}
-          >
-            الاربعاء
-          </Text>
-        </View>
+            <Text style={[styles.monthText, { color: selected && selectedDateIndex === index ? "#FFFFFF" : "#0C001B" }]}>{item.month}</Text>
+            <Text style={[styles.calenderText, { color: selected && selectedDateIndex === index ? "#FFFFFF" :"#0C001B" }]}>{item.date}</Text>
+            <Text style={[styles.dayText, { color: selected && selectedDateIndex === index ? "#FFFFFF" :"#0C001B" }]}>{item.day}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  calenderContainer: {
+  },
+  locationContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 16,
+  },
   eventLocation: {
-    marginVertical: 16,
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 20,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium",
   },
   calender: {
     flexDirection: "row",
     justifyContent: "flex-end",
     alignItems: "flex-start",
-    // paddingHorizontal: 20,
-    // backgroundColor:"red",
     width: 350,
   },
   calenderBtn: {
-    // marginHorizontal: 2,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#64339F",
     borderRadius: 10,
     width: 60,
-    height: 70,
+    height: 80,
     paddingHorizontal: 4,
     paddingVertical: 8,
-  },
-  calenderBtn2: {
-    marginLeft: 5,
-    marginRight: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FFFFFF",
-    borderColor: "#3D0087",
+    borderColor: "white",
     borderWidth: 1,
-    borderRadius: 10,
-    width: 60,
-    height: 70,
-    paddingHorizontal: 4,
-    paddingVertical: 8,
   },
   calenderText: {
-    color: "#fff",
-    fontWeight: "400",
     fontSize: 16,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontWeight: "700",
+    fontFamily: "Dubai-Medium",
+  },
+  monthText: {
+    fontSize: 12,
+    fontWeight: "400",
+    fontFamily: "Dubai-Medium",
+  },
+  dayText: {
+    fontSize: 12,
+    fontWeight: "400",
+    fontFamily: "Dubai-Medium",
   },
 });
+
+export default Calender;
+

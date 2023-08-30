@@ -35,9 +35,7 @@ const FriendItem = ({ name, number, isSelected, onPress }) => (
 );
 
 export default function PickFriends({ navigation, route }) {
-  const { availableTickets } = route.params;
-  const { totalCost } = route.params;
-  const { event } = route.params;
+  const { totalCost, availableTickets, event, selectedDate} = route.params;
 
   const [selectedFriends, setSelectedFriends] = useState([]);
 
@@ -123,7 +121,7 @@ export default function PickFriends({ navigation, route }) {
                 style={{
                   fontWeight: "700",
                   fontSize: 18,
-                  fontFamily: "IBMPlexSans-Regular",
+                  fontFamily: "Dubai-Medium",
                 }}
               >
                 {selectedFriends.length}/{availableTickets} تذاكر
@@ -132,14 +130,14 @@ export default function PickFriends({ navigation, route }) {
                 style={{
                   fontWeight: "700",
                   fontSize: 18,
-                  fontFamily: "IBMPlexSans-Regular",
+                  fontFamily: "Dubai-Medium",
                 }}
               >
                 عدد التذاكر المتبقية:
               </Text>
             </View>
             <View style={{ alignItems: "flex-end" }}>
-              <Text style={{ fontFamily: "IBMPlexSans-Regular" }}>
+              <Text style={{ fontFamily: "Dubai-Medium" }}>
                 التذاكر المتبقية ستضاف في صفحة تذاكري
               </Text>
             </View>
@@ -158,6 +156,7 @@ export default function PickFriends({ navigation, route }) {
                   availableTickets,
                   totalCost,
                   event,
+                  selectedDate
                 });
               }}
             />
@@ -213,7 +212,7 @@ const styles = StyleSheet.create({
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 20,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   pickFriendContainer: {
     marginTop: 20,
@@ -224,7 +223,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "400",
     marginBottom: 8,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   pickFriendHeading2: {
     justifyContent: "center",
@@ -232,7 +231,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "400",
     marginVertical: 10,
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   selectedFriend: {
     flexDirection: "row",
@@ -268,13 +267,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     color: "#000000",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   friendNumber: {
     fontSize: 11,
     fontWeight: "400",
     color: "#413F44",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   addFriendContainer: {
     justifyContent: "center",
@@ -290,7 +289,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 14,
     color: "#0C001B",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   addFriendBtnContainer: {
     height: 35,
@@ -316,7 +315,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
   },
   ButtonContainer: {
     marginHorizontal: 50,

@@ -77,7 +77,7 @@ const AdminLogin = ({ navigation }) => {
             fontWeight: "400",
             textAlign: "right",
             marginVertical: 10,
-            fontFamily: "IBMPlexSans-Regular",
+            fontFamily: "Dubai-Medium",
           }}
         >
           التسجيل كمنظم{" "}
@@ -164,7 +164,7 @@ const AdminLogin = ({ navigation }) => {
             style={{
               color: "#180036",
               fontSize: 14,
-              fontFamily: "IBMPlexSans-Regular",
+              fontFamily: "Dubai-Medium",
             }}
           >
             *رفع الطلب لا يعني القبول
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "right",
     paddingRight: 10,
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   signUp: {
     justifyContent: "center",
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   checkbox: {
     margin: 8,
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "left", // Align the placeholder text to the right
     marginRight: -60,
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   dateText: {
     color: "#180036",
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "right",
     marginRight: -40,
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   btnContainer: {
     alignItems: "center",
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Regular",
+    fontFamily: "Dubai-Medium",
   },
   ButtonContainer: {
     marginHorizontal: 50,

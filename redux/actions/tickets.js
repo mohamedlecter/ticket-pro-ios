@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import API from "../../api";
 // redux/actions/tickets.js
-export const bookTicket = (event, availableTickets, user) => async (dispatch) => {
+export const bookTicket = (event, availableTickets, user, selectedDate) => async (dispatch) => {
   try {
     const currentTime = new Date(); // Get the current time
     const updatedEvent = {
@@ -19,7 +19,7 @@ export const bookTicket = (event, availableTickets, user) => async (dispatch) =>
       eventStatus: "غير مفعلة",
       user: user,
       bookingTime: currentTime, // Add the booking time
-
+      selectedDate: selectedDate
     };
 
     dispatch({
