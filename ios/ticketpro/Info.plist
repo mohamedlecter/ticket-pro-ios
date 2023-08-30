@@ -48,6 +48,28 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IBMPlexSans-Bold.ttf</string>
+		<string>IBMPlexSans-BoldItalic.ttf</string>
+		<string>IBMPlexSans-ExtraLight.ttf</string>
+		<string>IBMPlexSans-ExtraLightItalic.ttf</string>
+		<string>IBMPlexSans-Italic.ttf</string>
+		<string>IBMPlexSans-Light.ttf</string>
+		<string>IBMPlexSans-LightItalic.ttf</string>
+		<string>IBMPlexSans-Medium.ttf</string>
+		<string>IBMPlexSans-MediumItalic.ttf</string>
+		<string>IBMPlexSans-Regular.ttf</string>
+		<string>IBMPlexSans-SemiBold.ttf</string>
+		<string>IBMPlexSans-SemiBoldItalic.ttf</string>
+		<string>IBMPlexSans-Thin.ttf</string>
+		<string>IBMPlexSans-ThinItalic.ttf</string>
+		<string>Dubai-Bold.ttf</string>
+		<string>Dubai-Light.ttf</string>
+		<string>Dubai-Medium.ttf</string>
+		<string>Dubai-Regular.ttf</string>
+		<string>VINCHAND.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -74,27 +96,5 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>IBMPlexSans-Bold.ttf</string>
-		<string>IBMPlexSans-BoldItalic.ttf</string>
-		<string>IBMPlexSans-ExtraLight.ttf</string>
-		<string>IBMPlexSans-ExtraLightItalic.ttf</string>
-		<string>IBMPlexSans-Italic.ttf</string>
-		<string>IBMPlexSans-Light.ttf</string>
-		<string>IBMPlexSans-LightItalic.ttf</string>
-		<string>IBMPlexSans-Medium.ttf</string>
-		<string>IBMPlexSans-MediumItalic.ttf</string>
-		<string>IBMPlexSans-Regular.ttf</string>
-		<string>IBMPlexSans-SemiBold.ttf</string>
-		<string>IBMPlexSans-SemiBoldItalic.ttf</string>
-		<string>IBMPlexSans-Thin.ttf</string>
-		<string>IBMPlexSans-ThinItalic.ttf</string>
-		<string>Dubai-Bold.ttf</string>
-		<string>Dubai-Light.ttf</string>
-		<string>Dubai-Medium.ttf</string>
-		<string>Dubai-Regular.ttf</string>
-		<string>VINCHAND.ttf</string>
-	</array>
 </dict>
 </plist>

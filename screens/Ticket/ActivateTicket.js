@@ -9,8 +9,8 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@rneui/themed";
 import SvgUri from "react-native-svg-uri";
-
-import React, { useState } from "react";
+import NfcManager, { NfcTech } from "react-native-nfc-manager";
+import React, { useState, useEffect } from "react";
 // Get the window width
 const windowWidth = Dimensions.get("window").width;
 
@@ -18,12 +18,44 @@ const windowWidth = Dimensions.get("window").width;
 const imgWidth = windowWidth - 39; // Assuming a margin of 20 on each side of the ticketCard
 
 const ActivateTicket = ({ navigation, route }) => {
-  const [showNFCWidget, setShowNFCWidget] = useState(false);
-  const handleButtonPress = () => {
-    navigation.navigate("Read Nfc");
-  };
+  const { ticket } = route.params;
 
-  const { ticket} = route.params;
+  useEffect(() => {
+    // Initialize NFC manager
+    NfcManager.start();
+
+    return () => {
+      // Clean up when the component unmounts
+      NfcManager.stop();
+    };
+  }, []);
+
+  const handleNFCButtonPress = async () => {
+    try {
+
+      // You can create the NFC payload using the ticket data
+      const nfcPayload = JSON.stringify(ticket);
+
+      // Wait for NFC to become available
+      await NfcManager.requestTechnology(NfcTech.Ndef);
+
+      // Write NFC payload to a tag
+      const tag = await NfcManager.getNdefMessage();
+      await NfcManager.writeNdefMessage([NfcTech.Ndef], [tag], [
+        { type: NfcTech.Ndef, data: nfcPayload },
+      ]);
+
+      // Display success message or perform further actions
+      console.log("NFC Scanned:", ticket);
+
+    } catch (ex) {
+      console.warn(ex);
+      // Handle errors
+    } finally {
+      setShowNFCWidget(false);
+      await NfcManager.cancelTechnologyRequest();
+    }
+  };
 
 
   return (
@@ -49,7 +81,7 @@ const ActivateTicket = ({ navigation, route }) => {
         </View>
         <View style={styles.ticketCard}>
           <View style={styles.img}>
-            <Image source={require("../../assets/TicketPhoto.png")} />
+            <Image source={ticket.eventImage} style={{width:345, height:345, borderTopRightRadius:16, borderTopLeftRadius:16, resizeMode:"stretch"}} />
           </View>
           <View style={styles.ticketCardTextContainer}>
             <View>
@@ -57,7 +89,12 @@ const ActivateTicket = ({ navigation, route }) => {
             </View>
             <View style={{ alignItems: "flex-end", marginLeft: 100 }}>
               <Text style={[styles.text, { fontWeight: "700" }]}>{ticket.eventName}</Text>
-              <Text style={(styles.text, { marginVertical: 8 })}>{ticket.eventDate}</Text>
+              <View style={{flexDirection:"row"}}>
+              <Text style={(styles.text, { marginVertical: 8 })}> {ticket.selectedDate.month}</Text>
+              <Text style={(styles.text, { marginVertical: 8 })}>{ticket.selectedDate.date}</Text>
+
+              </View>
+
               <Text style={[styles.text, { fontWeight: "700" }]}>
                 {ticket.ticketCount} تذاكر
               </Text>
@@ -71,7 +108,7 @@ const ActivateTicket = ({ navigation, route }) => {
               buttonStyle={styles.Button}
               titleStyle={styles.ButtonText}
               containerStyle={styles.ButtonContainer}
-              onPress={handleButtonPress}
+              onPress={handleNFCButtonPress}
             />
           </View>
         </View>
@@ -104,6 +141,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: "space-between",
     alignItems: "center",
+    borderTopRightRadius:16, 
+    borderTopLeftRadius:16,
   },
   ticketCardTextContainer: {
     flexDirection: "row",
@@ -114,7 +153,8 @@ const styles = StyleSheet.create({
   btnContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 24,
+    marginVertical: 16,
+
   },
   text: {
     fontSize: 14,

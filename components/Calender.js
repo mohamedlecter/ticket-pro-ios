@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 const Calender = ({event, onDateSelect}) => {
@@ -9,8 +9,14 @@ const Calender = ({event, onDateSelect}) => {
     { day: "الخميس", date: "26", month: "اكتوبر" },
     { day: "الاربعاء", date: "25", month: "اكتوبر"},
   ];
-  const [selectedDateIndex, setSelectedDateIndex] = useState(4);
+  const [selectedDateIndex, setSelectedDateIndex] = useState(2);
   const [selected, setSelected] = useState(true)
+
+
+  useEffect(() => {
+    const defaultSelectedDate = days[selectedDateIndex];
+    onDateSelect(defaultSelectedDate || days[4]);
+  }, [])
 
   const handleOnpress = (index)=>{
     setSelectedDateIndex(index);

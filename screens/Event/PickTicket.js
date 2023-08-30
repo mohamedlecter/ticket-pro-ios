@@ -45,10 +45,12 @@ const PickTicket = ({ navigation, route }) => {
     navigation.navigate("PickFriends", { availableTickets, totalCost, event, selectedDate });
   };
 
+  console.log("from pick ticket",event);
+
   return (
     <ScrollView>
       <View style={styles.topNav}>
-        <TouchableOpacity onPress={() => navigation.navigate("EventInfo")}>
+        <TouchableOpacity onPress={() => navigation.navigate("EventInfo", {eventId: event.id})}>
           <SvgUri
             source={require("../../assets/arrow-left.svg")}
             fill="black" // Use fill to set the SVG color

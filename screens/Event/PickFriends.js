@@ -55,7 +55,7 @@ export default function PickFriends({ navigation, route }) {
   return (
     <ScrollView>
       <View style={styles.topNav}>
-        <TouchableOpacity onPress={() => navigation.navigate("PickTicket")}>
+        <TouchableOpacity onPress={() => navigation.navigate("PickTicket", {event})}>
           <SvgUri
             source={require("../../assets/arrow-left.svg")}
             fill="black" // Use fill to set the SVG color
@@ -82,7 +82,7 @@ export default function PickFriends({ navigation, route }) {
         </View>
 
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <Text style={styles.eventLocation}>بوليفارد الرياض</Text>
+          <Text style={styles.eventLocation}>{event.eventName}</Text>
         </View>
 
         <View style={styles.pickFriendContainer}>
@@ -208,14 +208,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   eventLocation: {
-    marginTop: 10,
+    marginTop: 5,
     color: "#0C001B",
     fontWeight: "400",
     fontSize: 20,
     fontFamily: "Dubai-Medium", // Adjust font family name
   },
   pickFriendContainer: {
-    marginTop: 20,
+    marginTop: 10,
     marginHorizontal: 20,
   },
   pickFriendHeading: {
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     fontSize: 14,
     fontWeight: "400",
-    marginVertical: 10,
+    marginBottom: 10,
     fontFamily: "Dubai-Medium", // Adjust font family name
   },
   selectedFriend: {
@@ -241,14 +241,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     backgroundColor: "#D8CCE7",
-    marginVertical: 5,
+    marginVertical: 2,
   },
   friend: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
     padding: 10,
-    marginVertical: 5,
   },
   remainingTickets: {
     marginTop: 30,

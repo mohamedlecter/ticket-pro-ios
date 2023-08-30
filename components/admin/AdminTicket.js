@@ -27,7 +27,7 @@ const AdminTicket = ({ navigation }) => {
           marginTop: 16,
         }}
       >
-         {bookedTickets.map((ticket, index) => (
+         {bookedTickets.filter((ticket) => ticket.eventStatus === "مفعلة").map((ticket, index) => (
             <ListItem
               key={index}
               time={ticket.bookingTime ? formatDistanceToNow(new Date(ticket.bookingTime), { addSuffix: true, locale: ar }): ''}
@@ -37,15 +37,6 @@ const AdminTicket = ({ navigation }) => {
               navigation={navigation}
             />
           ))}
-        {/* {data.map((item, index) => (
-          <ListItem
-            key={index}
-            time={item.time}
-            name={item.name}
-            phoneNumber={item.phoneNumber}
-            navigation={navigation}
-          />
-        ))} */}
       </View>
     </View>
   );

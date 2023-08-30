@@ -5,25 +5,67 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  Alert
 } from "react-native";
-
-import React, { useState } from "react";
-import { MaterialIcons } from "@expo/vector-icons";
-import AdminNfc from "./AdminNfc";
+import React, { useState, useEffect } from "react";
+import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import SvgUri from 'react-native-svg-uri';
 import { useSelector } from "react-redux";
 import { formatDistanceToNow } from 'date-fns';
 import { ar } from 'date-fns/locale';
+import { Button } from "@rneui/themed";
+import { activateTicket } from "../../redux/actions/tickets";
 
 const windowWidth = Dimensions.get("window").width;
 
 export default function HomeAdmin() {
-  const [showNFCWidget, setShowNFCWidget] = useState(true);
   const bookedTickets = useSelector((state) => state.ticketsReducer.bookedTickets);
   console.log(bookedTickets);
-  const handleButtonPress = () => {
-    setShowNFCWidget(true);
+
+  const [isNFCReady, setNFCReady] = useState(false);
+  const [scannedTicket, setScannedTicket] = useState(null);
+
+  useEffect(() => {
+    NfcManager.start();
+
+    return () => {
+      NfcManager.stop();
+    };
+  }, []);
+
+  const handleNFCButtonPress = async () => {
+    try {
+      setNFCReady(true);
+
+      await NfcManager.requestTechnology(NfcTech.Ndef);
+
+      const tag = await NfcManager.getNdefMessage();
+      const nfcPayload = tag[0].payload;
+      const ticketData = JSON.parse(nfcPayload);
+
+      setScannedTicket(ticketData);
+
+      // Update the booked ticket's status to "active"
+      // You need to implement this part based on your data structure
+      // For example: dispatch an action to update the ticket status in Redux
+
+      console.log("Ticket Scanned:", ticketData);
+
+      if (scannedTicket) {
+        dispatch(activateTicket(scannedTicket.id));
+      }
+
+
+      // Display success message or perform further actions
+    } catch (ex) {
+      console.warn(ex);
+    } finally {
+      setNFCReady(false);
+      setScannedTicket(null);
+      await NfcManager.cancelTechnologyRequest();
+    }
   };
+
   return (
     <View>
       <View style={styles.topNavBackground}>
@@ -61,7 +103,7 @@ export default function HomeAdmin() {
         <View style={styles.ticketsContainer}>
           <View style={{marginTop:10}}>
 
-        {bookedTickets.map((ticket, index) => (
+        {bookedTickets.filter((ticket) => ticket.eventStatus === "مفعلة").map((ticket, index) => (
             <TicketCard
               key={index}
               time={ticket.bookingTime ? formatDistanceToNow(new Date(ticket.bookingTime), { addSuffix: true, locale: ar }): ''}
@@ -78,10 +120,21 @@ export default function HomeAdmin() {
               style={{ transform: [{ rotate: '-90deg' }] }}
               />
           </View>
+    
         </View>
+        <View style={styles.btnContainer}>
+            <Button
+              title="Activate Ticket"
+              loading={false}
+              loadingProps={{ size: "small", color: "#3D0087" }}
+              buttonStyle={styles.Button}
+              titleStyle={styles.ButtonText}
+              containerStyle={styles.ButtonContainer}
+              onPress={handleNFCButtonPress}
+            />
+          </View>
       </View>
 
-      {showNFCWidget && <AdminNfc onClose={() => setShowNFCWidget(false)} />}
     </View>
   );
 }
@@ -212,5 +265,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end",
     margin: 16,
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  Button: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding: 12,
+  },
+  ButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+    fontFamily: "Dubai-Medium", // Adjust font family name
+  },
+  ButtonContainer: {
+    marginHorizontal: 50,
+    height: 50,
+    width: 350,
+    marginVertical: 10,
   },
 });

@@ -6,10 +6,11 @@ import {
   UPDATE_TICKET,
   GET_TICKETS,
   SET_EVENT,
+  ACTIVATE_TICKET
 } from "../constants/tickets";
 import axios from "axios";
 import API from "../../api";
-// redux/actions/tickets.js
+
 export const bookTicket = (event, availableTickets, user, selectedDate) => async (dispatch) => {
   try {
     const currentTime = new Date(); // Get the current time
@@ -31,74 +32,17 @@ export const bookTicket = (event, availableTickets, user, selectedDate) => async
   }
 };
 
-// export const getTickets = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`${API}/tickets`);
-//     dispatch({
-//       type: GET_TICKETS,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const activateTicket = (ticketId) => (dispatch, getState) => {
+  try {
+    const updatedTickets = getState().ticketsReducer.bookedTickets.map((ticket) =>
+      ticket.id === ticketId ? { ...ticket, status: "activated" } : ticket
+    );
 
-// export const getTicket = (id) => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`${API}/tickets/${id}`);
-//     dispatch({
-//       type: GET_TICKET,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const deleteTicket = (id) => async (dispatch) => {
-//   try {
-//     await axios.delete(`${API}/tickets/${id}`);
-//     dispatch({
-//       type: DELETE_TICKET,
-//       payload: id,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const updateTicket = (id, ticket) => async (dispatch) => {
-//   try {
-//     const res = await axios.put(`${API}/tickets/${id}`, ticket);
-//     dispatch({
-//       type: UPDATE_TICKET,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const createTicket = (ticket) => async (dispatch) => {
-//   try {
-//     const res = await axios.post(`${API}/tickets`, ticket);
-//     dispatch({
-//       type: CREATE_TICKET,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const getTicketStats = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`${API}/tickets/stats`);
-//     dispatch({
-//       type: GET_TICKET_STATS,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+    dispatch({
+      type: ACTIVATE_TICKET,
+      payload: updatedTickets,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

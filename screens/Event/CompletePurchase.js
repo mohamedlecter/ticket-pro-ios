@@ -20,7 +20,7 @@ export default function CompletePurchase({ navigation, route }) {
   const { totalCost, availableTickets, event, selectedDate} = route.params;
 
   const handleGoBack = () => {
-    navigation.navigate("PickTicket");
+    navigation.navigate("PickTicket",  {availableTickets, event, selectedDate });
   };
 
   const handlePurchase = () => {
@@ -66,11 +66,11 @@ export default function CompletePurchase({ navigation, route }) {
             <View style={styles.billItem}>
               <Text style={styles.billText}>{totalCost} ريال</Text>
               <Text style={styles.billText}>{availableTickets}X</Text>
-              <Text style={styles.billText}>بوليفارد الرياض</Text>
+              <Text style={styles.billText}>{event.eventName}</Text>
             </View>
             <View style={[styles.billItem, { marginBottom: 24 }]}>
               <Text style={styles.billText}>41.25 ريال</Text>
-              <Text style={[styles.billText, { marginRight: 20 }]}>15%</Text>
+              <Text style={[styles.billText, { marginRight: 40 }]}>15%</Text>
               <Text style={styles.billText}>الضريبة</Text>
             </View>
           </View>
@@ -134,10 +134,10 @@ export default function CompletePurchase({ navigation, route }) {
               loadingProps={{ size: "small", color: "#3D0087" }}
               buttonStyle={[
                 styles.Button,
-                { backgroundColor: "#020004", padding: 15 },
+                { backgroundColor: "#020004", padding: 16 },
               ]}
               titleStyle={styles.ButtonText}
-              containerStyle={styles.ButtonContainer}
+              containerStyle={[styles.ButtonContainer, { marginBottom:10 }]}
               onPress={handleGoBack}
               icon={<Image source={require("../../assets/applePay.png")} />}
             />
@@ -147,7 +147,7 @@ export default function CompletePurchase({ navigation, route }) {
               loadingProps={{ size: "small", color: "#3D0087" }}
               buttonStyle={styles.Button}
               titleStyle={styles.ButtonText}
-              containerStyle={[styles.ButtonContainer, { marginVertical: 0 }]}
+              containerStyle={[styles.ButtonContainer,{ marginBottom:10 } ]}
               onPress={handlePurchase}
             />
           </View>
@@ -164,10 +164,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 35,
     paddingRight: 10,
-  },
-  icon: {
-    // width: 30,
-    // height: 30,
   },
   bookText: {
     color: "#020004",
@@ -197,13 +193,9 @@ const styles = StyleSheet.create({
     fontFamily: "Dubai-Medium",
   },
   billContainer: {
-    marginTop: 20,
+    marginTop: 10,
   },
   billHeader: {
-    // borderColor: "#827E87",
-    // borderWidth: 1,
-    // borderStyle: "dashed",
-    // margin:-2,
     borderStyle: "dashed",
     borderWidth: 0.7,
     borderColor: "#827E87",
@@ -219,7 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 10,
+    marginBottom:8
   },
   billText: {
     fontSize: 14,
@@ -241,7 +233,7 @@ const styles = StyleSheet.create({
     fontFamily: "Dubai-Medium",
   },
   paymentContainer: {
-    marginTop: 32,
+    marginTop: 16,
   },
   paymentText: {
     fontSize: 20,
@@ -269,7 +261,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     alignItems: "center",
-    marginTop: 6,
+    marginTop: 16,
   },
   Button: {
     backgroundColor: "#19E578",
@@ -283,13 +275,12 @@ const styles = StyleSheet.create({
     fontFamily: "Dubai-Medium",
   },
   ButtonContainer: {
-    marginHorizontal: 50,
     height: 50,
-    width: 350,
-    marginVertical: 10,
+    width: 335,
   },
   cardContainer: {
     marginTop: 16,
+
   },
   card: {
     flexDirection: "row",
@@ -315,7 +306,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    marginVertical: 16,
+    marginTop:8
   },
   ccv: {
     flexDirection: "row",
@@ -326,15 +317,17 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 15,
     backgroundColor: "#FFFFFF",
-    width: "50%",
+    marginRight:8,
+    width: 162,
   },
   cardExpiryDate: {
+    alignItems: "flex-end",
     borderColor: "#DAD8DD",
     borderWidth: 1,
     borderRadius: 16,
     padding: 15,
     backgroundColor: "#FFFFFF",
-    width: "48%",
+    width: 162,
   },
   ccvText: {
     fontSize: 14,

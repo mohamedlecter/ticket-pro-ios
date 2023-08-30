@@ -11,7 +11,7 @@ export default function Ticket({ navigation }) {
   const { isAdmin } = useSelector((state) => state.userReducer);
   const { bookedTickets } = useSelector((state) => state.ticketsReducer); // Update the selector to match your store structure
 
-  console.log(bookedTickets);
+  console.log(isAdmin);
 
   return (
     <ScrollView style={styles.container}>
@@ -95,7 +95,7 @@ export default function Ticket({ navigation }) {
               </View>
               <Image
                 source={ticket.eventImage}
-                style={{ width: 120, height: 120 }}
+                style={{ width: 120, height: 120, borderTopRightRadius:16, borderBottomRightRadius:16 }}
               />
             </TouchableOpacity>
           ))}

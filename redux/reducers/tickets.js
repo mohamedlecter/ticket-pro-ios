@@ -6,6 +6,7 @@ import {
   GET_TICKETS,
   UPDATE_TICKET,
   SET_EVENT,
+  ACTIVATE_TICKET
 } from "../constants/tickets";
 
 const initialState = {
@@ -18,7 +19,7 @@ const initialState = {
       eventLocation: "الرياض",
       eventDescription:
         "كل شي فيه فوق الخيال، بشاشاته العملاقة المضيئة اللي تستحضر روح التايم السكوير، وزواياه اللي مليانة فعاليات مثل النافورة الراقصة والحدائق، وعدد كبير من المتاجر والمطاعم العالمية والمحلية. بالإضافة لمسارح موعودين فيها بعروض من الخيال، وأكبر دار سينما في المملكة العربية السعودية. بيستقبل البوليڤارد زوّاره كل يوم بحُب وحماس، عشان يعيشون تجربة ماراح تتكرر، وخيال أكبر من الخيالات اللي تصوروها.",
-      eventImage: require("../../assets/event6.png"),
+      eventImage: require("../../assets/event2.jpg"),
       eventMinPrice: "55.00",
       eventVipTicketPrice: "300.00",
       eventWeeekDaysWorkingHours:
@@ -46,7 +47,7 @@ const initialState = {
       eventLocation: "الرياض",
       eventDescription:
         "كل شي فيه فوق الخيال، بشاشاته العملاقة المضيئة اللي تستحضر روح التايم السكوير، وزواياه اللي مليانة فعاليات مثل النافورة الراقصة والحدائق، وعدد كبير من المتاجر والمطاعم العالمية والمحلية. بالإضافة لمسارح موعودين فيها بعروض من الخيال، وأكبر دار سينما في المملكة العربية السعودية. بيستقبل البوليڤارد زوّاره كل يوم بحُب وحماس، عشان يعيشون تجربة ماراح تتكرر، وخيال أكبر من الخيالات اللي تصوروها.",
-      eventImage: require("../../assets/event5.png"),
+      eventImage: require("../../assets/event4.jpg"),
       eventMinPrice: "55.00",
       eventVipTicketPrice: "300.00",
       eventWeeekDaysWorkingHours:
@@ -74,7 +75,7 @@ const initialState = {
       eventLocation: "الرياض",
       eventDescription:
         "كل شي فيه فوق الخيال، بشاشاته العملاقة المضيئة اللي تستحضر روح التايم السكوير، وزواياه اللي مليانة فعاليات مثل النافورة الراقصة والحدائق، وعدد كبير من المتاجر والمطاعم العالمية والمحلية. بالإضافة لمسارح موعودين فيها بعروض من الخيال، وأكبر دار سينما في المملكة العربية السعودية. بيستقبل البوليڤارد زوّاره كل يوم بحُب وحماس، عشان يعيشون تجربة ماراح تتكرر، وخيال أكبر من الخيالات اللي تصوروها.",
-      eventImage: require("../../assets/event2.png"),
+      eventImage: require("../../assets/event3.jpg"),
       eventMinPrice: "55.00",
       eventWeeekDaysWorkingHours:
         "من 6م-1ص ايام الاسبوع (تغلق البوابات الساعه ١2ص) ",
@@ -104,6 +105,11 @@ export default function ticketsReducer(state = initialState, action) {
         ...state,
         bookedTickets: [action.payload, ...state.bookedTickets],
       };
+      case ACTIVATE_TICKET:
+        return {
+          ...state,
+          bookedTickets: action.payload,
+        };
     default:
       return state;
   }
