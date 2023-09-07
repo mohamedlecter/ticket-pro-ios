@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "ticket-pro",
+    "name": "TicktPro",
     "slug": "ticket-pro",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "userInterfaceStyle": "light",
+    "jsEngine": "hermes",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -15,11 +16,14 @@
       "**/*"
     ],
     "ios": {
+      "jsEngine": "hermes",
       "infoPlist": {
-        "UIBackgroundModes": ["nfc-reader"]
+        "UIBackgroundModes": [
+          "nfc-reader"
+        ]
       },
       "supportsTablet": true,
-      "bundleIdentifier": "ticketpro.com"
+      "bundleIdentifier": "com.ticketpro.ticketpro"
     },
     "android": {
       "permissions": [
@@ -33,6 +37,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9ff56627-9124-4751-aa60-69ce0e26cfbd"
+      }
     }
   }
 }
