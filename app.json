@@ -4,13 +4,13 @@
     "slug": "ticket-pro",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/app-icon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "jsEngine": "hermes",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#25292e"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -30,7 +30,7 @@
         "android.permission.NFC"
       ],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.mohamedabubaker.ticketpro"
