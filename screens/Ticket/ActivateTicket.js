@@ -37,8 +37,9 @@ const ActivateTicket = ({ navigation, route }) => {
       const nfcPayload = JSON.stringify(ticket);
 
       // Wait for NFC to become available
-      await NfcManager.requestTechnology(NfcTech.Ndef);
-
+      await NfcManager.requestTechnology(NfcTech.Ndef,{
+        alertMessage: 'قرب جهازك من جهاز المنظم',
+      });
       // Write NFC payload to a tag
       const tag = await NfcManager.getNdefMessage();
       await NfcManager.writeNdefMessage([NfcTech.Ndef], [tag], [

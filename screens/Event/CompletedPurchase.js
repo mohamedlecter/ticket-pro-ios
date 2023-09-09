@@ -51,22 +51,18 @@ export default function CompletedPurchase({ navigation, route }) {
             تقدر تشوف التفاصيل في صفحة تذاكري أو تشارك {"\n"}حماسك في تويتر.
           </Text>
         </View>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 25,
-          }}
-        >
+        <View style={styles.btnContainer}>
+          
           <Button
             title="تذاكري"
             loading={false}
             loadingProps={{ size: "small", color: "#3D0087" }}
-            buttonStyle={styles.Button}
-            titleStyle={styles.ButtonText}
-            containerStyle={styles.ButtonContainer}
+            buttonStyle={styles.signupButton}
+            titleStyle={styles.signupButtonText}
+            containerStyle={styles.signupButtonContainer}
             onPress={handlePurchaseCompletion}
           />
+
         </View>
       </View>
     </LinearGradient>
@@ -105,7 +101,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     alignItems: "center",
-    marginTop: 6,
+    marginTop: 16,
   },
   Button: {
     backgroundColor: "#19E578",
@@ -123,5 +119,20 @@ const styles = StyleSheet.create({
     height: 50,
     width: 350,
     marginVertical: 10,
+  },
+  signupButton: {
+    backgroundColor: "#19E578",
+    borderRadius: 16,
+    padding: 12,
+  },
+  signupButtonText: {
+    fontWeight: "700",
+    fontSize: 16,
+    color: "#3D0087",
+    fontFamily: "Dubai-Medium",
+  },
+  signupButtonContainer: {
+    width: 350,
+    marginTop: 16,
   },
 });

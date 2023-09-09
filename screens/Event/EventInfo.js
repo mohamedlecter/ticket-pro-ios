@@ -84,7 +84,7 @@ const EventInfo = ({ navigation, route }) => {
           />
           <Text style={styles.terms}>الشروط والأحكام</Text>
         </View>
-        <View style={styles.floatingButtonContainer}>
+        <View style={styles.btnContainer}>
           <Button
             title="احجز تذكرتك"
             loading={false}
@@ -186,6 +186,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "400",
     fontFamily: "Dubai-Medium", // Adjust font family name
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginTop: 20,
   },
   floatingButtonContainer: {
     position: 'absolute',

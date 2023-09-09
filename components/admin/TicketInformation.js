@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: "700",
     textAlign: "right",
-    fontFamily: "IBMPlexSans-Bold" 
+    fontFamily: "Dubai-Medium" 
 
   },
   phoneNumberContainer: {

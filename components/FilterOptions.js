@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   headingText: {
     fontSize: 16,
-    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
     fontWeight:"400"
 
   },

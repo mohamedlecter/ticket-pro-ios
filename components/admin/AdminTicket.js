@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "400",
-    fontFamily: "IBMPlexSans-Bold" 
+    fontFamily: "Dubai-Medium" 
 
   },
 });

@@ -37,7 +37,9 @@ export default function HomeAdmin() {
     try {
       setNFCReady(true);
 
-      await NfcManager.requestTechnology(NfcTech.Ndef);
+      await NfcManager.requestTechnology(NfcTech.Ndef,{
+        alertMessage: 'قرب جهازك من جهاز الزائر',
+      });
 
       const tag = await NfcManager.getNdefMessage();
       const nfcPayload = tag[0].payload;
@@ -95,7 +97,7 @@ export default function HomeAdmin() {
       </View>
 
       <View style={styles.heading}>
-          <Text tyle={[styles.text, { fontFamily: "IBMPlexSans-Bold"  } ]}>التذاكر المفعلة</Text>
+          <Text tyle={[styles.text, { fontFamily: "Dubai-Medium"  } ]}>التذاكر المفعلة</Text>
         </View>
       <View style={styles.container}>
 
@@ -124,7 +126,7 @@ export default function HomeAdmin() {
         </View>
         <View style={styles.btnContainer}>
             <Button
-              title="Activate Ticket"
+              title="فعل تذكرة"
               loading={false}
               loadingProps={{ size: "small", color: "#3D0087" }}
               buttonStyle={styles.Button}
@@ -229,7 +231,7 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontWeight: '700',
-    fontFamily: "IBMPlexSans-Bold"
+    fontFamily: "Dubai-Medium"
 
   },
   arrowContainer: {

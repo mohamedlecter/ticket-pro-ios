@@ -32,6 +32,7 @@ const OnBoarding = ({ navigation }) => {
         <Text style={styles.text}> لكل فعاليات الترفيه الأولى</Text>
         <Text style={styles.text}>من نوعها</Text>
       </View>
+      <View style={{marginTop:30, alignItems:"center"}}>
 
       <Button
         title="حساب جديد"
@@ -43,17 +44,16 @@ const OnBoarding = ({ navigation }) => {
         onPress={handleSignupPress}
       />
 
-      <TouchableOpacity style={styles.signUp} onPress={handleLoginPress}>
-        <Text style={[styles.loginText]}> سجل دخولك</Text>
+      <TouchableOpacity style={styles.loginContainer} onPress={handleLoginPress}>
+        <Text style={styles.loginText}> سجل دخولك</Text>
         <Text style={[styles.loginText, { color: "#F6F5F6" }]}>عندك حساب؟</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={{ marginBottom: -50 }}
-        onPress={handleAdminLoginPress}
-      >
+      <TouchableOpacity style={styles.adminLoginContainer} onPress={handleAdminLoginPress}>
         <Text style={styles.adminLoginText}>سجل دخولك كمنظم</Text>
       </TouchableOpacity>
+      </View>
+
     </LinearGradient>
   );
 };
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
+
+},
   imgContainer: {
     marginTop: 70,
   },
@@ -73,20 +74,16 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginTop: 50,
-    width: 343,
-    height: 150,
-    alignItems: "stretch",
+    alignItems: "flex-end",
+    marginLeft:60
   },
   text: {
     color: "#FFFFFF",
     fontSize: 29,
     fontWeight: "bold",
-    lineHeight: 40,
     letterSpacing: 1,
-    textAlign: "right",
-    // fontFamily: "Dubai-Medium", // Add this line to set the font family
-    fontFamily: "IBMPlexSans-Medium",
-
+    textAlign: "center",
+    fontFamily: "Dubai-Medium",
   },
   signupButton: {
     backgroundColor: "#19E578",
@@ -97,28 +94,28 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#3D0087",
-    fontFamily: "IBMPlexSans-Medium",
+    fontFamily: "Dubai-Medium",
   },
   signupButtonContainer: {
     width: 350,
-    marginBottom: 16,
+    marginTop: 16,
   },
-
+  loginContainer: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
   loginText: {
     color: "#19E578",
     fontSize: 15,
-    fontFamily: "IBMPlexSans-Medium",
+    fontFamily: "Dubai-Medium",
   },
-  signUp: {
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    marginBottom: 16,
+  adminLoginContainer: {
+    marginTop: 20,
   },
   adminLoginText: {
     color: "#F6F5F6",
     fontSize: 15,
-    fontFamily: "IBMPlexSans-Medium",
+    fontFamily: "Dubai-Medium",
   },
 });
 

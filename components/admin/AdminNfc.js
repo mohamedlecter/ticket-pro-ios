@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
     color: "#212022",
-    fontFamily: "IBMPlexSans-Bold", // Adjust font family name
+    fontFamily: "Dubai-Medium", // Adjust font family name
 
   },
   ButtonContainer: {
