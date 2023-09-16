@@ -10,8 +10,7 @@ import { ScrollView } from "react-native";
 export default function Ticket({ navigation }) {
   const { isAdmin } = useSelector((state) => state.userReducer);
   const { bookedTickets } = useSelector((state) => state.ticketsReducer); // Update the selector to match your store structure
-
-  console.log(isAdmin);
+  console.log(bookedTickets.bookingId);
 
   return (
     <ScrollView style={styles.container}>
@@ -46,7 +45,8 @@ export default function Ticket({ navigation }) {
                 navigation.navigate("Activate Ticket", {
                   ticket,
                 })
-              }>
+              }
+            >
               <View>
                 <SvgUri
                   source={require("../../assets/arrow-left.svg")}
@@ -66,10 +66,23 @@ export default function Ticket({ navigation }) {
                       {ticket.eventName}
                     </Text>
                   </View>
-                  <View style={[styles.headingTextContainer, { marginTop: 8, flexDirection:"row", justifyContent:"flex-end" }]}>
-                    <Text style={{ fontSize: 14 }}>{ticket.selectedDate.month}</Text>
-                  <Text style={{ fontSize: 14 }}> {ticket.selectedDate.date}</Text>
-
+                  <View
+                    style={[
+                      styles.headingTextContainer,
+                      {
+                        marginTop: 8,
+                        flexDirection: "row",
+                        justifyContent: "flex-end",
+                      },
+                    ]}
+                  >
+                    <Text style={{ fontSize: 14 }}>
+                      {ticket.selectedDate.month}
+                    </Text>
+                    <Text style={{ fontSize: 14 }}>
+                      {" "}
+                      {ticket.selectedDate.date}
+                    </Text>
                   </View>
                   <View
                     style={{
@@ -95,7 +108,12 @@ export default function Ticket({ navigation }) {
               </View>
               <Image
                 source={ticket.eventImage}
-                style={{ width: 120, height: 120, borderTopRightRadius:16, borderBottomRightRadius:16 }}
+                style={{
+                  width: 120,
+                  height: 120,
+                  borderTopRightRadius: 16,
+                  borderBottomRightRadius: 16,
+                }}
               />
             </TouchableOpacity>
           ))}

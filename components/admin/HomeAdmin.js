@@ -5,139 +5,149 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  Alert
+  Alert,
+  ScrollView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
-import SvgUri from 'react-native-svg-uri';
+import SvgUri from "react-native-svg-uri";
 import { useSelector } from "react-redux";
-import { formatDistanceToNow } from 'date-fns';
-import { ar } from 'date-fns/locale';
+import { formatDistanceToNow } from "date-fns";
+import { ar } from "date-fns/locale";
 import { Button } from "@rneui/themed";
 import { activateTicket } from "../../redux/actions/tickets";
+import { useDispatch } from "react-redux";
+import NfcProxy from "../../nfcProxy";
 
 const windowWidth = Dimensions.get("window").width;
 
 export default function HomeAdmin() {
-  const bookedTickets = useSelector((state) => state.ticketsReducer.bookedTickets);
-  console.log(bookedTickets);
+  const bookedTickets = useSelector(
+    (state) => state.ticketsReducer.bookedTickets
+  );
+  // console.log(bookedTickets);
 
-  const [isNFCReady, setNFCReady] = useState(false);
+  const dispatch = useDispatch();
+
   const [scannedTicket, setScannedTicket] = useState(null);
 
   useEffect(() => {
-    NfcManager.start();
-
-    return () => {
-      NfcManager.stop();
-    };
+    // Initialize NFC manager
+    NfcProxy.init();
   }, []);
 
   const handleNFCButtonPress = async () => {
     try {
-      setNFCReady(true);
+      const tag = await NfcProxy.readTag(); // Use your NfcProxy to read the NFC tag
 
-      await NfcManager.requestTechnology(NfcTech.Ndef,{
-        alertMessage: 'قرب جهازك من جهاز الزائر',
-      });
+      if (tag) {
+        // Access the NFC data from the tag as needed
+        const ndefMessage = tag.ndefMessage; // Access the NDEF message
 
-      const tag = await NfcManager.getNdefMessage();
-      const nfcPayload = tag[0].payload;
-      const ticketData = JSON.parse(nfcPayload);
+        if (ndefMessage && ndefMessage.length > 0) {
+          const payload = ndefMessage[0].payload;
+          const textData = payload
+            .map((byte) => String.fromCharCode(byte))
+            .join("");
+          // Split the textData into individual pieces of information
+          const ticketData = textData.split("\n").reduce((acc, line) => {
+            const [key, value] = line.split(": ");
+            acc[key] = value;
+            return acc;
+          }, {});
 
-      setScannedTicket(ticketData);
+          setScannedTicket(ticketData);
 
-      // Update the booked ticket's status to "active"
-      // You need to implement this part based on your data structure
-      // For example: dispatch an action to update the ticket status in Redux
+          // Dispatch the activateTicket action to update the ticket status
+          if (ticketData) {
+            dispatch(activateTicket(ticketData["Ticket ID"]));
+          }
 
-      console.log("Ticket Scanned:", ticketData);
-
-      if (scannedTicket) {
-        dispatch(activateTicket(scannedTicket.id));
+          // Display success message or perform further actions
+        }
       }
-
-
-      // Display success message or perform further actions
     } catch (ex) {
       console.warn(ex);
-    } finally {
-      setNFCReady(false);
-      setScannedTicket(null);
-      await NfcManager.cancelTechnologyRequest();
     }
   };
-
   return (
-    <View>
+    <ScrollView>
       <View style={styles.topNavBackground}>
         <View style={styles.topNav}>
-        <SvgUri
-          source={require("../../assets/notification.svg")}
-          fill="black" // Use fill to set the SVG color
-        />
-        <Image
-          source={require("../../assets/logo.png")}
-          style={{ width: 80, height: 80 }}
-          resizeMode="contain"
-        />
-        <SvgUri
-        source={require("../../assets/search-normal.svg")}
-        fill="black" // Use fill to set the SVG color
-      />
+          <SvgUri
+            source={require("../../assets/notification.svg")}
+            fill="black" // Use fill to set the SVG color
+          />
+          <Image
+            source={require("../../assets/logo.png")}
+            style={{ width: 80, height: 80 }}
+            resizeMode="contain"
+          />
+          <SvgUri
+            source={require("../../assets/search-normal.svg")}
+            fill="black" // Use fill to set the SVG color
+          />
         </View>
       </View>
       <View style={styles.justifyContent}>
         <View style={styles.contentContainer}>
           <View style={styles.numJustiftyContent}>
-            <Text style={[styles.text, { fontFamily: "Dubai-Medium"  } ]}>عدد الطلبات المقبولة</Text>
+            <Text style={[styles.text, { fontFamily: "Dubai-Medium" }]}>
+              عدد الطلبات المقبولة
+            </Text>
             <Text style={styles.numtext}>150</Text>
           </View>
         </View>
       </View>
 
       <View style={styles.heading}>
-          <Text tyle={[styles.text, { fontFamily: "Dubai-Medium"  } ]}>التذاكر المفعلة</Text>
-        </View>
+        <Text tyle={[styles.text, { fontFamily: "Dubai-Medium" }]}>
+          التذاكر المفعلة
+        </Text>
+      </View>
       <View style={styles.container}>
-
-
         <View style={styles.ticketsContainer}>
-          <View style={{marginTop:10}}>
-
-        {bookedTickets.filter((ticket) => ticket.eventStatus === "مفعلة").map((ticket, index) => (
-            <TicketCard
-              key={index}
-              time={ticket.bookingTime ? formatDistanceToNow(new Date(ticket.bookingTime), { addSuffix: true, locale: ar }): ''}
-              name={ticket.user.name}
-              phoneNumber={ticket.user.phone}
-            />
-          ))}
+          <View style={{ marginTop: 10 }}>
+            {bookedTickets
+              .filter((ticket) => ticket.eventStatus === "مفعلة")
+              .map((ticket, index) => (
+                <TicketCard
+                  key={index}
+                  time={
+                    ticket.bookingTime
+                      ? formatDistanceToNow(new Date(ticket.bookingTime), {
+                          addSuffix: true,
+                          locale: ar,
+                        })
+                      : ""
+                  }
+                  name={ticket.user.name}
+                  phoneNumber={ticket.user.phone}
+                />
+              ))}
           </View>
 
           <View style={styles.arrowContainer}>
-          <SvgUri
+            <SvgUri
               source={require("../../assets/arrow-left.svg")}
               fill="black" // Use fill to set the SVG color
-              style={{ transform: [{ rotate: '-90deg' }] }}
-              />
-          </View>
-    
-        </View>
-        <View style={styles.btnContainer}>
-            <Button
-              title="فعل تذكرة"
-              loading={false}
-              loadingProps={{ size: "small", color: "#3D0087" }}
-              buttonStyle={styles.Button}
-              titleStyle={styles.ButtonText}
-              containerStyle={styles.ButtonContainer}
-              onPress={handleNFCButtonPress}
+              style={{ transform: [{ rotate: "-90deg" }] }}
             />
           </View>
+        </View>
+        <View style={styles.btnContainer}>
+          <Button
+            title="فعل تذكرة"
+            loading={false}
+            loadingProps={{ size: "small", color: "#3D0087" }}
+            buttonStyle={styles.Button}
+            titleStyle={styles.ButtonText}
+            containerStyle={styles.ButtonContainer}
+            onPress={handleNFCButtonPress}
+          />
+        </View>
       </View>
-
-    </View>
+    </ScrollView>
   );
 }
 
@@ -174,8 +184,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 30,
-    paddingRight:10,
-    paddingLeft:5,
+    paddingRight: 10,
+    paddingLeft: 5,
     marginHorizontal: 5,
   },
   contentContainer: {
@@ -189,7 +199,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#000000",
     fontSize: 16,
-    fontFamily: "Dubai-Medium"
+    fontFamily: "Dubai-Medium",
   },
   container: {
     justifyContent: "center",
@@ -225,14 +235,12 @@ const styles = StyleSheet.create({
   smallText: {
     color: "#000000",
     fontSize: 11,
-    fontWeight: '400',
-    fontFamily: "Dubai-Medium"
-
+    fontWeight: "400",
+    fontFamily: "Dubai-Medium",
   },
   boldText: {
-    fontWeight: '700',
-    fontFamily: "Dubai-Medium"
-
+    fontWeight: "700",
+    fontFamily: "Dubai-Medium",
   },
   arrowContainer: {
     justifyContent: "center",
@@ -246,18 +254,16 @@ const styles = StyleSheet.create({
   heading: {
     marginTop: 24,
     marginBottom: 16,
-    alignItems:"flex-end",
-    justifyContent:"flex-end",
-    marginHorizontal:16,
-    fontFamily: "Dubai-Medium"
-
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
+    marginHorizontal: 16,
+    fontFamily: "Dubai-Medium",
   },
   numtext: {
     color: "#3D0087",
     fontSize: 37,
-    fontWeight: '700',
-    fontFamily: "Dubai-Medium"
-
+    fontWeight: "700",
+    fontFamily: "Dubai-Medium",
   },
   justifyContent: {
     justifyContent: "center",

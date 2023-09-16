@@ -11,56 +11,51 @@ import { Button } from "@rneui/themed";
 import SvgUri from "react-native-svg-uri";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import React, { useState, useEffect } from "react";
+import NfcProxy from "../../nfcProxy";
+import { ScrollView } from "react-native";
+import { TextEncoder, TextDecoder } from "react-native";
 // Get the window width
 const windowWidth = Dimensions.get("window").width;
 
-// Calculate the width for the image inside img view
-const imgWidth = windowWidth - 39; // Assuming a margin of 20 on each side of the ticketCard
-
 const ActivateTicket = ({ navigation, route }) => {
   const { ticket } = route.params;
+  const ticketText = `Event Name: ${ticket.eventName}\nEvent Date: ${ticket.selectedDate.month} ${ticket.selectedDate.date}\nTicket Count: ${ticket.ticketCount} \nTicket Status: ${ticket.eventStatus} \nTicket ID: ${ticket.id} `;
+  console.log("ticket", ticketText);
 
   useEffect(() => {
     // Initialize NFC manager
-    NfcManager.start();
-
-    return () => {
-      // Clean up when the component unmounts
-      NfcManager.stop();
-    };
+    NfcProxy.init();
   }, []);
 
   const handleNFCButtonPress = async () => {
     try {
-
-      // You can create the NFC payload using the ticket data
-      const nfcPayload = JSON.stringify(ticket);
-
-      // Wait for NFC to become available
-      await NfcManager.requestTechnology(NfcTech.Ndef,{
-        alertMessage: 'قرب جهازك من جهاز المنظم',
+      // Prepare the ticket data as a text record
+      const ticketText = `Event Name: ${ticket.eventName}\nEvent Date: ${ticket.selectedDate.month} ${ticket.selectedDate.date}\nTicket Count: ${ticket.ticketCount} \nTicket Status: ${ticket.eventStatus} \nTicket ID: ${ticket.id}`;
+      // Write the ticket data as a text record to the NFC tag
+      const result = await NfcProxy.writeNdef({
+        type: "TEXT", // Set the type to 'TEXT' for a text record
+        value: ticketText,
       });
-      // Write NFC payload to a tag
-      const tag = await NfcManager.getNdefMessage();
-      await NfcManager.writeNdefMessage([NfcTech.Ndef], [tag], [
-        { type: NfcTech.Ndef, data: nfcPayload },
-      ]);
 
-      // Display success message or perform further actions
-      console.log("NFC Scanned:", ticket);
-
+      if (result) {
+        // NFC write was successful
+        console.log("NFC Write Successful");
+        // You can add further logic here after a successful NFC write.
+      } else {
+        // NFC write failed
+        console.log("NFC Write Failed");
+        // You can handle the failure scenario here.
+      }
     } catch (ex) {
-      console.warn(ex);
-      // Handle errors
-    } finally {
-      setShowNFCWidget(false);
-      await NfcManager.cancelTechnologyRequest();
+      console.warn("ex", ex);
+      // Handle the NFC error here.
+      console.warn(ex); // Log the exception
+      handleException(ex); // Use the handleException function to handle the exception
     }
   };
 
-
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.topNav}>
         <SvgUri
           source={require("../../assets/notification.svg")}
@@ -82,18 +77,33 @@ const ActivateTicket = ({ navigation, route }) => {
         </View>
         <View style={styles.ticketCard}>
           <View style={styles.img}>
-            <Image source={ticket.eventImage} style={{width:345, height:345, borderTopRightRadius:16, borderTopLeftRadius:16, resizeMode:"stretch"}} />
+            <Image
+              source={ticket.eventImage}
+              style={{
+                width: 345,
+                height: 345,
+                borderTopRightRadius: 16,
+                borderTopLeftRadius: 16,
+                resizeMode: "stretch",
+              }}
+            />
           </View>
           <View style={styles.ticketCardTextContainer}>
             <View>
               <Image source={require("../../assets/groupProfile.png")} />
             </View>
             <View style={{ alignItems: "flex-end", marginLeft: 100 }}>
-              <Text style={[styles.text, { fontWeight: "700" }]}>{ticket.eventName}</Text>
-              <View style={{flexDirection:"row"}}>
-              <Text style={(styles.text, { marginVertical: 8 })}> {ticket.selectedDate.month}</Text>
-              <Text style={(styles.text, { marginVertical: 8 })}>{ticket.selectedDate.date}</Text>
-
+              <Text style={[styles.text, { fontWeight: "700" }]}>
+                {ticket.eventName}
+              </Text>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={(styles.text, { marginVertical: 8 })}>
+                  {" "}
+                  {ticket.selectedDate.month}
+                </Text>
+                <Text style={(styles.text, { marginVertical: 8 })}>
+                  {ticket.selectedDate.date}
+                </Text>
               </View>
 
               <Text style={[styles.text, { fontWeight: "700" }]}>
@@ -114,7 +124,7 @@ const ActivateTicket = ({ navigation, route }) => {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -142,8 +152,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: "space-between",
     alignItems: "center",
-    borderTopRightRadius:16, 
-    borderTopLeftRadius:16,
+    borderTopRightRadius: 16,
+    borderTopLeftRadius: 16,
   },
   ticketCardTextContainer: {
     flexDirection: "row",
@@ -155,7 +165,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 16,
-
   },
   text: {
     fontSize: 14,

@@ -15,8 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAdmin } from "../redux/actions/users";
 import { MaterialIcons } from "@expo/vector-icons";
 import SvgUri from "react-native-svg-uri";
-import DatePicker from '@react-native-community/datetimepicker';
-
+import DatePicker from "@react-native-community/datetimepicker";
 
 const AdminLogin = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
@@ -100,18 +99,17 @@ const AdminLogin = ({ navigation }) => {
           ]}
         >
           <DatePicker
-             style={styles.DatePicker}
-             value={birthdate ? new Date(birthdate) : new Date()} // Use null or a valid date as the initial value
-             mode="date"
-             display="default"
-             minimumDate={new Date('1930-01-01')}
-             maximumDate={new Date()}
-             onChange={(event, selectedDate) => {
-               const currentDate = selectedDate || birthdate;
-               setBirthdate(currentDate.toISOString().split('T')[0]);
-              }}
+            style={styles.DatePicker}
+            value={birthdate ? new Date(birthdate) : new Date()} // Use null or a valid date as the initial value
+            mode="date"
+            display="default"
+            minimumDate={new Date("1930-01-01")}
+            maximumDate={new Date()}
+            onChange={(event, selectedDate) => {
+              const currentDate = selectedDate || birthdate;
+              setBirthdate(currentDate.toISOString().split("T")[0]);
+            }}
           />
-          {console.log(birthdate)}
         </View>
         <View
           style={{

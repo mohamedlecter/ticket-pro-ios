@@ -9,18 +9,17 @@ import {
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Button } from "@rneui/base";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bookTicket } from "../../redux/actions/tickets";
 
 export default function CompletedPurchase({ navigation, route }) {
-  const { availableTickets, event, selectedDate} = route.params;
+  const { availableTickets, event, selectedDate } = route.params;
   const user = useSelector((state) => state.userReducer.user);
   const dispatch = useDispatch();
 
   const handlePurchaseCompletion = () => {
     dispatch(bookTicket(event, availableTickets, user, selectedDate));
     navigation.navigate("TicketTab"); // change to homepage
-
   };
 
   return (
@@ -52,7 +51,6 @@ export default function CompletedPurchase({ navigation, route }) {
           </Text>
         </View>
         <View style={styles.btnContainer}>
-          
           <Button
             title="تذاكري"
             loading={false}
@@ -62,7 +60,6 @@ export default function CompletedPurchase({ navigation, route }) {
             containerStyle={styles.signupButtonContainer}
             onPress={handlePurchaseCompletion}
           />
-
         </View>
       </View>
     </LinearGradient>

@@ -42,15 +42,22 @@ const PickTicket = ({ navigation, route }) => {
 
   const handleNavigate = () => {
     let availableTickets = ticketQuantity + vipTicketQuantity; // Replace this with the actual number of available tickets
-    navigation.navigate("PickFriends", { availableTickets, totalCost, event, selectedDate });
+    navigation.navigate("PickFriends", {
+      availableTickets,
+      totalCost,
+      event,
+      selectedDate,
+    });
   };
-
-  console.log("from pick ticket",event);
 
   return (
     <ScrollView>
       <View style={styles.topNav}>
-        <TouchableOpacity onPress={() => navigation.navigate("EventInfo", {eventId: event.id})}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("EventInfo", { eventId: event.id })
+          }
+        >
           <SvgUri
             source={require("../../assets/arrow-left.svg")}
             fill="black" // Use fill to set the SVG color
@@ -76,7 +83,7 @@ const PickTicket = ({ navigation, route }) => {
             </View>
           </View>
         </View>
-        <Calender event={event} onDateSelect={setSelectedDate}/>
+        <Calender event={event} onDateSelect={setSelectedDate} />
         <View style={styles.pickTcketContainer}>
           <View style={{ alignItems: "flex-end" }}>
             <Text style={styles.pickTcketHeading}>اختر تذكرتك</Text>
@@ -201,7 +208,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
-    marginBottom:10
+    marginBottom: 10,
   },
   step: {
     flexDirection: "row",

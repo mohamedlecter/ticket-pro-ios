@@ -6,7 +6,7 @@ import {
   GET_TICKETS,
   UPDATE_TICKET,
   SET_EVENT,
-  ACTIVATE_TICKET
+  ACTIVATE_TICKET,
 } from "../constants/tickets";
 
 const initialState = {
@@ -27,8 +27,8 @@ const initialState = {
       eventWeekendWorkingHours: "من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)",
       eventStatus: "غير مفعلة",
       ticketCount: "6",
-      bookingTime:"2023-08-10T10:15:30.000Z",
-      user:  {
+      bookingTime: "2023-08-10T10:15:30.000Z",
+      user: {
         _id: "64aead5d13ddd4d59773fabb",
         name: "سيف العتيبي",
         phone: "9665541*****",
@@ -55,8 +55,8 @@ const initialState = {
       eventWeekendWorkingHours: "من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)",
       eventStatus: "مفعلة",
       ticketCount: "6",
-      bookingTime:"2023-08-27T10:15:30.000Z",
-      user:  {
+      bookingTime: "2023-08-27T10:15:30.000Z",
+      user: {
         _id: "64aead5d13ddd4d59773fabb",
         name: "ماجد العتيبي",
         phone: "9665541*****",
@@ -82,8 +82,8 @@ const initialState = {
       eventWeekendWorkingHours: "من 6م-٢ص نهاية الاسبوع (تغلق البوابات ١ص)",
       eventStatus: "مفعلة",
       ticketCount: "6",
-      bookingTime:"2023-08-15T10:15:30.000Z",
-      user:  {
+      bookingTime: "2023-08-15T10:15:30.000Z",
+      user: {
         _id: "64aead5d13ddd4d59773fabb",
         name: "ماجد الجدعاني",
         phone: "9665531*****",
@@ -105,11 +105,11 @@ export default function ticketsReducer(state = initialState, action) {
         ...state,
         bookedTickets: [action.payload, ...state.bookedTickets],
       };
-      case ACTIVATE_TICKET:
-        return {
-          ...state,
-          bookedTickets: action.payload,
-        };
+    case ACTIVATE_TICKET:
+      return {
+        ...state,
+        bookedTickets: action.payload,
+      };
     default:
       return state;
   }

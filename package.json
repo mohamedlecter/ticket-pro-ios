@@ -11,7 +11,7 @@
     "@expo-google-fonts/ibm-plex-sans": "^0.2.3",
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
-    "@react-native-community/datetimepicker": "^7.5.0",
+    "@react-native-community/datetimepicker": "7.2.0",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/material-bottom-tabs": "^6.2.16",
     "@react-navigation/native": "^6.1.7",
@@ -22,7 +22,7 @@
     "DatePicker": "^2.0.0",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
-    "expo": "^49.0.9",
+    "expo": "^49.0.0",
     "expo-app-loading": "^2.1.1",
     "expo-checkbox": "~2.4.0",
     "expo-font": "~11.4.0",
@@ -33,7 +33,7 @@
     "from": "^0.1.7",
     "import": "^0.0.6",
     "react": "18.2.0",
-    "react-native": "0.72.4",
+    "react-native": "0.72.3",
     "react-native-datepicker": "^1.7.2",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-linear-gradient": "^2.7.3",
@@ -45,11 +45,13 @@
     "react-native-svg": "13.9.0",
     "react-native-svg-uri": "^1.2.3",
     "react-native-swiper": "^1.6.0",
+    "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^10.0.0",
     "react-redux": "^8.1.1",
     "reconnect.js": "^1.3.0",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
